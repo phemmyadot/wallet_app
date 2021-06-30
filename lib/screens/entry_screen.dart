@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:livecom/screens/home/home.dart';
+import 'package:livecom/screens/live_store/live_store.dart';
 import 'package:livecom/utils/app_colors.dart';
 import 'package:livecom/utils/livecom_icons_icons.dart';
 import 'package:livecom/widgets/gradient_icon.dart';
@@ -48,7 +49,7 @@ class _EntryScreenState extends State<EntryScreen>
             ),
             Container(
               decoration: BoxDecoration(
-                color: AppColors.background,
+                color: AppColors.primary,
                 boxShadow: [
                   BoxShadow(
                     color: Color(0xff080808),
@@ -114,7 +115,7 @@ class _EntryScreenState extends State<EntryScreen>
           title: "Live Stream",
         ),
         TabNavigationItem(
-          page: Text(''),
+          page: LiveStore(),
           icon: 'live',
           title: "Live Store",
         ),

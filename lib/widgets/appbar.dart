@@ -14,7 +14,7 @@ class Appbar extends StatelessWidget implements PreferredSizeWidget {
         automaticallyImplyLeading: false,
         flexibleSpace: Container(
           height: 100,
-          color: AppColors.background,
+          color: AppColors.primary,
           child: Padding(
             padding: const EdgeInsets.all(20.0),
             child: Row(
@@ -32,12 +32,12 @@ class Appbar extends StatelessWidget implements PreferredSizeWidget {
                           depth: 20,
                           intensity: 0.9,
                           surfaceIntensity: 0.4,
-                          shadowDarkColor: AppColors.background,
-                          shadowLightColor: AppColors.background,
+                          shadowDarkColor: AppColors.primary,
+                          shadowLightColor: AppColors.primary,
                           lightSource: LightSource.top,
-                          shadowLightColorEmboss: AppColors.background,
-                          shadowDarkColorEmboss: AppColors.background,
-                          color: AppColors.background),
+                          shadowLightColorEmboss: AppColors.primary,
+                          shadowDarkColorEmboss: AppColors.primary,
+                          color: AppColors.primary),
                       child: Stack(
                         children: [
                           Container(
