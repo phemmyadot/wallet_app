@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:livecom/enum/auction_type.dart';
+import 'package:livecom/screens/live_store/auction.dart';
 import 'package:livecom/widgets/annoucments.dart';
 import 'package:livecom/widgets/marketing.dart';
-import 'package:livecom/widgets/featured.dart';
+import 'package:livecom/screens/live_store/featured.dart';
 
 class LiveStore extends StatefulWidget {
   const LiveStore({Key key}) : super(key: key);
@@ -32,7 +34,15 @@ class _LiveStoreState extends State<LiveStore> {
             ),
             SizedBox(height: 15),
             Annoucement(),
+            SizedBox(height: 20),
             Featured(),
+            SizedBox(height: 20),
+            Auction(type: AuctionType.high_auction),
+            SizedBox(height: 20),
+            Auction(type: AuctionType.low_auction),
+            SizedBox(height: 20),
+            Auction(type: AuctionType.e_commerce),
+            SizedBox(height: 28.36),
           ],
         ),
       ),

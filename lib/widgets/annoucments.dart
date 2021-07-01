@@ -24,8 +24,8 @@ class Annoucement extends StatelessWidget {
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(5),
                           image: DecorationImage(
-                              image:
-                                  AssetImage("assets/images/annoucement_1.png"),
+                              image: AssetImage(
+                                  "assets/images/annoucement_${i.isEven ? 1 : 2}.png"),
                               fit: BoxFit.cover)),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.end,
@@ -33,11 +33,14 @@ class Annoucement extends StatelessWidget {
                           Text(
                             'announcement one'.toUpperCase(),
                             style: TextStyle(
-                                color: Color(0xff151A24),
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20,
-                                letterSpacing: 1,
-                                fontFamily: 'BebasNeue'),
+                              color: i.isOdd
+                                  ? Color(0xffffffff)
+                                  : Color(0xff151A24),
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                              letterSpacing: 1,
+                              fontFamily: 'BebasNeue',
+                            ),
                           ),
                         ],
                       ),

@@ -30,7 +30,6 @@ class _HeaderState extends State<Header> {
       } else {
         _currentPage = 0;
       }
-
       _pageController.animateToPage(
         _currentPage,
         duration: Duration(milliseconds: 350),
@@ -59,20 +58,26 @@ class _HeaderState extends State<Header> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Container(
-                    width: 18,
-                    height: 5,
-                    child: Image.asset('assets/images/banner_inactive.png')),
+                InkWell(
+                  onTap: () => null,
+                  child: Container(
+                      width: 18,
+                      height: 5,
+                      child: Image.asset('assets/images/banner_inactive.png')),
+                ),
                 SizedBox(width: 5),
                 Container(
                     width: 27,
                     height: 5,
                     child: Image.asset('assets/images/banner_active.png')),
                 SizedBox(width: 5),
-                Container(
-                    width: 18,
-                    height: 5,
-                    child: Image.asset('assets/images/banner_inactive.png')),
+                InkWell(
+                  onTap: () => null,
+                  child: Container(
+                      width: 18,
+                      height: 5,
+                      child: Image.asset('assets/images/banner_inactive.png')),
+                ),
               ],
             ),
           ),

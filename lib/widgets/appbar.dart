@@ -10,37 +10,49 @@ class LCAppbar extends StatelessWidget implements PreferredSizeWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Image.asset(
-          "assets/images/account_icon.png",
-          fit: BoxFit.cover,
-          width: 30.0,
-          height: 30.0,
-          colorBlendMode: BlendMode.dstATop,
+        InkWell(
+          onTap: () => null,
+          child: Image.asset(
+            "assets/images/account_icon.png",
+            fit: BoxFit.cover,
+            width: 30.0,
+            height: 30.0,
+            colorBlendMode: BlendMode.dstATop,
+          ),
         ),
         Row(
           children: [
-            Image.asset(
-              "assets/images/search.png",
-              fit: BoxFit.cover,
-              width: 18.5,
-              height: 18.5,
-              colorBlendMode: BlendMode.dstATop,
+            InkWell(
+              onTap: () => null,
+              child: Image.asset(
+                "assets/images/search.png",
+                fit: BoxFit.cover,
+                width: 18.5,
+                height: 18.5,
+                colorBlendMode: BlendMode.dstATop,
+              ),
             ),
             SizedBox(width: 18.07),
-            Image.asset(
-              "assets/images/notification.png",
-              fit: BoxFit.cover,
-              width: 15.18,
-              height: 18.5,
-              colorBlendMode: BlendMode.dstATop,
+            InkWell(
+              onTap: () => null,
+              child: Image.asset(
+                "assets/images/notification.png",
+                fit: BoxFit.cover,
+                width: 15.18,
+                height: 18.5,
+                colorBlendMode: BlendMode.dstATop,
+              ),
             ),
             SizedBox(width: 17.21),
-            Image.asset(
-              "assets/images/cart.png",
-              fit: BoxFit.cover,
-              width: 19.9,
-              height: 18.5,
-              colorBlendMode: BlendMode.dstATop,
+            InkWell(
+              onTap: () => null,
+              child: Image.asset(
+                "assets/images/cart.png",
+                fit: BoxFit.cover,
+                width: 19.9,
+                height: 18.5,
+                colorBlendMode: BlendMode.dstATop,
+              ),
             ),
           ],
         )
