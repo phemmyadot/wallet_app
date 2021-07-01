@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
+import 'package:livecom/enum/auction_type.dart';
 import 'package:livecom/screens/live_store/marketing.dart';
 import 'package:livecom/utils/app_colors.dart';
 
 class Auction extends StatefulWidget {
   static const routeName = '/auction';
+
   final String type;
   const Auction({Key key, this.type}) : super(key: key);
 
@@ -206,8 +207,16 @@ class _AuctionState extends State<Auction> {
                       begin: Alignment.centerLeft,
                       end: Alignment.centerRight,
                       colors: [
-                        Color(0xff4CD964),
-                        Color(0xff4CD964).withOpacity(0.15),
+                        widget.type == AuctionType.e_commerce
+                            ? Color(0xff4CD964)
+                            : widget.type == AuctionType.high_auction
+                                ? Color(0xffFF4141)
+                                : Color(0xff15B9FF),
+                        widget.type == AuctionType.e_commerce
+                            ? Color(0xff4CD964).withOpacity(0.15)
+                            : widget.type == AuctionType.high_auction
+                                ? Color(0xffFF4141).withOpacity(0.15)
+                                : Color(0xff15B9FF).withOpacity(0.15),
                       ],
                     ),
                     borderRadius: BorderRadius.only(
@@ -398,8 +407,18 @@ class _AuctionState extends State<Auction> {
                                         0.8119657413752752, 1.6842103928068268),
                                     stops: [0.0, 1.0],
                                     colors: [
-                                      Color(0xff4CD964),
-                                      Color(0xff006010)
+                                      widget.type == AuctionType.e_commerce
+                                          ? Color(0xff4CD964)
+                                          : widget.type ==
+                                                  AuctionType.high_auction
+                                              ? Color(0xffFF4141)
+                                              : Color(0xff15B9FF),
+                                      widget.type == AuctionType.e_commerce
+                                          ? Color(0xff006010)
+                                          : widget.type ==
+                                                  AuctionType.high_auction
+                                              ? Color(0xff7C0000)
+                                              : Color(0xff005E87),
                                     ],
                                   ),
                                 ),

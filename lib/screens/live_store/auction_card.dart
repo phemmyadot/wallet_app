@@ -31,12 +31,15 @@ class _AuctionCardState extends State<AuctionCard> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => Navigator.of(context).push(
-        MaterialPageRoute<void>(
-          builder: (BuildContext context) => const Auction(),
+        MaterialPageRoute(
+          builder: (BuildContext context) => Auction(
+            type: widget.type,
+          ),
         ),
       ),
       child: Stack(
         children: [
+          Text(widget.type),
           Column(
             children: [
               Container(
