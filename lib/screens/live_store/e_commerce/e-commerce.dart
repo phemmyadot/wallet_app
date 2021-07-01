@@ -3,9 +3,10 @@ import 'package:livecom/screens/live_store/e_commerce/marketing.dart';
 import 'package:livecom/utils/app_colors.dart';
 
 class Ecommerce extends StatefulWidget {
+  final bool isInWishList;
   static const routeName = '/auction';
 
-  const Ecommerce({Key key}) : super(key: key);
+  const Ecommerce({Key key, this.isInWishList = false}) : super(key: key);
 
   @override
   _EcommerceState createState() => _EcommerceState();
@@ -161,14 +162,23 @@ class _EcommerceState extends State<Ecommerce> {
                               SizedBox(height: 33.83),
                               Column(
                                 children: [
-                                  Image.asset(
-                                    "assets/images/like.png",
-                                    color: null,
-                                    fit: BoxFit.fill,
-                                    width: 22.0,
-                                    height: 19.83,
-                                    colorBlendMode: BlendMode.dstATop,
-                                  ),
+                                  widget.isInWishList
+                                      ? Image.asset(
+                                          "assets/images/wishlist_active.png",
+                                          color: null,
+                                          fit: BoxFit.fill,
+                                          width: 22.0,
+                                          height: 19.83,
+                                          colorBlendMode: BlendMode.dstATop,
+                                        )
+                                      : Image.asset(
+                                          "assets/images/like.png",
+                                          color: null,
+                                          fit: BoxFit.fill,
+                                          width: 22.0,
+                                          height: 19.83,
+                                          colorBlendMode: BlendMode.dstATop,
+                                        ),
                                   SizedBox(height: 5.33),
                                   Text(
                                     '''Wishlist''',
