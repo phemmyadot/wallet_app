@@ -10,11 +10,12 @@
             "type": "dart"
         },
         {
-            "name": "livecom (profile mode)",
+            "name": "livecom (debug mode)",
             "request": "launch",
             "type": "dart",
-            "flutterMode": "profile"
-        },{
+            "devideId": "emulator-5554"
+        },
+        {
             "name": "livecom (release mode)",
             "request": "launch",
             "type": "dart",

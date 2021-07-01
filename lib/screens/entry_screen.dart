@@ -41,9 +41,9 @@ class _EntryScreenState extends State<EntryScreen>
                 physics: NeverScrollableScrollPhysics(),
                 controller: _tabController,
                 children: [
-                  getItems().map((e) => e.page).toList()[0],
-                  getItems().map((e) => e.page).toList()[1],
-                  getItems().map((e) => e.page).toList()[2],
+                  getPages().map((e) => e.page).toList()[0],
+                  getPages().map((e) => e.page).toList()[1],
+                  getPages().map((e) => e.page).toList()[2],
                 ],
               ),
             ),
@@ -52,40 +52,39 @@ class _EntryScreenState extends State<EntryScreen>
                 color: AppColors.primary,
                 boxShadow: [
                   BoxShadow(
-                    color: Color(0xff080808),
-                    offset: Offset(0.0, 1.0),
-                    blurRadius: 5.0,
-                  ),
+                    color: Color.fromARGB(112, 0, 0, 0),
+                    offset: Offset(0.0, 0.0),
+                    blurRadius: 35.0,
+                  )
                 ],
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  for (int i = 0; i < getItems().length; i++)
+                  for (int i = 0; i < getPages().length; i++)
                     InkWell(
                       onTap: () => _setCurrentIndex(i, true),
                       child: Container(
                         padding: EdgeInsets.symmetric(horizontal: 27),
-                        key: getItems()[i].key,
+                        key: getPages()[i].key,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             SizedBox(height: 10),
-                            Container(
-                                height: 23,
-                                width: 23,
-                                child: Image.asset(
-                                    'assets/images/${getItems()[i].icon}.png')),
+                            getPages()[i].icon,
                             SizedBox(height: 5),
                             Row(
                               children: [
                                 i == 1 ? SizedBox(width: 3) : Container(),
                                 Text(
-                                  getItems()[i].title,
+                                  getPages()[i].title,
                                   style: TextStyle(
-                                      color: Color(0xffD7DDE8),
-                                      fontSize: 10,
-                                      fontWeight: FontWeight.w400),
+                                    height: 1.6,
+                                    fontSize: 10.0,
+                                    fontFamily: 'Montserrat',
+                                    fontWeight: FontWeight.w400,
+                                    color: Color.fromARGB(255, 215, 221, 232),
+                                  ),
                                 ),
                               ],
                             ),
@@ -103,20 +102,29 @@ class _EntryScreenState extends State<EntryScreen>
     );
   }
 
-  List<TabNavigationItem> getItems() => [
+  List<TabNavigationItem> getPages() => [
         TabNavigationItem(
           page: Home(),
-          icon: 'home',
+          icon: Container(
+              height: 23,
+              width: 23,
+              child: Image.asset('assets/images/home.png')),
           title: "Home",
         ),
         TabNavigationItem(
           page: Text(''),
-          icon: 'stream',
+          icon: Container(
+              height: 21,
+              width: 27,
+              child: Image.asset('assets/images/stream.png')),
           title: "Live Stream",
         ),
         TabNavigationItem(
           page: LiveStore(),
-          icon: 'live',
+          icon: Container(
+              height: 21,
+              width: 19,
+              child: Image.asset('assets/images/live.png')),
           title: "Live Store",
         ),
       ];
@@ -125,7 +133,7 @@ class _EntryScreenState extends State<EntryScreen>
 class TabNavigationItem {
   final Widget page;
   final String title;
-  final String icon;
+  final Widget icon;
   final GlobalKey key;
 
   TabNavigationItem({

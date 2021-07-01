@@ -4,7 +4,7 @@ import 'package:livecom/screens/home/widgets/action_buttons.dart';
 import 'package:livecom/screens/home/widgets/history.dart';
 import 'package:livecom/screens/home/widgets/summary.dart';
 
-import 'widgets/annoucments.dart';
+import '../../widgets/annoucments.dart';
 
 class Home extends StatefulWidget {
   const Home({Key key}) : super(key: key);

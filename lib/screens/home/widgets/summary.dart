@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:livecom/widgets/carousel.dart';
+import 'package:livecom/widgets/marketing.dart';
 import 'package:livecom/utils/livecom_icons_icons.dart';
 
 class Summary extends StatefulWidget {
@@ -15,7 +15,7 @@ class _SummaryState extends State<Summary> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Container(height: 100, child: Carousel()),
+        // Container(height: 100, child: Carousel()),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,

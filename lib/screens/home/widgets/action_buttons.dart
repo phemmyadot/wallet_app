@@ -87,78 +87,78 @@ class _ActionButtonsState extends State<ActionButtons> {
                     ),
                   ),
                 ),
-                Expanded(
-                    child: Container(
-                  // width: 162.0,
-                  height: 44.0,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(100.0),
-                    boxShadow: kIsWeb
-                        ? []
-                        : [
-                            BoxShadow(
-                              color: Color.fromARGB(102, 0, 0, 0),
-                              offset: Offset(5.0, 5.0),
-                              blurRadius: 20.0,
-                            ),
-                            BoxShadow(
-                              color: Color.fromARGB(51, 80, 93, 116),
-                              offset: Offset(-7.0, -7.0),
-                              blurRadius: 20.0,
-                            )
-                          ],
-                    gradient: LinearGradient(
-                      begin:
-                          Alignment(-1.3760684456219003, -1.8947368217784328),
-                      end: Alignment(0.7777777642210721, 1.3684211900681071),
-                      stops: [0.0, 1.0],
-                      colors: [
-                        Color.fromARGB(255, 80, 93, 116),
-                        Color.fromARGB(255, 27, 32, 43)
-                      ],
-                    ),
+                // Expanded(
+                //     child: Container(
+                //   // width: 162.0,
+                //   height: 44.0,
+                //   decoration: BoxDecoration(
+                //     borderRadius: BorderRadius.circular(100.0),
+                //     boxShadow: kIsWeb
+                //         ? []
+                //         : [
+                //             BoxShadow(
+                //               color: Color.fromARGB(102, 0, 0, 0),
+                //               offset: Offset(5.0, 5.0),
+                //               blurRadius: 20.0,
+                //             ),
+                //             BoxShadow(
+                //               color: Color.fromARGB(51, 80, 93, 116),
+                //               offset: Offset(-7.0, -7.0),
+                //               blurRadius: 20.0,
+                //             )
+                //           ],
+                //     gradient: LinearGradient(
+                //       begin:
+                //           Alignment(-1.3760684456219003, -1.8947368217784328),
+                //       end: Alignment(0.7777777642210721, 1.3684211900681071),
+                //       stops: [0.0, 1.0],
+                //       colors: [
+                //         Color.fromARGB(255, 80, 93, 116),
+                //         Color.fromARGB(255, 27, 32, 43)
+                //       ],
+                //     ),
+                //   ),
+                // )
+                Container(
+                  height: 96,
+                  child: Stack(
+                    children: [
+                      Image.asset('assets/images/button_6.png'),
+                      Positioned(
+                        top: 0,
+                        bottom: -4,
+                        right: 15,
+                        left: 0,
+                        child: Center(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Container(
+                                width: 16,
+                                height: 16,
+                                child: Image.asset(
+                                  'assets/images/transfer.png',
+                                  fit: BoxFit.contain,
+                                ),
+                              ),
+                              SizedBox(width: 8),
+                              Text(
+                                'TRANSFER',
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    color: Color(0xffD7DDE8),
+                                    fontWeight: FontWeight.w600,
+                                    height: 1),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                )
-                    // Container(
-                    //   height: 96,
-                    //   child: Stack(
-                    //     children: [
-                    //       Image.asset('assets/images/button_6.png'),
-                    //       Positioned(
-                    //         top: 0,
-                    //         bottom: -4,
-                    //         right: 15,
-                    //         left: 0,
-                    //         child: Center(
-                    //           child: Row(
-                    //             mainAxisAlignment: MainAxisAlignment.center,
-                    //             crossAxisAlignment: CrossAxisAlignment.center,
-                    //             children: [
-                    //               Container(
-                    //                 width: 16,
-                    //                 height: 16,
-                    //                 child: Image.asset(
-                    //                   'assets/images/transfer.png',
-                    //                   fit: BoxFit.contain,
-                    //                 ),
-                    //               ),
-                    //               SizedBox(width: 8),
-                    //               Text(
-                    //                 'TRANSFER',
-                    //                 style: TextStyle(
-                    //                     fontSize: 16,
-                    //                     color: Color(0xffD7DDE8),
-                    //                     fontWeight: FontWeight.w600,
-                    //                     height: 1),
-                    //               ),
-                    //             ],
-                    //           ),
-                    //         ),
-                    //       ),
-                    //     ],
-                    //   ),
-                    // ),
-                    ),
+                ),
+                // ),
               ],
             ),
           )
