@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:livecom/enum/auction_type.dart';
 import 'package:livecom/screens/live_store/auction_high/marketing.dart';
 import 'package:livecom/utils/app_colors.dart';
 

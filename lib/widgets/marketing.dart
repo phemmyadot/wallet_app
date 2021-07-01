@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:livecom/utils/svg.dart';
 import 'package:livecom/widgets/appbar.dart';
 
 class Header extends StatefulWidget {

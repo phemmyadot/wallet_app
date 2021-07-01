@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:livecom/enum/auction_type.dart';
 import 'package:livecom/screens/live_store/auction_high/preview.dart';
 import 'package:livecom/screens/live_store/auction_low/preview.dart';
 import 'package:livecom/screens/live_store/e_commerce/preview.dart';

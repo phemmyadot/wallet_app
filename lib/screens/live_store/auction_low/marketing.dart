@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:livecom/enum/auction_type.dart';
 import 'package:livecom/utils/svg.dart';
 
 class AuctionLowHeader extends StatefulWidget {

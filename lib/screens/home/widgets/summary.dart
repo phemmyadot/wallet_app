@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:livecom/widgets/marketing.dart';
 import 'package:livecom/utils/livecom_icons_icons.dart';
 
 class Summary extends StatefulWidget {

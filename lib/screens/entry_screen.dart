@@ -13,7 +13,6 @@ class EntryScreen extends StatefulWidget {
 
 class _EntryScreenState extends State<EntryScreen>
     with TickerProviderStateMixin {
-  int _currentIndex = 0;
   final _scaffoldKey = GlobalKey<ScaffoldState>();
   TabController _tabController;
   @override
@@ -24,7 +23,6 @@ class _EntryScreenState extends State<EntryScreen>
 
   Future<void> _setCurrentIndex(int index, bool animate) async {
     if (animate) _tabController.animateTo(index);
-    setState(() => _currentIndex = index);
   }
 
   @override

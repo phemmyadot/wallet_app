@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:livecom/screens/live_store/featured/feature_card.dart';
-import 'package:livecom/utils/transform.dart';
 
 class Featured extends StatelessWidget {
   const Featured({Key key}) : super(key: key);
