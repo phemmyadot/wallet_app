@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:livecom/enum/auction_type.dart';
-import 'package:livecom/screens/live_store/marketing.dart';
+import 'package:livecom/screens/live_store/bid_fast/marketing.dart';
 import 'package:livecom/utils/app_colors.dart';
 
-class Auction extends StatefulWidget {
+class BidFast extends StatefulWidget {
   static const routeName = '/auction';
 
-  final String type;
-  const Auction({Key key, this.type}) : super(key: key);
+  const BidFast({Key key}) : super(key: key);
 
   @override
-  _AuctionState createState() => _AuctionState();
+  _BidFastState createState() => _BidFastState();
 }
 
-class _AuctionState extends State<Auction> {
+class _BidFastState extends State<BidFast> {
   ScrollController _scrollController;
+  int quantity = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +27,7 @@ class _AuctionState extends State<Auction> {
               controller: _scrollController,
               child: Column(
                 children: [
-                  AuctionHeader(),
+                  BidFastHeader(),
                   Padding(
                     padding: const EdgeInsets.only(
                       left: 20.0,
@@ -134,49 +134,57 @@ class _AuctionState extends State<Auction> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              Image.asset(
-                                "assets/images/share.png",
-                                color: null,
-                                fit: BoxFit.fill,
-                                width: 24.0,
-                                height: 26.0,
-                                colorBlendMode: BlendMode.dstATop,
-                              ),
-                              SizedBox(height: 10.17),
-                              Text(
-                                '''Share''',
-                                overflow: TextOverflow.visible,
-                                textAlign: TextAlign.left,
-                                style: TextStyle(
-                                  height: 1.125,
-                                  fontSize: 12.0,
-                                  fontFamily: 'Montserrat',
-                                  fontWeight: FontWeight.w600,
-                                  color: Color(0xffd7dde8),
-                                ),
+                              Column(
+                                children: [
+                                  Image.asset(
+                                    "assets/images/share.png",
+                                    color: null,
+                                    fit: BoxFit.fill,
+                                    width: 24.0,
+                                    height: 26.0,
+                                    colorBlendMode: BlendMode.dstATop,
+                                  ),
+                                  SizedBox(height: 10.17),
+                                  Text(
+                                    '''Share''',
+                                    overflow: TextOverflow.visible,
+                                    textAlign: TextAlign.left,
+                                    style: TextStyle(
+                                      height: 1.125,
+                                      fontSize: 12.0,
+                                      fontFamily: 'Montserrat',
+                                      fontWeight: FontWeight.w600,
+                                      color: Color(0xffd7dde8),
+                                    ),
+                                  ),
+                                ],
                               ),
                               SizedBox(height: 33.83),
-                              Image.asset(
-                                "assets/images/like.png",
-                                color: null,
-                                fit: BoxFit.fill,
-                                width: 22.0,
-                                height: 19.83,
-                                colorBlendMode: BlendMode.dstATop,
-                              ),
-                              SizedBox(height: 5.33),
-                              Text(
-                                '''Wishlist''',
-                                overflow: TextOverflow.visible,
-                                textAlign: TextAlign.left,
-                                style: TextStyle(
-                                  height: 1.125,
-                                  fontSize: 12.0,
-                                  fontFamily: 'Montserrat',
-                                  fontWeight: FontWeight.w600,
-                                  color: Color(0xffd7dde8),
-                                ),
-                              ),
+                              Column(
+                                children: [
+                                  Image.asset(
+                                    "assets/images/notify_me.png",
+                                    color: null,
+                                    fit: BoxFit.fill,
+                                    width: 21.98,
+                                    height: 21.98,
+                                    colorBlendMode: BlendMode.dstATop,
+                                  ),
+                                  SizedBox(height: 5.33),
+                                  Text(
+                                    '''Wishlist''',
+                                    overflow: TextOverflow.visible,
+                                    textAlign: TextAlign.left,
+                                    style: TextStyle(
+                                      height: 1.125,
+                                      fontSize: 12.0,
+                                      fontFamily: 'Montserrat',
+                                      fontWeight: FontWeight.w600,
+                                      color: Color(0xffd7dde8),
+                                    ),
+                                  ),
+                                ],
+                              )
                             ],
                           ),
                         ),
@@ -207,16 +215,8 @@ class _AuctionState extends State<Auction> {
                       begin: Alignment.centerLeft,
                       end: Alignment.centerRight,
                       colors: [
-                        widget.type == AuctionType.e_commerce
-                            ? Color(0xff4CD964)
-                            : widget.type == AuctionType.high_auction
-                                ? Color(0xffFF4141)
-                                : Color(0xff15B9FF),
-                        widget.type == AuctionType.e_commerce
-                            ? Color(0xff4CD964).withOpacity(0.15)
-                            : widget.type == AuctionType.high_auction
-                                ? Color(0xffFF4141).withOpacity(0.15)
-                                : Color(0xff15B9FF).withOpacity(0.15),
+                        Color(0xff15B9FF),
+                        Color(0xff15B9FF).withOpacity(0.15),
                       ],
                     ),
                     borderRadius: BorderRadius.only(
@@ -337,47 +337,57 @@ class _AuctionState extends State<Auction> {
                               Row(
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
-                                  Container(
-                                    height: 30,
-                                    width: 30,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(30),
-                                      color: Color(0xff181E28),
-                                    ),
-                                    child: Center(
-                                      child: Image.asset(
-                                        'assets/images/minus.png',
-                                        width: 11.11,
-                                        height: 2.22,
+                                  InkWell(
+                                    onTap: () => setState(
+                                        () => quantity > 1 ? quantity-- : 1),
+                                    child: Container(
+                                      height: 30,
+                                      width: 30,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(30),
+                                        color: Color(0xff181E28),
+                                      ),
+                                      child: Center(
+                                        child: Image.asset(
+                                          'assets/images/minus.png',
+                                          width: 11.11,
+                                          height: 2.22,
+                                        ),
                                       ),
                                     ),
                                   ),
-                                  SizedBox(width: 25),
-                                  Text(
-                                    '''1''',
-                                    overflow: TextOverflow.visible,
-                                    textAlign: TextAlign.left,
-                                    style: TextStyle(
-                                      height: 1.125,
-                                      fontSize: 20.0,
-                                      fontFamily: 'Montserrat',
-                                      fontWeight: FontWeight.w600,
-                                      color: Color(0xffd7dde8),
+                                  Container(
+                                    width: 60,
+                                    child: Center(
+                                      child: Text(
+                                        quantity.toString(),
+                                        overflow: TextOverflow.visible,
+                                        textAlign: TextAlign.left,
+                                        style: TextStyle(
+                                          height: 1.125,
+                                          fontSize: 20.0,
+                                          fontFamily: 'Montserrat',
+                                          fontWeight: FontWeight.w600,
+                                          color: Color(0xffd7dde8),
+                                        ),
+                                      ),
                                     ),
                                   ),
-                                  SizedBox(width: 25),
-                                  Container(
-                                    height: 30,
-                                    width: 30,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(30),
-                                      color: Color(0xff181E28),
-                                    ),
-                                    child: Center(
-                                      child: Image.asset(
-                                        'assets/images/add.png',
-                                        width: 11.11,
-                                        height: 11.11,
+                                  InkWell(
+                                    onTap: () => setState(() => quantity++),
+                                    child: Container(
+                                      height: 30,
+                                      width: 30,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(30),
+                                        color: Color(0xff181E28),
+                                      ),
+                                      child: Center(
+                                        child: Image.asset(
+                                          'assets/images/add.png',
+                                          width: 11.11,
+                                          height: 11.11,
+                                        ),
                                       ),
                                     ),
                                   )
@@ -407,18 +417,8 @@ class _AuctionState extends State<Auction> {
                                         0.8119657413752752, 1.6842103928068268),
                                     stops: [0.0, 1.0],
                                     colors: [
-                                      widget.type == AuctionType.e_commerce
-                                          ? Color(0xff4CD964)
-                                          : widget.type ==
-                                                  AuctionType.high_auction
-                                              ? Color(0xffFF4141)
-                                              : Color(0xff15B9FF),
-                                      widget.type == AuctionType.e_commerce
-                                          ? Color(0xff006010)
-                                          : widget.type ==
-                                                  AuctionType.high_auction
-                                              ? Color(0xff7C0000)
-                                              : Color(0xff005E87),
+                                      Color(0xff15B9FF),
+                                      Color(0xff005E87),
                                     ],
                                   ),
                                 ),
@@ -440,13 +440,34 @@ class _AuctionState extends State<Auction> {
                             ],
                           ),
                         ),
+                        SizedBox(height: 9.68),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.only(right: 20.0),
+                              child: Text(
+                                '''300 people eyeing this''',
+                                overflow: TextOverflow.visible,
+                                textAlign: TextAlign.left,
+                                style: TextStyle(
+                                  height: 1.125,
+                                  fontSize: 12.0,
+                                  fontFamily: 'Montserrat',
+                                  fontWeight: FontWeight.w400,
+                                  color: Color(0xffd7dde8),
+                                ),
+                              ),
+                            ),
+                          ],
+                        )
                       ],
                     ),
                   ),
                 ),
               ],
             ),
-          )
+          ),
         ],
       ),
     );

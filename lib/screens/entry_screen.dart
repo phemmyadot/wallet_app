@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:livecom/screens/home/home.dart';
-import 'package:livecom/screens/live_store/live_store.dart';
+import 'package:livecom/screens/live_store/main/live_store.dart';
 import 'package:livecom/utils/app_colors.dart';
 
 class EntryScreen extends StatefulWidget {

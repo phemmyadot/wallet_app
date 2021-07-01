@@ -1,7 +1,7 @@
 import 'package:livecom/screens/entry_screen.dart';
-import 'package:livecom/screens/live_store/auction.dart';
+import 'package:livecom/screens/live_store/e_commerce/e-commerce.dart';
 
 final routes = {
   EntryScreen.routeName: (context) => EntryScreen(),
-  Auction.routeName: (context) => Auction(),
+  Ecommerce.routeName: (context) => Ecommerce(),
 };

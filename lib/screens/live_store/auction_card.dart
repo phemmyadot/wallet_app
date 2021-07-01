@@ -1,25 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:livecom/screens/live_store/auction.dart';
 
 class AuctionCard extends StatefulWidget {
   final String title;
-  final String type;
   final String sellerName;
   final int participants;
   final double rating;
   final Image image;
   final Image sellerImage;
   final Image flag;
+  final Function onTap;
   const AuctionCard({
     Key key,
     @required this.participants,
-    @required this.type,
     @required this.title,
     @required this.rating,
     @required this.sellerName,
     @required this.sellerImage,
     @required this.image,
     @required this.flag,
+    @required this.onTap,
   }) : super(key: key);
 
   @override
@@ -30,16 +29,9 @@ class _AuctionCardState extends State<AuctionCard> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => Navigator.of(context).push(
-        MaterialPageRoute(
-          builder: (BuildContext context) => Auction(
-            type: widget.type,
-          ),
-        ),
-      ),
+      onTap: () => widget.onTap(),
       child: Stack(
         children: [
-          Text(widget.type),
           Column(
             children: [
               Container(

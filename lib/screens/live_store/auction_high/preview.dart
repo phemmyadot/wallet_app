@@ -1,20 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:livecom/enum/auction_type.dart';
 import 'package:livecom/screens/live_store/auction_card.dart';
 
-class AuctionPreview extends StatefulWidget {
-  final String type;
+import 'auction_high.dart';
 
-  const AuctionPreview({
+class AuctionHighPreview extends StatefulWidget {
+  const AuctionHighPreview({
     Key key,
-    @required this.type,
   }) : super(key: key);
 
   @override
-  _AuctionPreviewState createState() => _AuctionPreviewState();
+  _AuctionHighPreviewState createState() => _AuctionHighPreviewState();
 }
 
-class _AuctionPreviewState extends State<AuctionPreview> {
+class _AuctionHighPreviewState extends State<AuctionHighPreview> {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -23,11 +21,11 @@ class _AuctionPreviewState extends State<AuctionPreview> {
           children: [
             SizedBox(width: 11),
             Image.asset(
-              "assets/images/${widget.type}.png",
+              "assets/images/auction_high.png",
               color: null,
               fit: BoxFit.fill,
               width: 15.0,
-              height: widget.type == AuctionType.e_commerce ? 15 : 18.11,
+              height: 18.11,
               colorBlendMode: BlendMode.dstATop,
             ),
             SizedBox(width: 10.44),
@@ -64,7 +62,11 @@ class _AuctionPreviewState extends State<AuctionPreview> {
                           borderRadius: BorderRadius.circular(5.0),
                         ),
                         child: AuctionCard(
-                          type: widget.type,
+                          onTap: () => Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (BuildContext context) => AuctionHigh(),
+                            ),
+                          ),
                           flag: Image.asset(
                             "assets/images/flag.png",
                             color: null,

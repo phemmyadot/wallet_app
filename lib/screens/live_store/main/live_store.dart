@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:livecom/enum/auction_type.dart';
-import 'package:livecom/screens/live_store/auction_preview.dart';
+import 'package:livecom/screens/live_store/auction_high/preview.dart';
+import 'package:livecom/screens/live_store/auction_low/preview.dart';
+import 'package:livecom/screens/live_store/e_commerce/preview.dart';
 import 'package:livecom/widgets/annoucments.dart';
 import 'package:livecom/widgets/marketing.dart';
-import 'package:livecom/screens/live_store/featured.dart';
+import 'package:livecom/screens/live_store/featured/featured.dart';
 
 class LiveStore extends StatefulWidget {
   const LiveStore({Key key}) : super(key: key);
@@ -41,11 +43,11 @@ class _LiveStoreState extends State<LiveStore> {
             SizedBox(height: 20),
             Featured(),
             SizedBox(height: 20),
-            AuctionPreview(type: AuctionType.high_auction),
+            AuctionHighPreview(),
             SizedBox(height: 20),
-            AuctionPreview(type: AuctionType.low_auction),
+            AuctionLowPreview(),
             SizedBox(height: 20),
-            AuctionPreview(type: AuctionType.e_commerce),
+            ECommercePreview(),
             SizedBox(height: 28.36),
           ],
         ),
