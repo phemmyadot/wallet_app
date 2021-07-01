@@ -3,6 +3,7 @@ import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:livecom/screens/home/widgets/action_buttons.dart';
 import 'package:livecom/screens/home/widgets/history.dart';
 import 'package:livecom/screens/home/widgets/summary.dart';
+import 'package:livecom/utils/svg.dart';
 
 import '../../widgets/annoucments.dart';
 
@@ -21,25 +22,54 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        SizedBox(height: 20),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Container(
-              height: 80,
-              width: 80,
+              width: 40,
+              height: 40,
+              margin: EdgeInsets.only(left: 14.0),
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(100),
                 boxShadow: [
                   BoxShadow(
-                    color: Color(0xff000000).withOpacity(0.2),
-                    spreadRadius: 0,
-                    blurRadius: 20,
-                    offset: Offset(0, 0),
+                    color: Color.fromARGB(102, 0, 0, 0),
+                    offset: Offset(5.0, 5.0),
+                    blurRadius: 20.0,
+                  ),
+                  BoxShadow(
+                    color: Color.fromARGB(76, 80, 93, 116),
+                    offset: Offset(-7.0, -7.0),
+                    blurRadius: 20.0,
                   )
                 ],
               ),
-              child: Image.asset('assets/images/back_btn.png'),
+              child: Stack(
+                children: [
+                  SvgWidget(painters: [
+                    SvgPathPainter.fill()
+                      ..addPath(
+                          'M0 20C0 8.9543 8.9543 0 20 0C31.0457 0 40 8.9543 40 20C40 31.0457 31.0457 40 20 40C8.9543 40 0 31.0457 0 20Z')
+                      ..setLinearGradient(
+                        startX: -16.31578763184293,
+                        startY: -8.421051121608452,
+                        endX: 33.68420681303728,
+                        endY: 43.68420636996503,
+                        colors: [
+                          Color.fromARGB(255, 80, 93, 116),
+                          Color.fromARGB(255, 24, 29, 40)
+                        ],
+                        colorStops: [0.0, 1.0],
+                      ),
+                  ]),
+                  Center(
+                      child: Container(
+                          height: 12.53,
+                          width: 9.02,
+                          child: Image.asset('assets/images/back.png')))
+                ],
+              ),
             ),
             Text(
               'LiveWallet',
@@ -49,10 +79,7 @@ class _HomeState extends State<Home> {
                 fontWeight: FontWeight.w600,
               ),
             ),
-            SizedBox(
-              height: 80,
-              width: 80,
-            )
+            SizedBox(width: 64)
           ],
         ),
         SizedBox(height: 18),

@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:livecom/screens/home/home.dart';
 import 'package:livecom/screens/live_store/live_store.dart';
 import 'package:livecom/utils/app_colors.dart';
-import 'package:livecom/utils/livecom_icons_icons.dart';
-import 'package:livecom/widgets/gradient_icon.dart';
 
 class EntryScreen extends StatefulWidget {
+  static const routeName = '/';
   const EntryScreen({Key key}) : super(key: key);
 
   @override

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:livecom/enum/auction_type.dart';
-import 'package:livecom/screens/live_store/auction.dart';
+import 'package:livecom/screens/live_store/auction_preview.dart';
 import 'package:livecom/widgets/annoucments.dart';
 import 'package:livecom/widgets/marketing.dart';
 import 'package:livecom/screens/live_store/featured.dart';
@@ -13,11 +14,14 @@ class LiveStore extends StatefulWidget {
 }
 
 class _LiveStoreState extends State<LiveStore> {
+  ScrollController _scrollController;
+
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Container(
-        color: Color(0xff181E28),
+    return Scaffold(
+      backgroundColor: Color(0xff181E28),
+      body: SingleChildScrollView(
+        controller: _scrollController,
         child: Column(
           children: [
             Container(
@@ -37,11 +41,11 @@ class _LiveStoreState extends State<LiveStore> {
             SizedBox(height: 20),
             Featured(),
             SizedBox(height: 20),
-            Auction(type: AuctionType.high_auction),
+            AuctionPreview(type: AuctionType.high_auction),
             SizedBox(height: 20),
-            Auction(type: AuctionType.low_auction),
+            AuctionPreview(type: AuctionType.low_auction),
             SizedBox(height: 20),
-            Auction(type: AuctionType.e_commerce),
+            AuctionPreview(type: AuctionType.e_commerce),
             SizedBox(height: 28.36),
           ],
         ),

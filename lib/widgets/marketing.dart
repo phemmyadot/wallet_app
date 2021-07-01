@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:livecom/utils/svg.dart';
 import 'package:livecom/widgets/appbar.dart';
 
 class Header extends StatefulWidget {
@@ -42,7 +43,7 @@ class _HeaderState extends State<Header> {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: 312.0,
+      height: 322.0,
       child: Stack(
         children: [
           PageView(
@@ -81,7 +82,12 @@ class _HeaderState extends State<Header> {
               ],
             ),
           ),
-          Positioned(left: 24.0, top: 56.0, right: 23.64, child: LCAppbar())
+          Positioned(
+            left: 24.0,
+            top: 56.0,
+            right: 23.64,
+            child: LCAppbar(),
+          )
         ],
       ),
     );
@@ -92,7 +98,7 @@ class _HeaderState extends State<Header> {
       children: [
         Container(
           width: double.infinity,
-          height: 313.0,
+          height: 323.0,
           child: ClipRRect(
             borderRadius: BorderRadius.zero,
             child: Image.asset(
@@ -105,7 +111,7 @@ class _HeaderState extends State<Header> {
         ),
         Container(
           width: double.infinity,
-          height: 338.0,
+          height: 365.0,
           decoration: BoxDecoration(
             gradient: LinearGradient(
               begin: Alignment.topCenter,
