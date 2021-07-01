@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
-import 'package:livecom/utils/app_colors.dart';
 
-class Appbar extends StatelessWidget implements PreferredSizeWidget {
-  const Appbar({Key key}) : super(key: key);
+class LCAppbar extends StatelessWidget implements PreferredSizeWidget {
+  const LCAppbar({Key key}) : super(key: key);
   @override
   Size get preferredSize => Size.fromHeight(100);
   @override

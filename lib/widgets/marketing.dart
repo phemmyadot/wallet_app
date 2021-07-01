@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:livecom/widgets/appbar.dart';
 
 class Header extends StatefulWidget {
   const Header({Key key}) : super(key: key);
@@ -75,7 +76,7 @@ class _HeaderState extends State<Header> {
               ],
             ),
           ),
-          Positioned(left: 24.0, top: 56.0, right: 23.64, child: AppBar())
+          Positioned(left: 24.0, top: 56.0, right: 23.64, child: LCAppbar())
         ],
       ),
     );
