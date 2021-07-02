@@ -20,9 +20,10 @@ class _HomeState extends State<Home> {
   void showInfo(value) => setState(() => _showInfo = value);
   @override
   Widget build(BuildContext context) {
+    final double statusBarHeight = MediaQuery.of(context).padding.top;
     return Column(
       children: [
-        SizedBox(height: 20),
+        SizedBox(height: 20 + statusBarHeight),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
