@@ -195,7 +195,7 @@ class _AuctionLowState extends State<AuctionLow> {
             ),
           ),
           Container(
-            height: 169,
+            height: 198,
             decoration: BoxDecoration(
               boxShadow: [
                 BoxShadow(
@@ -208,7 +208,6 @@ class _AuctionLowState extends State<AuctionLow> {
             child: Stack(
               children: [
                 Container(
-                  height: 169,
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
                       begin: Alignment.centerLeft,
@@ -229,9 +228,8 @@ class _AuctionLowState extends State<AuctionLow> {
                   top: null,
                   right: 0,
                   bottom: 0,
-                  height: 168,
+                  height: 197,
                   child: Container(
-                    height: 168,
                     padding: EdgeInsets.only(top: 15),
                     decoration: BoxDecoration(
                       color: AppColors.primary,

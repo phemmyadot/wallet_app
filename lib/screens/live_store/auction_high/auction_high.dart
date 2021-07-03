@@ -13,7 +13,7 @@ class AuctionHigh extends StatefulWidget {
 
 class _AuctionHighState extends State<AuctionHigh> {
   ScrollController _scrollController;
-  int quantity = 1;
+  int quantity = 200;
 
   @override
   Widget build(BuildContext context) {
@@ -195,7 +195,7 @@ class _AuctionHighState extends State<AuctionHigh> {
             ),
           ),
           Container(
-            height: 169,
+            height: 198,
             decoration: BoxDecoration(
               boxShadow: [
                 BoxShadow(
@@ -208,7 +208,6 @@ class _AuctionHighState extends State<AuctionHigh> {
             child: Stack(
               children: [
                 Container(
-                  height: 169,
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
                       begin: Alignment.centerLeft,
@@ -229,9 +228,8 @@ class _AuctionHighState extends State<AuctionHigh> {
                   top: null,
                   right: 0,
                   bottom: 0,
-                  height: 168,
+                  height: 197,
                   child: Container(
-                    height: 168,
                     padding: EdgeInsets.only(top: 15),
                     decoration: BoxDecoration(
                       color: AppColors.primary,
@@ -295,6 +293,46 @@ class _AuctionHighState extends State<AuctionHigh> {
                                 ],
                               ),
                               Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    '''Min. Token''',
+                                    overflow: TextOverflow.visible,
+                                    textAlign: TextAlign.left,
+                                    style: TextStyle(
+                                      height: 1.125,
+                                      fontSize: 12.0,
+                                      fontFamily: 'Montserrat',
+                                      fontWeight: FontWeight.w400,
+                                      color: Color(0xffd7dde8),
+                                    ),
+                                  ),
+                                  SizedBox(height: 2.86),
+                                  Row(
+                                    children: [
+                                      Image.asset(
+                                        'assets/images/coin.png',
+                                        width: 15,
+                                        height: 15,
+                                      ),
+                                      SizedBox(width: 5),
+                                      Text(
+                                        '''200''',
+                                        overflow: TextOverflow.visible,
+                                        textAlign: TextAlign.left,
+                                        style: TextStyle(
+                                          height: 1.125,
+                                          fontSize: 16.0,
+                                          fontFamily: 'Montserrat',
+                                          fontWeight: FontWeight.w600,
+                                          color: Color(0xffd7dde8),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                              Column(
                                 crossAxisAlignment: CrossAxisAlignment.end,
                                 children: [
                                   Text(
@@ -324,6 +362,32 @@ class _AuctionHighState extends State<AuctionHigh> {
                                   ),
                                 ],
                               ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(height: 5),
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 20.0),
+                          child: Row(
+                            children: [
+                              Image.asset(
+                                'assets/images/seller.png',
+                                height: 15,
+                                width: 15,
+                              ),
+                              SizedBox(width: 5),
+                              Text(
+                                '''UserName''',
+                                overflow: TextOverflow.visible,
+                                textAlign: TextAlign.left,
+                                style: TextStyle(
+                                  height: 1.125,
+                                  fontSize: 12.0,
+                                  fontFamily: 'Montserrat',
+                                  fontWeight: FontWeight.w400,
+                                  color: Color(0xffd7dde8),
+                                ),
+                              )
                             ],
                           ),
                         ),
