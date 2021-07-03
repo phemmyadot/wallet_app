@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:livecom/screens/live_store/bid_fast/bid_fast.dart';
 import 'package:livecom/screens/live_store/featured/feature_card.dart';
 
 class Featured extends StatelessWidget {
@@ -43,18 +44,29 @@ class Featured extends StatelessWidget {
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(5.0),
                         ),
-                        child: FeatureCard(
-                          countdown: '''00:71:25''',
-                          participants: '''30/100''',
-                          title:
-                              '''This is the title of the Auction High Plus''',
-                          image: Image.asset(
-                            "assets/images/featured.png",
-                            color: null,
-                            fit: BoxFit.fill,
-                            width: 246.0,
-                            height: 175.0,
-                            colorBlendMode: BlendMode.dstATop,
+                        child: InkWell(
+                          onTap: () => i == 0
+                              ? null
+                              : Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                    builder: (BuildContext context) =>
+                                        BidFast(),
+                                  ),
+                                ),
+                          child: FeatureCard(
+                            countdown: '''00:71:25''',
+                            participants: '''30/100''',
+                            title: i == 0
+                                ? '''This is the title of the Auction High Plus'''
+                                : '''This is the title of the live stream that is live.''',
+                            image: Image.asset(
+                              "assets/images/featured.png",
+                              color: null,
+                              fit: BoxFit.fill,
+                              width: 246.0,
+                              height: 175.0,
+                              colorBlendMode: BlendMode.dstATop,
+                            ),
                           ),
                         ),
                       ),

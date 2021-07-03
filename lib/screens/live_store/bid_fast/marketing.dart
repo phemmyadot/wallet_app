@@ -173,9 +173,9 @@ class _BidFastHeaderState extends State<BidFastHeader> {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Container(
-                        width: 30,
+                        width: 19,
                         height: 30,
-                        child: Image.asset('assets/images/e_commerce.png')),
+                        child: Image.asset('assets/images/bid_fast.png')),
                   ],
                 )
               ],

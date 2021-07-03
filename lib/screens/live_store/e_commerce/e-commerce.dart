@@ -4,7 +4,6 @@ import 'package:livecom/utils/app_colors.dart';
 
 class Ecommerce extends StatefulWidget {
   final bool isInWishList;
-  static const routeName = '/auction';
 
   const Ecommerce({Key key, this.isInWishList = false}) : super(key: key);
 
@@ -205,7 +204,7 @@ class _EcommerceState extends State<Ecommerce> {
             ),
           ),
           Container(
-            height: 198,
+            height: 169,
             decoration: BoxDecoration(
               boxShadow: [
                 BoxShadow(
@@ -238,7 +237,7 @@ class _EcommerceState extends State<Ecommerce> {
                   top: null,
                   right: 0,
                   bottom: 0,
-                  height: 197,
+                  height: 168,
                   child: Container(
                     padding: EdgeInsets.only(top: 15),
                     decoration: BoxDecoration(

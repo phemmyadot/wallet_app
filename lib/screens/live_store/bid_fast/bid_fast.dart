@@ -3,8 +3,6 @@ import 'package:livecom/screens/live_store/bid_fast/marketing.dart';
 import 'package:livecom/utils/app_colors.dart';
 
 class BidFast extends StatefulWidget {
-  static const routeName = '/auction';
-
   const BidFast({Key key}) : super(key: key);
 
   @override
@@ -161,17 +159,35 @@ class _BidFastState extends State<BidFast> {
                               SizedBox(height: 33.83),
                               Column(
                                 children: [
-                                  Image.asset(
-                                    "assets/images/notify_me.png",
-                                    color: null,
-                                    fit: BoxFit.fill,
-                                    width: 21.98,
-                                    height: 21.98,
-                                    colorBlendMode: BlendMode.dstATop,
+                                  Container(
+                                    decoration: BoxDecoration(
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Color(0xff000000)
+                                              .withOpacity(0.4),
+                                          offset: Offset(3.0, 3.0),
+                                          blurRadius: 10.0,
+                                        ),
+                                        BoxShadow(
+                                          color: Color(0xff505D75)
+                                              .withOpacity(0.4),
+                                          offset: Offset(-2.0, -2.0),
+                                          blurRadius: 5.0,
+                                        )
+                                      ],
+                                    ),
+                                    child: Image.asset(
+                                      "assets/images/notify_me.png",
+                                      color: null,
+                                      fit: BoxFit.fill,
+                                      width: 21.98,
+                                      height: 21.98,
+                                      colorBlendMode: BlendMode.dstATop,
+                                    ),
                                   ),
-                                  SizedBox(height: 5.33),
+                                  SizedBox(height: 10),
                                   Text(
-                                    '''Wishlist''',
+                                    '''Notify Me''',
                                     overflow: TextOverflow.visible,
                                     textAlign: TextAlign.left,
                                     style: TextStyle(
@@ -195,7 +211,7 @@ class _BidFastState extends State<BidFast> {
             ),
           ),
           Container(
-            height: 198,
+            height: 169,
             decoration: BoxDecoration(
               boxShadow: [
                 BoxShadow(
@@ -213,8 +229,8 @@ class _BidFastState extends State<BidFast> {
                       begin: Alignment.centerLeft,
                       end: Alignment.centerRight,
                       colors: [
-                        Color(0xff15B9FF),
-                        Color(0xff15B9FF).withOpacity(0.15),
+                        Color(0xffFCCF37),
+                        Color(0xffFCCF37).withOpacity(0.15),
                       ],
                     ),
                     borderRadius: BorderRadius.only(
@@ -228,7 +244,7 @@ class _BidFastState extends State<BidFast> {
                   top: null,
                   right: 0,
                   bottom: 0,
-                  height: 197,
+                  height: 168,
                   child: Container(
                     padding: EdgeInsets.only(top: 15),
                     decoration: BoxDecoration(
@@ -256,7 +272,7 @@ class _BidFastState extends State<BidFast> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    '''Current Bid''',
+                                    '''RRP''',
                                     overflow: TextOverflow.visible,
                                     textAlign: TextAlign.left,
                                     style: TextStyle(
@@ -277,7 +293,7 @@ class _BidFastState extends State<BidFast> {
                                       ),
                                       SizedBox(width: 5),
                                       Text(
-                                        '''500''',
+                                        '''10,000''',
                                         overflow: TextOverflow.visible,
                                         textAlign: TextAlign.left,
                                         style: TextStyle(
@@ -296,7 +312,7 @@ class _BidFastState extends State<BidFast> {
                                 crossAxisAlignment: CrossAxisAlignment.end,
                                 children: [
                                   Text(
-                                    '''Ends In''',
+                                    '''Countdown Time''',
                                     overflow: TextOverflow.visible,
                                     textAlign: TextAlign.left,
                                     style: TextStyle(
@@ -309,7 +325,7 @@ class _BidFastState extends State<BidFast> {
                                   ),
                                   SizedBox(height: 2.76),
                                   Text(
-                                    '''20:39:00''',
+                                    '''48:10:00''',
                                     overflow: TextOverflow.visible,
                                     textAlign: TextAlign.left,
                                     style: TextStyle(
@@ -327,67 +343,48 @@ class _BidFastState extends State<BidFast> {
                         ),
                         SizedBox(height: 25.86),
                         Padding(
-                          padding: EdgeInsets.only(left: 15.29, right: 20.0),
+                          padding: EdgeInsets.symmetric(horizontal: 20.0),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Row(
-                                crossAxisAlignment: CrossAxisAlignment.center,
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  InkWell(
-                                    onTap: () => setState(
-                                        () => quantity > 1 ? quantity-- : 1),
-                                    child: Container(
-                                      height: 30,
-                                      width: 30,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(30),
-                                        color: Color(0xff181E28),
-                                      ),
-                                      child: Center(
-                                        child: Image.asset(
-                                          'assets/images/minus.png',
-                                          width: 11.11,
-                                          height: 2.22,
-                                        ),
-                                      ),
+                                  Text(
+                                    '''Activation Price''',
+                                    overflow: TextOverflow.visible,
+                                    textAlign: TextAlign.left,
+                                    style: TextStyle(
+                                      height: 1.125,
+                                      fontSize: 12.0,
+                                      fontFamily: 'Montserrat',
+                                      fontWeight: FontWeight.w400,
+                                      color: Color(0xffd7dde8),
                                     ),
                                   ),
-                                  Container(
-                                    width: 60,
-                                    child: Center(
-                                      child: Text(
-                                        quantity.toString(),
+                                  SizedBox(height: 2.86),
+                                  Row(
+                                    children: [
+                                      Image.asset(
+                                        'assets/images/coin.png',
+                                        width: 15,
+                                        height: 15,
+                                      ),
+                                      SizedBox(width: 5),
+                                      Text(
+                                        '''3,000''',
                                         overflow: TextOverflow.visible,
                                         textAlign: TextAlign.left,
                                         style: TextStyle(
                                           height: 1.125,
-                                          fontSize: 20.0,
+                                          fontSize: 16.0,
                                           fontFamily: 'Montserrat',
                                           fontWeight: FontWeight.w600,
                                           color: Color(0xffd7dde8),
                                         ),
                                       ),
-                                    ),
+                                    ],
                                   ),
-                                  InkWell(
-                                    onTap: () => setState(() => quantity++),
-                                    child: Container(
-                                      height: 30,
-                                      width: 30,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(30),
-                                        color: Color(0xff181E28),
-                                      ),
-                                      child: Center(
-                                        child: Image.asset(
-                                          'assets/images/add.png',
-                                          width: 11.11,
-                                          height: 11.11,
-                                        ),
-                                      ),
-                                    ),
-                                  )
                                 ],
                               ),
                               Container(
@@ -414,8 +411,8 @@ class _BidFastState extends State<BidFast> {
                                         0.8119657413752752, 1.6842103928068268),
                                     stops: [0.0, 1.0],
                                     colors: [
-                                      Color(0xff15B9FF),
-                                      Color(0xff005E87),
+                                      Color(0xffFCCF37),
+                                      Color(0xff965100),
                                     ],
                                   ),
                                 ),

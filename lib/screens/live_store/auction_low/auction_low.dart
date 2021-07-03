@@ -3,8 +3,6 @@ import 'package:livecom/screens/live_store/auction_low/marketing.dart';
 import 'package:livecom/utils/app_colors.dart';
 
 class AuctionLow extends StatefulWidget {
-  static const routeName = '/auction';
-
   const AuctionLow({Key key}) : super(key: key);
 
   @override
@@ -195,7 +193,7 @@ class _AuctionLowState extends State<AuctionLow> {
             ),
           ),
           Container(
-            height: 198,
+            height: 178,
             decoration: BoxDecoration(
               boxShadow: [
                 BoxShadow(
@@ -228,7 +226,7 @@ class _AuctionLowState extends State<AuctionLow> {
                   top: null,
                   right: 0,
                   bottom: 0,
-                  height: 197,
+                  height: 177,
                   child: Container(
                     padding: EdgeInsets.only(top: 15),
                     decoration: BoxDecoration(
