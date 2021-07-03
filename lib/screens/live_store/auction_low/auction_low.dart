@@ -278,8 +278,77 @@ class _AuctionLowState extends State<AuctionLow> {
                                         height: 15,
                                       ),
                                       SizedBox(width: 5),
+                                      Stack(
+                                        children: [
+                                          Text(
+                                            '''500''',
+                                            overflow: TextOverflow.visible,
+                                            textAlign: TextAlign.left,
+                                            style: TextStyle(
+                                              height: 1.125,
+                                              fontSize: 16.0,
+                                              fontFamily: 'Montserrat',
+                                              fontWeight: FontWeight.w600,
+                                              color: Color(0xff7889A9),
+                                            ),
+                                          ),
+                                          Positioned(
+                                            left: 0,
+                                            right: 0,
+                                            top: 0,
+                                            bottom: 0,
+                                            child: Center(
+                                              child: Container(
+                                                color: Color(0xffd7dde8),
+                                                height: 1,
+                                              ),
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                      SizedBox(width: 3.89),
                                       Text(
                                         '''500''',
+                                        overflow: TextOverflow.visible,
+                                        textAlign: TextAlign.left,
+                                        style: TextStyle(
+                                          height: 1.125,
+                                          fontSize: 16.0,
+                                          fontFamily: 'Montserrat',
+                                          fontWeight: FontWeight.w600,
+                                          color: Color(0xffd7dde8),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    '''Drop Price''',
+                                    overflow: TextOverflow.visible,
+                                    textAlign: TextAlign.left,
+                                    style: TextStyle(
+                                      height: 1.125,
+                                      fontSize: 12.0,
+                                      fontFamily: 'Montserrat',
+                                      fontWeight: FontWeight.w400,
+                                      color: Color(0xffd7dde8),
+                                    ),
+                                  ),
+                                  SizedBox(height: 2.86),
+                                  Row(
+                                    children: [
+                                      Image.asset(
+                                        'assets/images/coin.png',
+                                        width: 15,
+                                        height: 15,
+                                      ),
+                                      SizedBox(width: 5),
+                                      Text(
+                                        '''-20''',
                                         overflow: TextOverflow.visible,
                                         textAlign: TextAlign.left,
                                         style: TextStyle(
@@ -441,8 +510,42 @@ class _AuctionLowState extends State<AuctionLow> {
                         ),
                         SizedBox(height: 9.68),
                         Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
+                            Padding(
+                              padding: EdgeInsets.only(left: 20.0),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    '''Remainin: 1000''',
+                                    overflow: TextOverflow.visible,
+                                    textAlign: TextAlign.left,
+                                    style: TextStyle(
+                                      height: 1.125,
+                                      fontSize: 12.0,
+                                      fontFamily: 'Montserrat',
+                                      fontWeight: FontWeight.w400,
+                                      color: Color(0xff7889a9),
+                                    ),
+                                  ),
+                                  SizedBox(height: 2),
+                                  Text(
+                                    '''Shipping Fees: 50LT''',
+                                    overflow: TextOverflow.visible,
+                                    textAlign: TextAlign.left,
+                                    style: TextStyle(
+                                      height: 1.125,
+                                      fontSize: 12.0,
+                                      fontFamily: 'Montserrat',
+                                      fontWeight: FontWeight.w400,
+                                      color: Color(0xff7889a9),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
                             Padding(
                               padding: EdgeInsets.only(right: 20.0),
                               child: Text(
@@ -454,7 +557,7 @@ class _AuctionLowState extends State<AuctionLow> {
                                   fontSize: 12.0,
                                   fontFamily: 'Montserrat',
                                   fontWeight: FontWeight.w400,
-                                  color: Color(0xffd7dde8),
+                                  color: Color(0xff7889a9),
                                 ),
                               ),
                             ),

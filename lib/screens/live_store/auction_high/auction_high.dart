@@ -454,7 +454,7 @@ class _AuctionHighState extends State<AuctionHigh> {
                                   fontSize: 12.0,
                                   fontFamily: 'Montserrat',
                                   fontWeight: FontWeight.w400,
-                                  color: Color(0xffd7dde8),
+                                  color: Color(0xff7889a9),
                                 ),
                               ),
                             ),

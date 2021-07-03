@@ -21,10 +21,12 @@ class _HeaderState extends State<Header> {
     initialPage: 0,
   );
 
+  Timer timer;
+
   @override
   void initState() {
     super.initState();
-    Timer.periodic(Duration(seconds: 5), (Timer timer) {
+    timer = Timer.periodic(Duration(seconds: 5), (Timer timer) {
       if (_currentPage < 2) {
         _currentPage++;
       } else {
@@ -36,6 +38,12 @@ class _HeaderState extends State<Header> {
         curve: Curves.easeIn,
       );
     });
+  }
+
+  @override
+  void dispose() {
+    timer.cancel();
+    super.dispose();
   }
 
   @override

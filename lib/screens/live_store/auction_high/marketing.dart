@@ -20,11 +20,12 @@ class _AuctionHighHeaderState extends State<AuctionHighHeader> {
   PageController _pageController = PageController(
     initialPage: 0,
   );
+  Timer timer;
 
   @override
   void initState() {
     super.initState();
-    Timer.periodic(Duration(seconds: 5), (Timer timer) {
+    timer = Timer.periodic(Duration(seconds: 5), (Timer timer) {
       if (_currentPage < 2) {
         _currentPage++;
       } else {
@@ -39,6 +40,12 @@ class _AuctionHighHeaderState extends State<AuctionHighHeader> {
   }
 
   @override
+  void dispose() {
+    timer.cancel();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
@@ -50,36 +57,6 @@ class _AuctionHighHeaderState extends State<AuctionHighHeader> {
             children: [
               for (int i = 0; i < 3; i++) _getBanner('''LIVE STORE'''),
             ],
-          ),
-          Positioned(
-            left: 0,
-            right: 0,
-            bottom: 15,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                InkWell(
-                  onTap: () => null,
-                  child: Container(
-                      width: 18,
-                      height: 5,
-                      child: Image.asset('assets/images/banner_inactive.png')),
-                ),
-                SizedBox(width: 5),
-                Container(
-                    width: 27,
-                    height: 5,
-                    child: Image.asset('assets/images/banner_active.png')),
-                SizedBox(width: 5),
-                InkWell(
-                  onTap: () => null,
-                  child: Container(
-                      width: 18,
-                      height: 5,
-                      child: Image.asset('assets/images/banner_inactive.png')),
-                ),
-              ],
-            ),
           ),
           Positioned(
             left: 24.0,
@@ -232,9 +209,39 @@ class _AuctionHighHeaderState extends State<AuctionHighHeader> {
             gradient: LinearGradient(
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
-              stops: [0.5296, 0.9743],
+              stops: [0.5, 0.9],
               colors: [Color(0xff181E28).withOpacity(0), Color(0xff181E28)],
             ),
+          ),
+        ),
+        Positioned(
+          left: 0,
+          right: 0,
+          bottom: 15,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              InkWell(
+                onTap: () => null,
+                child: Container(
+                    width: 18,
+                    height: 5,
+                    child: Image.asset('assets/images/banner_inactive.png')),
+              ),
+              SizedBox(width: 5),
+              Container(
+                  width: 27,
+                  height: 5,
+                  child: Image.asset('assets/images/banner_active.png')),
+              SizedBox(width: 5),
+              InkWell(
+                onTap: () => null,
+                child: Container(
+                    width: 18,
+                    height: 5,
+                    child: Image.asset('assets/images/banner_inactive.png')),
+              ),
+            ],
           ),
         ),
       ],
