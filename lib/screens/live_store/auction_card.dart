@@ -2,23 +2,15 @@ import 'package:flutter/material.dart';
 
 class AuctionCard extends StatefulWidget {
   final String title;
-  final String sellerName;
-  final int participants;
-  final double rating;
   final Image image;
-  final Image sellerImage;
-  final Image flag;
   final Function onTap;
+  final Image icon;
   const AuctionCard({
     Key key,
-    @required this.participants,
     @required this.title,
-    @required this.rating,
-    @required this.sellerName,
-    @required this.sellerImage,
     @required this.image,
-    @required this.flag,
     @required this.onTap,
+    @required this.icon,
   }) : super(key: key);
 
   @override
@@ -31,157 +23,115 @@ class _AuctionCardState extends State<AuctionCard> {
     return GestureDetector(
       onTap: () => widget.onTap(),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Stack(
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
-                width: 150.0,
-                height: 150.0,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(5.0),
-                ),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(5.0),
-                  child: Container(
+              Stack(
+                children: [
+                  Container(
+                    width: 150.0,
+                    height: 150.0,
                     decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                        colors: [
-                          Color(0xff000000).withOpacity(0.7),
-                          Color(0xff000000).withOpacity(0),
-                        ],
-                        stops: [0, 0.2267],
+                      borderRadius: BorderRadius.circular(5.0),
+                    ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(5.0),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                            colors: [
+                              Color(0xff000000).withOpacity(0.7),
+                              Color(0xff000000).withOpacity(0),
+                            ],
+                            stops: [0, 0.2267],
+                          ),
+                        ),
+                        child: widget.image,
                       ),
                     ),
-                    child: widget.image,
                   ),
-                ),
-              ),
-              Positioned(
-                left: 8,
-                right: 5,
-                top: 6,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
+                  Positioned(
+                    left: 8,
+                    right: 8.07,
+                    top: 7,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Image.asset(
-                          "assets/images/view.png",
-                          color: null,
-                          fit: BoxFit.cover,
-                          width: 15.0,
-                          height: 11.25,
-                          colorBlendMode: BlendMode.dstATop,
+                        Row(
+                          children: [
+                            Image.asset(
+                              "assets/images/timer_icon.png",
+                              color: null,
+                              fit: BoxFit.cover,
+                              width: 12.0,
+                              height: 14,
+                              colorBlendMode: BlendMode.dstATop,
+                            ),
+                            SizedBox(width: 8),
+                            Text(
+                              '''00:71:25''',
+                              overflow: TextOverflow.visible,
+                              textAlign: TextAlign.left,
+                              style: TextStyle(
+                                height: 1.2000000476837158,
+                                fontSize: 12.0,
+                                fontFamily: 'Montserrat',
+                                fontWeight: FontWeight.w400,
+                                color: Color.fromARGB(255, 245, 245, 245),
+                              ),
+                            )
+                          ],
                         ),
-                        SizedBox(width: 4),
-                        Text(
-                          '''300''',
-                          overflow: TextOverflow.visible,
-                          textAlign: TextAlign.left,
-                          style: TextStyle(
-                            height: 1.2000000476837158,
-                            fontSize: 12.0,
-                            fontFamily: 'Montserrat',
-                            fontWeight: FontWeight.w400,
-                            color: Color.fromARGB(255, 245, 245, 245),
-                          ),
-                        )
+                        widget.icon,
                       ],
                     ),
-                    Container(
-                      width: 21,
-                      height: 21,
-                      decoration: BoxDecoration(
-                        color: Color(0xffec0000).withOpacity(0.25),
-                        borderRadius: BorderRadius.circular(21),
-                      ),
-                      child: Center(
-                        child: Container(
-                          width: 8.43,
-                          height: 8.43,
-                          decoration: BoxDecoration(
-                            color: Color(0xffec0000),
-                            borderRadius: BorderRadius.circular(8.43),
-                          ),
-                        ),
-                      ),
-                    )
-                  ],
+                  )
+                ],
+              ),
+              SizedBox(height: 10),
+              Text(
+                widget.title,
+                overflow: TextOverflow.visible,
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                  height: 1.2,
+                  fontSize: 14.0,
+                  fontFamily: 'Montserrat',
+                  fontWeight: FontWeight.w400,
+                  color: Color.fromARGB(255, 245, 245, 245),
                 ),
-              )
+              ),
+              SizedBox(height: 6),
             ],
           ),
-          SizedBox(height: 10),
-          Text(
-            widget.title,
-            overflow: TextOverflow.visible,
-            textAlign: TextAlign.left,
-            style: TextStyle(
-              height: 1,
-              fontSize: 14.0,
-              fontFamily: 'Montserrat',
-              fontWeight: FontWeight.w400,
-              color: Color.fromARGB(255, 245, 245, 245),
-            ),
-          ),
-          SizedBox(height: 6),
           Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(5.0),
-                child: widget.sellerImage,
+              Image.asset(
+                "assets/images/coin.png",
+                color: null,
+                fit: BoxFit.cover,
+                width: 15.0,
+                height: 15.0,
+                colorBlendMode: BlendMode.dstATop,
               ),
-              SizedBox(width: 8),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    widget.sellerName,
-                    overflow: TextOverflow.visible,
-                    textAlign: TextAlign.left,
-                    style: TextStyle(
-                      height: 1.2000000476837158,
-                      fontSize: 12.0,
-                      fontFamily: 'Montserrat',
-                      fontWeight: FontWeight.w400,
-                      color: Color.fromARGB(255, 245, 245, 245),
-                    ),
-                  ),
-                  SizedBox(height: 2),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Image.asset(
-                        "assets/images/star.png",
-                        color: null,
-                        fit: BoxFit.cover,
-                        width: 9.0,
-                        height: 9.0,
-                        colorBlendMode: BlendMode.dstATop,
-                      ),
-                      SizedBox(width: 4),
-                      Text(
-                        widget.rating.toString(),
-                        overflow: TextOverflow.visible,
-                        textAlign: TextAlign.left,
-                        style: TextStyle(
-                          height: 1.2000000476837158,
-                          fontSize: 12.0,
-                          fontFamily: 'Montserrat',
-                          fontWeight: FontWeight.w400,
-                          color: Color.fromARGB(255, 255, 255, 255),
-                        ),
-                      ),
-                      SizedBox(width: 4),
-                      widget.flag,
-                    ],
-                  )
-                ],
-              )
+              SizedBox(width: 5),
+              Text(
+                '''500''',
+                overflow: TextOverflow.visible,
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                  height: 1.2000000476837158,
+                  fontSize: 14.0,
+                  fontFamily: 'Montserrat',
+                  fontWeight: FontWeight.w600,
+                  color: Color(0xffD7DDE8),
+                ),
+              ),
             ],
           )
         ],

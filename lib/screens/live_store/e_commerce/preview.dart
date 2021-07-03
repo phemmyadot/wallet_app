@@ -48,56 +48,46 @@ class _ECommercePreviewState extends State<ECommercePreview> {
             Expanded(
               child: SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    SizedBox(width: 11),
-                    for (int i = 0; i < 3; i++)
-                      Container(
-                        width: 150.0,
-                        height: 210.0,
-                        margin: EdgeInsets.only(right: 11),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5.0),
-                        ),
-                        child: AuctionCard(
-                          onTap: () => Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (BuildContext context) =>
-                                  Ecommerce(isInWishList: i == 1),
+                child: IntrinsicHeight(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      SizedBox(width: 11),
+                      for (int i = 0; i < 3; i++)
+                        Container(
+                          width: 150.0,
+                          margin: EdgeInsets.only(right: 11),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(5.0),
+                          ),
+                          child: AuctionCard(
+                            onTap: () => Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (BuildContext context) =>
+                                    Ecommerce(isInWishList: i == 1),
+                              ),
+                            ),
+                            icon: Image.asset(
+                              "assets/images/e_commerce.png",
+                              color: null,
+                              fit: BoxFit.cover,
+                              width: 12.42,
+                              height: 12.42,
+                              colorBlendMode: BlendMode.dstATop,
+                            ),
+                            title: 'Make up Masterclass ',
+                            image: Image.asset(
+                              "assets/images/auction_image.png",
+                              color: null,
+                              fit: BoxFit.fill,
+                              width: 150.0,
+                              height: 150.0,
+                              colorBlendMode: BlendMode.dstATop,
                             ),
                           ),
-                          flag: Image.asset(
-                            "assets/images/flag.png",
-                            color: null,
-                            fit: BoxFit.cover,
-                            width: 12.0,
-                            height: 8.67,
-                            colorBlendMode: BlendMode.dstATop,
-                          ),
-                          sellerImage: Image.asset(
-                            "assets/images/seller.png",
-                            color: null,
-                            fit: BoxFit.cover,
-                            width: 30.0,
-                            height: 30.0,
-                            colorBlendMode: BlendMode.dstATop,
-                          ),
-                          participants: 300,
-                          rating: 4.5,
-                          sellerName: 'Seller Name',
-                          title: 'Make up Masterclass ',
-                          image: Image.asset(
-                            "assets/images/auction_image.png",
-                            color: null,
-                            fit: BoxFit.fill,
-                            width: 150.0,
-                            height: 150.0,
-                            colorBlendMode: BlendMode.dstATop,
-                          ),
                         ),
-                      ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),
