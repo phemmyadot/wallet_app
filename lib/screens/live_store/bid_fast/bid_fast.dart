@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:livecom/screens/live_store/marketing.dart';
 import 'package:livecom/utils/app_colors.dart';
+import 'package:livecom/utils/string_utils.dart';
+import 'package:livecom/widgets/count_down.dart';
 import 'package:livecom/widgets/elevated_button.dart';
+import 'package:livecom/widgets/product_info.dart';
+import 'dart:async';
 
 class BidFast extends StatefulWidget {
   const BidFast({Key key}) : super(key: key);
@@ -10,9 +14,87 @@ class BidFast extends StatefulWidget {
   _BidFastState createState() => _BidFastState();
 }
 
-class _BidFastState extends State<BidFast> {
+class BidFastType {
+  static const normal = 'normal';
+  static const shared = 'shared';
+  static const activated = 'activated';
+  static const link = 'link';
+}
+
+class _BidFastState extends State<BidFast> with TickerProviderStateMixin {
   ScrollController _scrollController;
   int quantity = 1;
+  double currentPrice = 10000;
+  String type = BidFastType.normal;
+  AnimationController _controller;
+  int _start = 12000;
+  CountDown countdown;
+
+  @override
+  void initState() {
+    _controller =
+        AnimationController(vsync: this, duration: Duration(seconds: _start));
+    _controller.forward().then((value) {
+      setState(() => type = BidFastType.activated);
+    });
+    countdown = CountDown(
+      animation: StepTween(
+        begin: _start,
+        end: 0,
+      ).animate(_controller),
+    );
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  void _share() {
+    switch (type) {
+      case BidFastType.normal:
+        currentPrice -= 256.66;
+        setState(() => type = BidFastType.shared);
+        break;
+      case BidFastType.shared:
+        currentPrice = 3000;
+        setState(() {});
+        _controller.dispose();
+        final remainder = 5;
+        _controller = AnimationController(
+            vsync: this, duration: Duration(seconds: remainder));
+        _controller.forward().then((value) {
+          setState(() => type = BidFastType.activated);
+          _controller.dispose();
+          final start = 5;
+          _controller = AnimationController(
+              vsync: this, duration: Duration(seconds: start));
+          _controller.forward().then((value) {
+            setState(() => type = BidFastType.link);
+          });
+          countdown = CountDown(
+            animation: StepTween(
+              begin: remainder,
+              end: 0,
+            ).animate(_controller),
+          );
+        });
+        countdown = CountDown(
+          animation: StepTween(
+            begin: remainder,
+            end: 0,
+          ).animate(_controller),
+        );
+        break;
+      case BidFastType.activated:
+        break;
+      case BidFastType.link:
+        break;
+      default:
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,98 +124,12 @@ class _BidFastState extends State<BidFast> {
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Container(
-                          width: 246,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                '''Product Name''',
-                                overflow: TextOverflow.visible,
-                                textAlign: TextAlign.left,
-                                style: TextStyle(
-                                  height: 1.125,
-                                  fontSize: 24.0,
-                                  fontFamily: 'Montserrat',
-                                  fontWeight: FontWeight.w400,
-                                  color: Color(0xffd7dde8),
-                                ),
-                              ),
-                              SizedBox(height: 4),
-                              Text(
-                                '''Lorem ipsum dolor sit amet,''',
-                                overflow: TextOverflow.visible,
-                                textAlign: TextAlign.left,
-                                style: TextStyle(
-                                  height: 1.125,
-                                  fontSize: 16.0,
-                                  fontFamily: 'Montserrat',
-                                  fontWeight: FontWeight.w400,
-                                  color: Color(0xff7889a9),
-                                ),
-                              ),
-                              SizedBox(height: 18),
-                              Text(
-                                '''Specifications''',
-                                overflow: TextOverflow.visible,
-                                textAlign: TextAlign.left,
-                                style: TextStyle(
-                                  height: 1.125,
-                                  fontSize: 16.0,
-                                  fontFamily: 'Montserrat',
-                                  fontWeight: FontWeight.w600,
-                                  color: Color(0xffd7dde8),
-                                ),
-                              ),
-                              SizedBox(height: 5),
-                              Wrap(
-                                children: [
-                                  Text(
-                                    '''Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed''',
-                                    overflow: TextOverflow.visible,
-                                    textAlign: TextAlign.left,
-                                    style: TextStyle(
-                                      height: 1.125,
-                                      fontSize: 14.0,
-                                      fontFamily: 'Montserrat',
-                                      fontWeight: FontWeight.w400,
-                                      color: Color.fromARGB(255, 215, 221, 232),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              SizedBox(height: 18),
-                              Text(
-                                '''Descriptions''',
-                                overflow: TextOverflow.visible,
-                                textAlign: TextAlign.left,
-                                style: TextStyle(
-                                  height: 1.125,
-                                  fontSize: 16.0,
-                                  fontFamily: 'Montserrat',
-                                  fontWeight: FontWeight.w600,
-                                  color: Color.fromARGB(255, 215, 221, 232),
-                                ),
-                              ),
-                              SizedBox(height: 3),
-                              Wrap(
-                                children: [
-                                  Text(
-                                    '''Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed''',
-                                    overflow: TextOverflow.visible,
-                                    textAlign: TextAlign.left,
-                                    style: TextStyle(
-                                      height: 1.125,
-                                      fontSize: 14.0,
-                                      fontFamily: 'Montserrat',
-                                      fontWeight: FontWeight.w400,
-                                      color: Color.fromARGB(255, 215, 221, 232),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
+                        ProductInfo(
+                          productName: '''Lorem ipsum dolor sit amet,''',
+                          specifications:
+                              '''Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed''',
+                          description:
+                              '''Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed''',
                         ),
                         Expanded(
                           child: Column(
@@ -275,12 +271,19 @@ class _BidFastState extends State<BidFast> {
                           padding: EdgeInsets.symmetric(horizontal: 20.0),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    '''RRP''',
+                                    type == BidFastType.normal
+                                        ? '''RRP'''
+                                        : type == BidFastType.shared
+                                            ? '''Current Price'''
+                                            : type == BidFastType.activated
+                                                ? '''Activated Price'''
+                                                : '''Activated Price''',
                                     overflow: TextOverflow.visible,
                                     textAlign: TextAlign.left,
                                     style: TextStyle(
@@ -301,7 +304,7 @@ class _BidFastState extends State<BidFast> {
                                       ),
                                       SizedBox(width: 5),
                                       Text(
-                                        '''10,000''',
+                                        StringUtils.addComma(currentPrice),
                                         overflow: TextOverflow.visible,
                                         textAlign: TextAlign.left,
                                         style: TextStyle(
@@ -314,50 +317,42 @@ class _BidFastState extends State<BidFast> {
                                       ),
                                     ],
                                   ),
-                                ],
-                              ),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.end,
-                                children: [
-                                  Text(
-                                    '''Countdown Time''',
-                                    overflow: TextOverflow.visible,
-                                    textAlign: TextAlign.left,
-                                    style: TextStyle(
-                                      height: 1.125,
-                                      fontSize: 12.0,
-                                      fontFamily: 'Montserrat',
-                                      fontWeight: FontWeight.w400,
-                                      color: Color(0xffd7dde8),
-                                    ),
-                                  ),
-                                  SizedBox(height: 2.76),
-                                  Text(
-                                    '''48:10:00''',
-                                    overflow: TextOverflow.visible,
-                                    textAlign: TextAlign.left,
-                                    style: TextStyle(
-                                      height: 1.125,
-                                      fontSize: 16.0,
-                                      fontFamily: 'Montserrat',
-                                      fontWeight: FontWeight.w600,
-                                      color: Color(0xffd7dde8),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                        SizedBox(height: 25.86),
-                        Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 20.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
+                                  type != BidFastType.normal
+                                      ? Column(
+                                          children: [
+                                            SizedBox(height: 5),
+                                            Stack(
+                                              children: [
+                                                Text('RRP: 10,000LT',
+                                                    overflow:
+                                                        TextOverflow.visible,
+                                                    textAlign: TextAlign.left,
+                                                    style: TextStyle(
+                                                      height: 1,
+                                                      fontSize: 12.0,
+                                                      fontFamily: 'Montserrat',
+                                                      fontWeight:
+                                                          FontWeight.w400,
+                                                      color: Color(0xffd7dde8),
+                                                    )),
+                                                Positioned(
+                                                  left: 0,
+                                                  right: 0,
+                                                  top: 0,
+                                                  bottom: 0,
+                                                  child: Center(
+                                                    child: Container(
+                                                      color: Color(0xffd7dde8),
+                                                      height: 1,
+                                                    ),
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                          ],
+                                        )
+                                      : SizedBox(),
+                                  SizedBox(height: 10),
                                   Text(
                                     '''Activation Price''',
                                     overflow: TextOverflow.visible,
@@ -395,37 +390,55 @@ class _BidFastState extends State<BidFast> {
                                   ),
                                 ],
                               ),
-                              InkWell(
-                                child: LCElevatedButton(
-                                  text: '''SHARE NOW''',
-                                  startColor: Color(0xffFCCF37),
-                                  endColor: Color(0xff965100),
-                                ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                children: [
+                                  Text(
+                                    type == BidFastType.activated ||
+                                            type == BidFastType.link
+                                        ? '''Game Starts In'''
+                                        : '''Countdown Time''',
+                                    overflow: TextOverflow.visible,
+                                    textAlign: TextAlign.left,
+                                    style: TextStyle(
+                                      height: 1.125,
+                                      fontSize: 12.0,
+                                      fontFamily: 'Montserrat',
+                                      fontWeight: FontWeight.w400,
+                                      color: Color(0xffd7dde8),
+                                    ),
+                                  ),
+                                  SizedBox(height: 2.76),
+                                  countdown,
+                                  SizedBox(height: 25.86),
+                                  InkWell(
+                                    onTap: () => _share(),
+                                    child: LCElevatedButton(
+                                      text: type == BidFastType.link
+                                          ? '''PLAY NOW'''
+                                          : '''SHARE NOW''',
+                                      startColor: Color(0xffFCCF37),
+                                      endColor: Color(0xff965100),
+                                    ),
+                                  ),
+                                  SizedBox(height: 9.68),
+                                  Text(
+                                    '''300 people eyeing this''',
+                                    overflow: TextOverflow.visible,
+                                    textAlign: TextAlign.left,
+                                    style: TextStyle(
+                                      height: 1.125,
+                                      fontSize: 12.0,
+                                      fontFamily: 'Montserrat',
+                                      fontWeight: FontWeight.w400,
+                                      color: Color(0xff7889a9),
+                                    ),
+                                  ),
+                                ],
                               ),
                             ],
                           ),
                         ),
-                        SizedBox(height: 9.68),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            Padding(
-                              padding: EdgeInsets.only(right: 20.0),
-                              child: Text(
-                                '''300 people eyeing this''',
-                                overflow: TextOverflow.visible,
-                                textAlign: TextAlign.left,
-                                style: TextStyle(
-                                  height: 1.125,
-                                  fontSize: 12.0,
-                                  fontFamily: 'Montserrat',
-                                  fontWeight: FontWeight.w400,
-                                  color: Color(0xff7889a9),
-                                ),
-                              ),
-                            ),
-                          ],
-                        )
                       ],
                     ),
                   ),

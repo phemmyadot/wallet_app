@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class NumberPicker extends StatefulWidget {
+class NumberPicker extends StatelessWidget {
   final int quantity;
   final Function onAdd;
   final Function onSubstract;
@@ -8,17 +8,12 @@ class NumberPicker extends StatefulWidget {
       : super(key: key);
 
   @override
-  _NumberPickerState createState() => _NumberPickerState();
-}
-
-class _NumberPickerState extends State<NumberPicker> {
-  @override
   Widget build(BuildContext context) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         InkWell(
-          onTap: () => widget.onSubstract(),
+          onTap: () => onSubstract(),
           child: Container(
             height: 30,
             width: 30,
@@ -36,10 +31,10 @@ class _NumberPickerState extends State<NumberPicker> {
           ),
         ),
         Container(
-          width: 60,
+          width: 69.87,
           child: Center(
             child: Text(
-              widget.quantity.toString(),
+              quantity.toString(),
               overflow: TextOverflow.visible,
               textAlign: TextAlign.left,
               style: TextStyle(
@@ -53,7 +48,7 @@ class _NumberPickerState extends State<NumberPicker> {
           ),
         ),
         InkWell(
-          onTap: () => widget.onAdd(),
+          onTap: () => onAdd(),
           child: Container(
             height: 30,
             width: 30,

@@ -3,6 +3,7 @@ import 'package:livecom/screens/live_store/marketing.dart';
 import 'package:livecom/utils/app_colors.dart';
 import 'package:livecom/widgets/elevated_button.dart';
 import 'package:livecom/widgets/number_picker.dart';
+import 'package:livecom/widgets/product_info.dart';
 
 class Ecommerce extends StatefulWidget {
   final bool isInWishList;
@@ -45,98 +46,12 @@ class _EcommerceState extends State<Ecommerce> {
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Container(
-                          width: 246,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                '''Product Name''',
-                                overflow: TextOverflow.visible,
-                                textAlign: TextAlign.left,
-                                style: TextStyle(
-                                  height: 1.125,
-                                  fontSize: 24.0,
-                                  fontFamily: 'Montserrat',
-                                  fontWeight: FontWeight.w400,
-                                  color: Color(0xffd7dde8),
-                                ),
-                              ),
-                              SizedBox(height: 4),
-                              Text(
-                                '''Lorem ipsum dolor sit amet,''',
-                                overflow: TextOverflow.visible,
-                                textAlign: TextAlign.left,
-                                style: TextStyle(
-                                  height: 1.125,
-                                  fontSize: 16.0,
-                                  fontFamily: 'Montserrat',
-                                  fontWeight: FontWeight.w400,
-                                  color: Color(0xff7889a9),
-                                ),
-                              ),
-                              SizedBox(height: 18),
-                              Text(
-                                '''Specifications''',
-                                overflow: TextOverflow.visible,
-                                textAlign: TextAlign.left,
-                                style: TextStyle(
-                                  height: 1.125,
-                                  fontSize: 16.0,
-                                  fontFamily: 'Montserrat',
-                                  fontWeight: FontWeight.w600,
-                                  color: Color(0xffd7dde8),
-                                ),
-                              ),
-                              SizedBox(height: 5),
-                              Wrap(
-                                children: [
-                                  Text(
-                                    '''Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed''',
-                                    overflow: TextOverflow.visible,
-                                    textAlign: TextAlign.left,
-                                    style: TextStyle(
-                                      height: 1.125,
-                                      fontSize: 14.0,
-                                      fontFamily: 'Montserrat',
-                                      fontWeight: FontWeight.w400,
-                                      color: Color.fromARGB(255, 215, 221, 232),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              SizedBox(height: 18),
-                              Text(
-                                '''Descriptions''',
-                                overflow: TextOverflow.visible,
-                                textAlign: TextAlign.left,
-                                style: TextStyle(
-                                  height: 1.125,
-                                  fontSize: 16.0,
-                                  fontFamily: 'Montserrat',
-                                  fontWeight: FontWeight.w600,
-                                  color: Color.fromARGB(255, 215, 221, 232),
-                                ),
-                              ),
-                              SizedBox(height: 3),
-                              Wrap(
-                                children: [
-                                  Text(
-                                    '''Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed''',
-                                    overflow: TextOverflow.visible,
-                                    textAlign: TextAlign.left,
-                                    style: TextStyle(
-                                      height: 1.125,
-                                      fontSize: 14.0,
-                                      fontFamily: 'Montserrat',
-                                      fontWeight: FontWeight.w400,
-                                      color: Color.fromARGB(255, 215, 221, 232),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
+                        ProductInfo(
+                          productName: '''Lorem ipsum dolor sit amet,''',
+                          specifications:
+                              '''Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed''',
+                          description:
+                              '''Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed''',
                         ),
                         Expanded(
                           child: Column(
@@ -269,6 +184,7 @@ class _EcommerceState extends State<Ecommerce> {
                           padding: EdgeInsets.symmetric(horizontal: 20.0),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -308,6 +224,13 @@ class _EcommerceState extends State<Ecommerce> {
                                       ),
                                     ],
                                   ),
+                                  SizedBox(height: 30.81),
+                                  NumberPicker(
+                                    onSubstract: () => setState(
+                                        () => quantity > 1 ? quantity-- : 1),
+                                    onAdd: () => setState(() => quantity++),
+                                    quantity: quantity,
+                                  ),
                                 ],
                               ),
                               Column(
@@ -338,52 +261,30 @@ class _EcommerceState extends State<Ecommerce> {
                                       color: Color(0xffd7dde8),
                                     ),
                                   ),
+                                  SizedBox(height: 25.86),
+                                  LCElevatedButton(
+                                    text: '''BUY NOW''',
+                                    startColor: Color(0xff4CD964),
+                                    endColor: Color(0xff006010),
+                                  ),
+                                  SizedBox(height: 9.68),
+                                  Text(
+                                    '''300 people eyeing this''',
+                                    overflow: TextOverflow.visible,
+                                    textAlign: TextAlign.left,
+                                    style: TextStyle(
+                                      height: 1.125,
+                                      fontSize: 12.0,
+                                      fontFamily: 'Montserrat',
+                                      fontWeight: FontWeight.w400,
+                                      color: Color(0xff7889a9),
+                                    ),
+                                  ),
                                 ],
                               ),
                             ],
                           ),
                         ),
-                        SizedBox(height: 25.86),
-                        Padding(
-                          padding: EdgeInsets.only(left: 15.29, right: 20.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              NumberPicker(
-                                onSubstract: () => setState(
-                                    () => quantity > 1 ? quantity-- : 1),
-                                onAdd: () => setState(() => quantity++),
-                                quantity: quantity,
-                              ),
-                              LCElevatedButton(
-                                text: '''BUY NOW''',
-                                startColor: Color(0xff4CD964),
-                                endColor: Color(0xff006010),
-                              )
-                            ],
-                          ),
-                        ),
-                        SizedBox(height: 9.68),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            Padding(
-                              padding: EdgeInsets.only(right: 20.0),
-                              child: Text(
-                                '''300 people eyeing this''',
-                                overflow: TextOverflow.visible,
-                                textAlign: TextAlign.left,
-                                style: TextStyle(
-                                  height: 1.125,
-                                  fontSize: 12.0,
-                                  fontFamily: 'Montserrat',
-                                  fontWeight: FontWeight.w400,
-                                  color: Color(0xff7889a9),
-                                ),
-                              ),
-                            ),
-                          ],
-                        )
                       ],
                     ),
                   ),

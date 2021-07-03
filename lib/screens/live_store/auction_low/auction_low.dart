@@ -3,6 +3,7 @@ import 'package:livecom/screens/live_store/marketing.dart';
 import 'package:livecom/utils/app_colors.dart';
 import 'package:livecom/widgets/elevated_button.dart';
 import 'package:livecom/widgets/number_picker.dart';
+import 'package:livecom/widgets/product_info.dart';
 
 class AuctionLow extends StatefulWidget {
   const AuctionLow({Key key}) : super(key: key);
@@ -43,98 +44,12 @@ class _AuctionLowState extends State<AuctionLow> {
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Container(
-                          width: 246,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                '''Product Name''',
-                                overflow: TextOverflow.visible,
-                                textAlign: TextAlign.left,
-                                style: TextStyle(
-                                  height: 1.125,
-                                  fontSize: 24.0,
-                                  fontFamily: 'Montserrat',
-                                  fontWeight: FontWeight.w400,
-                                  color: Color(0xffd7dde8),
-                                ),
-                              ),
-                              SizedBox(height: 4),
-                              Text(
-                                '''Lorem ipsum dolor sit amet,''',
-                                overflow: TextOverflow.visible,
-                                textAlign: TextAlign.left,
-                                style: TextStyle(
-                                  height: 1.125,
-                                  fontSize: 16.0,
-                                  fontFamily: 'Montserrat',
-                                  fontWeight: FontWeight.w400,
-                                  color: Color(0xff7889a9),
-                                ),
-                              ),
-                              SizedBox(height: 18),
-                              Text(
-                                '''Specifications''',
-                                overflow: TextOverflow.visible,
-                                textAlign: TextAlign.left,
-                                style: TextStyle(
-                                  height: 1.125,
-                                  fontSize: 16.0,
-                                  fontFamily: 'Montserrat',
-                                  fontWeight: FontWeight.w600,
-                                  color: Color(0xffd7dde8),
-                                ),
-                              ),
-                              SizedBox(height: 5),
-                              Wrap(
-                                children: [
-                                  Text(
-                                    '''Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed''',
-                                    overflow: TextOverflow.visible,
-                                    textAlign: TextAlign.left,
-                                    style: TextStyle(
-                                      height: 1.125,
-                                      fontSize: 14.0,
-                                      fontFamily: 'Montserrat',
-                                      fontWeight: FontWeight.w400,
-                                      color: Color.fromARGB(255, 215, 221, 232),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              SizedBox(height: 18),
-                              Text(
-                                '''Descriptions''',
-                                overflow: TextOverflow.visible,
-                                textAlign: TextAlign.left,
-                                style: TextStyle(
-                                  height: 1.125,
-                                  fontSize: 16.0,
-                                  fontFamily: 'Montserrat',
-                                  fontWeight: FontWeight.w600,
-                                  color: Color.fromARGB(255, 215, 221, 232),
-                                ),
-                              ),
-                              SizedBox(height: 3),
-                              Wrap(
-                                children: [
-                                  Text(
-                                    '''Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed''',
-                                    overflow: TextOverflow.visible,
-                                    textAlign: TextAlign.left,
-                                    style: TextStyle(
-                                      height: 1.125,
-                                      fontSize: 14.0,
-                                      fontFamily: 'Montserrat',
-                                      fontWeight: FontWeight.w400,
-                                      color: Color.fromARGB(255, 215, 221, 232),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
+                        ProductInfo(
+                          productName: '''Lorem ipsum dolor sit amet,''',
+                          specifications:
+                              '''Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed''',
+                          description:
+                              '''Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed''',
                         ),
                         Expanded(
                           child: Column(
@@ -258,6 +173,7 @@ class _AuctionLowState extends State<AuctionLow> {
                           padding: EdgeInsets.symmetric(horizontal: 20.0),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -283,33 +199,17 @@ class _AuctionLowState extends State<AuctionLow> {
                                         height: 15,
                                       ),
                                       SizedBox(width: 5),
-                                      Stack(
-                                        children: [
-                                          Text(
-                                            '''500''',
-                                            overflow: TextOverflow.visible,
-                                            textAlign: TextAlign.left,
-                                            style: TextStyle(
-                                              height: 1.125,
-                                              fontSize: 16.0,
-                                              fontFamily: 'Montserrat',
-                                              fontWeight: FontWeight.w600,
-                                              color: Color(0xff7889A9),
-                                            ),
-                                          ),
-                                          Positioned(
-                                            left: 0,
-                                            right: 0,
-                                            top: 0,
-                                            bottom: 0,
-                                            child: Center(
-                                              child: Container(
-                                                color: Color(0xffd7dde8),
-                                                height: 1,
-                                              ),
-                                            ),
-                                          )
-                                        ],
+                                      Text(
+                                        '''500''',
+                                        overflow: TextOverflow.visible,
+                                        textAlign: TextAlign.left,
+                                        style: TextStyle(
+                                          height: 1.125,
+                                          fontSize: 16.0,
+                                          fontFamily: 'Montserrat',
+                                          fontWeight: FontWeight.w600,
+                                          color: Color(0xff7889A9),
+                                        ),
                                       ),
                                       SizedBox(width: 3.89),
                                       Text(
@@ -325,6 +225,39 @@ class _AuctionLowState extends State<AuctionLow> {
                                         ),
                                       ),
                                     ],
+                                  ),
+                                  SizedBox(height: 30.81),
+                                  NumberPicker(
+                                    onSubstract: () => setState(
+                                        () => quantity > 1 ? quantity-- : 1),
+                                    onAdd: () => setState(() => quantity++),
+                                    quantity: quantity,
+                                  ),
+                                  SizedBox(height: 13),
+                                  Text(
+                                    '''Remaining: 1000''',
+                                    overflow: TextOverflow.visible,
+                                    textAlign: TextAlign.left,
+                                    style: TextStyle(
+                                      height: 1.125,
+                                      fontSize: 12.0,
+                                      fontFamily: 'Montserrat',
+                                      fontWeight: FontWeight.w400,
+                                      color: Color(0xff7889a9),
+                                    ),
+                                  ),
+                                  SizedBox(height: 2),
+                                  Text(
+                                    '''Shipping Fees: 50LT''',
+                                    overflow: TextOverflow.visible,
+                                    textAlign: TextAlign.left,
+                                    style: TextStyle(
+                                      height: 1.125,
+                                      fontSize: 12.0,
+                                      fontFamily: 'Montserrat',
+                                      fontWeight: FontWeight.w400,
+                                      color: Color(0xff7889a9),
+                                    ),
                                   ),
                                 ],
                               ),
@@ -396,56 +329,15 @@ class _AuctionLowState extends State<AuctionLow> {
                                       color: Color(0xffd7dde8),
                                     ),
                                   ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                        SizedBox(height: 25.86),
-                        Padding(
-                          padding: EdgeInsets.only(left: 15.29, right: 20.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              NumberPicker(
-                                onSubstract: () => setState(
-                                    () => quantity > 1 ? quantity-- : 1),
-                                onAdd: () => setState(() => quantity++),
-                                quantity: quantity,
-                              ),
-                              LCElevatedButton(
-                                text: '''BUY NOW''',
-                                endColor: Color(0xff005E87),
-                                startColor: Color(0xff15B9FF),
-                              ),
-                            ],
-                          ),
-                        ),
-                        SizedBox(height: 9.68),
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Padding(
-                              padding: EdgeInsets.only(left: 20.0),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    '''Remaining: 1000''',
-                                    overflow: TextOverflow.visible,
-                                    textAlign: TextAlign.left,
-                                    style: TextStyle(
-                                      height: 1.125,
-                                      fontSize: 12.0,
-                                      fontFamily: 'Montserrat',
-                                      fontWeight: FontWeight.w400,
-                                      color: Color(0xff7889a9),
-                                    ),
+                                  SizedBox(height: 25.86),
+                                  LCElevatedButton(
+                                    text: '''BUY NOW''',
+                                    endColor: Color(0xff005E87),
+                                    startColor: Color(0xff15B9FF),
                                   ),
-                                  SizedBox(height: 2),
+                                  SizedBox(height: 9.68),
                                   Text(
-                                    '''Shipping Fees: 50LT''',
+                                    '''300 people eyeing this''',
                                     overflow: TextOverflow.visible,
                                     textAlign: TextAlign.left,
                                     style: TextStyle(
@@ -458,24 +350,9 @@ class _AuctionLowState extends State<AuctionLow> {
                                   ),
                                 ],
                               ),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.only(right: 20.0),
-                              child: Text(
-                                '''300 people eyeing this''',
-                                overflow: TextOverflow.visible,
-                                textAlign: TextAlign.left,
-                                style: TextStyle(
-                                  height: 1.125,
-                                  fontSize: 12.0,
-                                  fontFamily: 'Montserrat',
-                                  fontWeight: FontWeight.w400,
-                                  color: Color(0xff7889a9),
-                                ),
-                              ),
-                            ),
-                          ],
-                        )
+                            ],
+                          ),
+                        ),
                       ],
                     ),
                   ),

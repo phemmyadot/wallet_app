@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class LCElevatedButton extends StatefulWidget {
+class LCElevatedButton extends StatelessWidget {
   final startColor;
   final endColor;
   final text;
@@ -11,11 +11,6 @@ class LCElevatedButton extends StatefulWidget {
     @required this.text,
   }) : super(key: key);
 
-  @override
-  _LCElevatedButtonState createState() => _LCElevatedButtonState();
-}
-
-class _LCElevatedButtonState extends State<LCElevatedButton> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -39,12 +34,12 @@ class _LCElevatedButtonState extends State<LCElevatedButton> {
           begin: Alignment(-1.042735077848726, -1.263157867627494),
           end: Alignment(0.8119657413752752, 1.6842103928068268),
           stops: [0.0, 1.0],
-          colors: [widget.startColor, widget.endColor],
+          colors: [startColor, endColor],
         ),
       ),
       child: Center(
         child: Text(
-          widget.text,
+          text,
           overflow: TextOverflow.visible,
           textAlign: TextAlign.left,
           style: TextStyle(
