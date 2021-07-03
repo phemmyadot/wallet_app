@@ -3,14 +3,17 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:livecom/utils/svg.dart';
 
-class BidFastHeader extends StatefulWidget {
-  const BidFastHeader({Key key}) : super(key: key);
+class AuctionMarketing extends StatefulWidget {
+  final String balance;
+  final Image icon;
+  const AuctionMarketing({Key key, @required this.balance, @required this.icon})
+      : super(key: key);
 
   @override
-  _BidFastHeaderState createState() => _BidFastHeaderState();
+  _AuctionMarketingState createState() => _AuctionMarketingState();
 }
 
-class _BidFastHeaderState extends State<BidFastHeader> {
+class _AuctionMarketingState extends State<AuctionMarketing> {
   int _currentPage = 0;
   final images = [
     'assets/images/annoucement_1.png',
@@ -20,6 +23,7 @@ class _BidFastHeaderState extends State<BidFastHeader> {
   PageController _pageController = PageController(
     initialPage: 0,
   );
+
   Timer timer;
 
   @override
@@ -134,8 +138,6 @@ class _BidFastHeaderState extends State<BidFastHeader> {
                               fontFamily: 'Montserrat',
                               fontWeight: FontWeight.w400,
                               color: Color.fromARGB(255, 215, 221, 232),
-
-                              /* letterSpacing: 0.0, */
                             ),
                           ),
                           SizedBox(height: 5),
@@ -150,7 +152,7 @@ class _BidFastHeaderState extends State<BidFastHeader> {
                               SizedBox(width: 5),
                               FittedBox(
                                 fit: BoxFit.scaleDown,
-                                child: Text('''500,000''',
+                                child: Text(widget.balance,
                                     overflow: TextOverflow.visible,
                                     textAlign: TextAlign.left,
                                     style: TextStyle(
@@ -171,12 +173,7 @@ class _BidFastHeaderState extends State<BidFastHeader> {
                 SizedBox(height: 10),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Container(
-                        width: 19,
-                        height: 30,
-                        child: Image.asset('assets/images/bid_fast.png')),
-                  ],
+                  children: [widget.icon],
                 )
               ],
             ),

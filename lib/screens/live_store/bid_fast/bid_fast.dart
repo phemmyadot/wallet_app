@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:livecom/screens/live_store/bid_fast/marketing.dart';
+import 'package:livecom/screens/live_store/marketing.dart';
 import 'package:livecom/utils/app_colors.dart';
+import 'package:livecom/widgets/elevated_button.dart';
 
 class BidFast extends StatefulWidget {
   const BidFast({Key key}) : super(key: key);
@@ -24,7 +25,14 @@ class _BidFastState extends State<BidFast> {
               controller: _scrollController,
               child: Column(
                 children: [
-                  BidFastHeader(),
+                  AuctionMarketing(
+                    balance: '''500,000''',
+                    icon: Image.asset(
+                      'assets/images/bid_fast.png',
+                      width: 19,
+                      height: 30.18,
+                    ),
+                  ),
                   Padding(
                     padding: const EdgeInsets.only(
                       left: 20.0,
@@ -387,48 +395,11 @@ class _BidFastState extends State<BidFast> {
                                   ),
                                 ],
                               ),
-                              Container(
-                                width: 117.0,
-                                height: 38.0,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(100.0),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Color(0xff000000).withOpacity(0.8),
-                                      offset: Offset(5.0, 5.0),
-                                      blurRadius: 20.0,
-                                    ),
-                                    BoxShadow(
-                                      color: Color(0xff505D75).withOpacity(0.4),
-                                      offset: Offset(-7.0, -7.0),
-                                      blurRadius: 20.0,
-                                    )
-                                  ],
-                                  gradient: LinearGradient(
-                                    begin: Alignment(
-                                        -1.042735077848726, -1.263157867627494),
-                                    end: Alignment(
-                                        0.8119657413752752, 1.6842103928068268),
-                                    stops: [0.0, 1.0],
-                                    colors: [
-                                      Color(0xffFCCF37),
-                                      Color(0xff965100),
-                                    ],
-                                  ),
-                                ),
-                                child: Center(
-                                  child: Text(
-                                    '''BUY NOW''',
-                                    overflow: TextOverflow.visible,
-                                    textAlign: TextAlign.left,
-                                    style: TextStyle(
-                                      height: 1.125,
-                                      fontSize: 14.0,
-                                      fontFamily: 'Montserrat',
-                                      fontWeight: FontWeight.w600,
-                                      color: Color(0xffd7dde8),
-                                    ),
-                                  ),
+                              InkWell(
+                                child: LCElevatedButton(
+                                  text: '''SHARE NOW''',
+                                  startColor: Color(0xffFCCF37),
+                                  endColor: Color(0xff965100),
                                 ),
                               ),
                             ],

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:livecom/screens/live_store/auction_high/marketing.dart';
+import 'package:livecom/screens/live_store/marketing.dart';
 import 'package:livecom/utils/app_colors.dart';
+import 'package:livecom/widgets/elevated_button.dart';
+import 'package:livecom/widgets/number_picker.dart';
 
 class AuctionHigh extends StatefulWidget {
   const AuctionHigh({Key key}) : super(key: key);
@@ -24,7 +26,14 @@ class _AuctionHighState extends State<AuctionHigh> {
               controller: _scrollController,
               child: Column(
                 children: [
-                  AuctionHighHeader(),
+                  AuctionMarketing(
+                    balance: '''500,000''',
+                    icon: Image.asset(
+                      'assets/images/auction_high.png',
+                      width: 15,
+                      height: 30.18,
+                    ),
+                  ),
                   Padding(
                     padding: const EdgeInsets.only(
                       left: 20.0,
@@ -395,109 +404,17 @@ class _AuctionHighState extends State<AuctionHigh> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Row(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  InkWell(
-                                    onTap: () => setState(
-                                        () => quantity > 1 ? quantity-- : 1),
-                                    child: Container(
-                                      height: 30,
-                                      width: 30,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(30),
-                                        color: Color(0xff181E28),
-                                      ),
-                                      child: Center(
-                                        child: Image.asset(
-                                          'assets/images/minus.png',
-                                          width: 11.11,
-                                          height: 2.22,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  Container(
-                                    width: 60,
-                                    child: Center(
-                                      child: Text(
-                                        quantity.toString(),
-                                        overflow: TextOverflow.visible,
-                                        textAlign: TextAlign.left,
-                                        style: TextStyle(
-                                          height: 1.125,
-                                          fontSize: 20.0,
-                                          fontFamily: 'Montserrat',
-                                          fontWeight: FontWeight.w600,
-                                          color: Color(0xffd7dde8),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  InkWell(
-                                    onTap: () => setState(() => quantity++),
-                                    child: Container(
-                                      height: 30,
-                                      width: 30,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(30),
-                                        color: Color(0xff181E28),
-                                      ),
-                                      child: Center(
-                                        child: Image.asset(
-                                          'assets/images/add.png',
-                                          width: 11.11,
-                                          height: 11.11,
-                                        ),
-                                      ),
-                                    ),
-                                  )
-                                ],
+                              NumberPicker(
+                                onSubstract: () => setState(
+                                    () => quantity > 1 ? quantity-- : 1),
+                                onAdd: () => setState(() => quantity++),
+                                quantity: quantity,
                               ),
-                              Container(
-                                width: 117.0,
-                                height: 38.0,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(100.0),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Color(0xff000000).withOpacity(0.8),
-                                      offset: Offset(5.0, 5.0),
-                                      blurRadius: 20.0,
-                                    ),
-                                    BoxShadow(
-                                      color: Color(0xff505D75).withOpacity(0.4),
-                                      offset: Offset(-7.0, -7.0),
-                                      blurRadius: 20.0,
-                                    )
-                                  ],
-                                  gradient: LinearGradient(
-                                    begin: Alignment(
-                                        -1.042735077848726, -1.263157867627494),
-                                    end: Alignment(
-                                        0.8119657413752752, 1.6842103928068268),
-                                    stops: [0.0, 1.0],
-                                    colors: [
-                                      Color(0xffFF4141),
-                                      Color(0xff7C0000),
-                                    ],
-                                  ),
-                                ),
-                                child: Center(
-                                  child: Text(
-                                    '''BUY NOW''',
-                                    overflow: TextOverflow.visible,
-                                    textAlign: TextAlign.left,
-                                    style: TextStyle(
-                                      height: 1.125,
-                                      fontSize: 14.0,
-                                      fontFamily: 'Montserrat',
-                                      fontWeight: FontWeight.w600,
-                                      color: Color(0xffd7dde8),
-                                    ),
-                                  ),
-                                ),
-                              ),
+                              LCElevatedButton(
+                                endColor: Color(0xff7C0000),
+                                startColor: Color(0xffFF4141),
+                                text: '''BID NOW''',
+                              )
                             ],
                           ),
                         ),
