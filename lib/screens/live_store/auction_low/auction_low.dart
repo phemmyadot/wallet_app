@@ -46,10 +46,8 @@ class _AuctionLowState extends State<AuctionLow> {
                       children: [
                         ProductInfo(
                           productName: '''Lorem ipsum dolor sit amet,''',
-                          specifications:
-                              '''Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed''',
-                          description:
-                              '''Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed''',
+                          specifications: '''Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed''',
+                          description: '''Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed''',
                         ),
                         Expanded(
                           child: Column(
@@ -93,7 +91,7 @@ class _AuctionLowState extends State<AuctionLow> {
                                   ),
                                   SizedBox(height: 5.33),
                                   Text(
-                                    '''Wishlist''',
+                                    '''Game Info''',
                                     overflow: TextOverflow.visible,
                                     textAlign: TextAlign.left,
                                     style: TextStyle(
@@ -228,8 +226,7 @@ class _AuctionLowState extends State<AuctionLow> {
                                   ),
                                   SizedBox(height: 30.81),
                                   NumberPicker(
-                                    onSubstract: () => setState(
-                                        () => quantity > 1 ? quantity-- : 1),
+                                    onSubstract: () => setState(() => quantity > 1 ? quantity-- : 1),
                                     onAdd: () => setState(() => quantity++),
                                     quantity: quantity,
                                   ),

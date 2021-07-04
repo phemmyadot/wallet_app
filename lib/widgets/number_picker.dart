@@ -4,8 +4,7 @@ class NumberPicker extends StatelessWidget {
   final int quantity;
   final Function onAdd;
   final Function onSubstract;
-  const NumberPicker({Key key, this.quantity, this.onAdd, this.onSubstract})
-      : super(key: key);
+  const NumberPicker({Key key, this.quantity, this.onAdd, this.onSubstract}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

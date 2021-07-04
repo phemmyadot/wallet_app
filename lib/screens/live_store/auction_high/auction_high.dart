@@ -15,6 +15,7 @@ class AuctionHigh extends StatefulWidget {
 class _AuctionHighState extends State<AuctionHigh> {
   ScrollController _scrollController;
   int quantity = 200;
+  int minToken = 200;
 
   @override
   Widget build(BuildContext context) {
@@ -46,10 +47,8 @@ class _AuctionHighState extends State<AuctionHigh> {
                       children: [
                         ProductInfo(
                           productName: '''Lorem ipsum dolor sit amet,''',
-                          specifications:
-                              '''Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed''',
-                          description:
-                              '''Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed''',
+                          specifications: '''Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed''',
+                          description: '''Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed''',
                         ),
                         Expanded(
                           child: Column(
@@ -93,7 +92,7 @@ class _AuctionHighState extends State<AuctionHigh> {
                                   ),
                                   SizedBox(height: 5.33),
                                   Text(
-                                    '''Wishlist''',
+                                    '''Game Info''',
                                     overflow: TextOverflow.visible,
                                     textAlign: TextAlign.left,
                                     style: TextStyle(
@@ -238,8 +237,7 @@ class _AuctionHighState extends State<AuctionHigh> {
                                   ),
                                   SizedBox(height: 14),
                                   NumberPicker(
-                                    onSubstract: () => setState(
-                                        () => quantity > 1 ? quantity-- : 1),
+                                    onSubstract: () => setState(() => quantity > minToken ? quantity-- : minToken),
                                     onAdd: () => setState(() => quantity++),
                                     quantity: quantity,
                                   ),

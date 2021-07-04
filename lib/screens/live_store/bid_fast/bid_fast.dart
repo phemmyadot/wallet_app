@@ -5,7 +5,7 @@ import 'package:livecom/utils/string_utils.dart';
 import 'package:livecom/widgets/count_down.dart';
 import 'package:livecom/widgets/elevated_button.dart';
 import 'package:livecom/widgets/product_info.dart';
-import 'dart:async';
+import 'package:share_plus/share_plus.dart';
 
 class BidFast extends StatefulWidget {
   const BidFast({Key key}) : super(key: key);
@@ -29,11 +29,11 @@ class _BidFastState extends State<BidFast> with TickerProviderStateMixin {
   AnimationController _controller;
   int _start = 12000;
   CountDown countdown;
+  bool isNotifyMeEnabled = false;
 
   @override
   void initState() {
-    _controller =
-        AnimationController(vsync: this, duration: Duration(seconds: _start));
+    _controller = AnimationController(vsync: this, duration: Duration(seconds: _start));
     _controller.forward().then((value) {
       setState(() => type = BidFastType.activated);
     });
@@ -53,6 +53,7 @@ class _BidFastState extends State<BidFast> with TickerProviderStateMixin {
   }
 
   void _share() {
+    Share.share('Product');
     switch (type) {
       case BidFastType.normal:
         currentPrice -= 256.66;
@@ -63,14 +64,12 @@ class _BidFastState extends State<BidFast> with TickerProviderStateMixin {
         setState(() {});
         _controller.dispose();
         final remainder = 5;
-        _controller = AnimationController(
-            vsync: this, duration: Duration(seconds: remainder));
+        _controller = AnimationController(vsync: this, duration: Duration(seconds: remainder));
         _controller.forward().then((value) {
           setState(() => type = BidFastType.activated);
           _controller.dispose();
           final start = 5;
-          _controller = AnimationController(
-              vsync: this, duration: Duration(seconds: start));
+          _controller = AnimationController(vsync: this, duration: Duration(seconds: start));
           _controller.forward().then((value) {
             setState(() => type = BidFastType.link);
           });
@@ -96,6 +95,7 @@ class _BidFastState extends State<BidFast> with TickerProviderStateMixin {
     }
   }
 
+  void _notifyMe() => setState(() => isNotifyMeEnabled = !isNotifyMeEnabled);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -126,10 +126,8 @@ class _BidFastState extends State<BidFast> with TickerProviderStateMixin {
                       children: [
                         ProductInfo(
                           productName: '''Lorem ipsum dolor sit amet,''',
-                          specifications:
-                              '''Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed''',
-                          description:
-                              '''Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed''',
+                          specifications: '''Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed''',
+                          description: '''Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed''',
                         ),
                         Expanded(
                           child: Column(
@@ -161,48 +159,49 @@ class _BidFastState extends State<BidFast> with TickerProviderStateMixin {
                                 ],
                               ),
                               SizedBox(height: 33.83),
-                              Column(
-                                children: [
-                                  Container(
-                                    decoration: BoxDecoration(
-                                      boxShadow: [
+                              GestureDetector(
+                                onTap: () => _notifyMe(),
+                                child: Column(
+                                  children: [
+                                    Container(
+                                      decoration: BoxDecoration(boxShadow: [
                                         BoxShadow(
-                                          color: Color(0xff000000)
-                                              .withOpacity(0.4),
+                                          color: Color(0xff000000).withOpacity(0.4),
                                           offset: Offset(3.0, 3.0),
                                           blurRadius: 10.0,
                                         ),
                                         BoxShadow(
-                                          color: Color(0xff505D75)
-                                              .withOpacity(0.4),
+                                          color: Color(0xff505D75).withOpacity(0.4),
                                           offset: Offset(-2.0, -2.0),
                                           blurRadius: 5.0,
                                         )
-                                      ],
+                                      ], borderRadius: BorderRadius.circular(21.98)),
+                                      child: Image.asset(
+                                        isNotifyMeEnabled
+                                            ? "assets/images/notify_me.png"
+                                            : "assets/images/notify_me_uncheck.png",
+                                        color: null,
+                                        fit: BoxFit.fill,
+                                        width: 21.98,
+                                        height: 21.98,
+                                        colorBlendMode: BlendMode.dstATop,
+                                      ),
                                     ),
-                                    child: Image.asset(
-                                      "assets/images/notify_me.png",
-                                      color: null,
-                                      fit: BoxFit.fill,
-                                      width: 21.98,
-                                      height: 21.98,
-                                      colorBlendMode: BlendMode.dstATop,
+                                    SizedBox(height: 10),
+                                    Text(
+                                      '''Notify Me''',
+                                      overflow: TextOverflow.visible,
+                                      textAlign: TextAlign.left,
+                                      style: TextStyle(
+                                        height: 1.125,
+                                        fontSize: 12.0,
+                                        fontFamily: 'Montserrat',
+                                        fontWeight: FontWeight.w600,
+                                        color: Color(0xffd7dde8),
+                                      ),
                                     ),
-                                  ),
-                                  SizedBox(height: 10),
-                                  Text(
-                                    '''Notify Me''',
-                                    overflow: TextOverflow.visible,
-                                    textAlign: TextAlign.left,
-                                    style: TextStyle(
-                                      height: 1.125,
-                                      fontSize: 12.0,
-                                      fontFamily: 'Montserrat',
-                                      fontWeight: FontWeight.w600,
-                                      color: Color(0xffd7dde8),
-                                    ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               )
                             ],
                           ),
@@ -324,15 +323,13 @@ class _BidFastState extends State<BidFast> with TickerProviderStateMixin {
                                             Stack(
                                               children: [
                                                 Text('RRP: 10,000LT',
-                                                    overflow:
-                                                        TextOverflow.visible,
+                                                    overflow: TextOverflow.visible,
                                                     textAlign: TextAlign.left,
                                                     style: TextStyle(
                                                       height: 1,
                                                       fontSize: 12.0,
                                                       fontFamily: 'Montserrat',
-                                                      fontWeight:
-                                                          FontWeight.w400,
+                                                      fontWeight: FontWeight.w400,
                                                       color: Color(0xffd7dde8),
                                                     )),
                                                 Positioned(
@@ -394,8 +391,7 @@ class _BidFastState extends State<BidFast> with TickerProviderStateMixin {
                                 crossAxisAlignment: CrossAxisAlignment.end,
                                 children: [
                                   Text(
-                                    type == BidFastType.activated ||
-                                            type == BidFastType.link
+                                    type == BidFastType.activated || type == BidFastType.link
                                         ? '''Game Starts In'''
                                         : '''Countdown Time''',
                                     overflow: TextOverflow.visible,
@@ -414,9 +410,7 @@ class _BidFastState extends State<BidFast> with TickerProviderStateMixin {
                                   InkWell(
                                     onTap: () => _share(),
                                     child: LCElevatedButton(
-                                      text: type == BidFastType.link
-                                          ? '''PLAY NOW'''
-                                          : '''SHARE NOW''',
+                                      text: type == BidFastType.link ? '''PLAY NOW''' : '''SHARE NOW''',
                                       startColor: Color(0xffFCCF37),
                                       endColor: Color(0xff965100),
                                     ),
