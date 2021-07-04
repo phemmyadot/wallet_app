@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:livecom/screens/live_store/marketing.dart';
 import 'package:livecom/utils/app_colors.dart';
+import 'package:livecom/utils/game_info.dart';
 import 'package:livecom/widgets/elevated_button.dart';
 import 'package:livecom/widgets/number_picker.dart';
 import 'package:livecom/widgets/product_info.dart';
@@ -79,30 +80,41 @@ class _AuctionLowState extends State<AuctionLow> {
                                 ],
                               ),
                               SizedBox(height: 33.83),
-                              Column(
-                                children: [
-                                  Image.asset(
-                                    "assets/images/game_info.png",
-                                    color: null,
-                                    fit: BoxFit.fill,
-                                    width: 13.28,
-                                    height: 21.98,
-                                    colorBlendMode: BlendMode.dstATop,
-                                  ),
-                                  SizedBox(height: 5.33),
-                                  Text(
-                                    '''Game Info''',
-                                    overflow: TextOverflow.visible,
-                                    textAlign: TextAlign.left,
-                                    style: TextStyle(
-                                      height: 1.125,
-                                      fontSize: 12.0,
-                                      fontFamily: 'Montserrat',
-                                      fontWeight: FontWeight.w600,
-                                      color: Color(0xffd7dde8),
+                              InkWell(
+                                onTap: () => GameInfo.getGameInfo(context, '''This is Game Mode description......
+This is Game Mode description......
+This is Game Mode description......
+This is Game Mode description......
+This is Game Mode description......
+This is Game Mode description......
+This is Game Mode description......
+This is Game Mode description......
+This is Game Mode description......'''),
+                                child: Column(
+                                  children: [
+                                    Image.asset(
+                                      "assets/images/game_info.png",
+                                      color: null,
+                                      fit: BoxFit.fill,
+                                      width: 13.28,
+                                      height: 21.98,
+                                      colorBlendMode: BlendMode.dstATop,
                                     ),
-                                  ),
-                                ],
+                                    SizedBox(height: 5.33),
+                                    Text(
+                                      '''Game Info''',
+                                      overflow: TextOverflow.visible,
+                                      textAlign: TextAlign.left,
+                                      style: TextStyle(
+                                        height: 1.125,
+                                        fontSize: 12.0,
+                                        fontFamily: 'Montserrat',
+                                        fontWeight: FontWeight.w600,
+                                        color: Color(0xffd7dde8),
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               )
                             ],
                           ),
