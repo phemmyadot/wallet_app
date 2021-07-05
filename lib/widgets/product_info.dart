@@ -4,9 +4,7 @@ class ProductInfo extends StatelessWidget {
   final String productName;
   final String specifications;
   final String description;
-  const ProductInfo(
-      {Key key, this.productName, this.specifications, this.description})
-      : super(key: key);
+  const ProductInfo({Key key, this.productName, this.specifications, this.description}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +14,7 @@ class ProductInfo extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            '''Product Name''',
+            'Product Name',
             overflow: TextOverflow.visible,
             textAlign: TextAlign.left,
             style: TextStyle(
@@ -42,7 +40,7 @@ class ProductInfo extends StatelessWidget {
           ),
           SizedBox(height: 18),
           Text(
-            '''Specifications''',
+            'Specifications',
             overflow: TextOverflow.visible,
             textAlign: TextAlign.left,
             style: TextStyle(
@@ -72,7 +70,7 @@ class ProductInfo extends StatelessWidget {
           ),
           SizedBox(height: 18),
           Text(
-            '''Descriptions''',
+            'Descriptions',
             overflow: TextOverflow.visible,
             textAlign: TextAlign.left,
             style: TextStyle(

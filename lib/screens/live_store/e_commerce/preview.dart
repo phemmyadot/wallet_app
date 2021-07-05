@@ -29,7 +29,7 @@ class _ECommercePreviewState extends State<ECommercePreview> {
             ),
             SizedBox(width: 10.44),
             Text(
-              '''E-Commerce''',
+              'E-Commerce',
               overflow: TextOverflow.visible,
               textAlign: TextAlign.left,
               style: TextStyle(
@@ -63,8 +63,7 @@ class _ECommercePreviewState extends State<ECommercePreview> {
                           child: AuctionCard(
                             onTap: () => Navigator.of(context).push(
                               MaterialPageRoute(
-                                builder: (BuildContext context) =>
-                                    Ecommerce(isInWishList: i == 1),
+                                builder: (BuildContext context) => Ecommerce(isInWishList: i == 1),
                               ),
                             ),
                             icon: Image.asset(

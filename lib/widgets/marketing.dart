@@ -58,8 +58,7 @@ class _HeaderState extends State<Header> {
           PageView(
             controller: _pageController,
             children: [
-              for (int i = 0; i < 3; i++)
-                _getBanner('''LIVE STORE''', statusBarHeight),
+              for (int i = 0; i < 3; i++) _getBanner('LIVE STORE', statusBarHeight),
             ],
           ),
           Positioned(
@@ -130,23 +129,14 @@ class _HeaderState extends State<Header> {
             children: [
               InkWell(
                 onTap: () => null,
-                child: Container(
-                    width: 18,
-                    height: 5,
-                    child: Image.asset('assets/images/banner_inactive.png')),
+                child: Container(width: 18, height: 5, child: Image.asset('assets/images/banner_inactive.png')),
               ),
               SizedBox(width: 5),
-              Container(
-                  width: 27,
-                  height: 5,
-                  child: Image.asset('assets/images/banner_active.png')),
+              Container(width: 27, height: 5, child: Image.asset('assets/images/banner_active.png')),
               SizedBox(width: 5),
               InkWell(
                 onTap: () => null,
-                child: Container(
-                    width: 18,
-                    height: 5,
-                    child: Image.asset('assets/images/banner_inactive.png')),
+                child: Container(width: 18, height: 5, child: Image.asset('assets/images/banner_inactive.png')),
               ),
             ],
           ),

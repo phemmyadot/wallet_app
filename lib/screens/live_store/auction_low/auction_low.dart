@@ -30,7 +30,7 @@ class _AuctionLowState extends State<AuctionLow> {
               child: Column(
                 children: [
                   AuctionMarketing(
-                    balance: '''500,000''',
+                    balance: '500,000',
                     icon: Image.asset(
                       'assets/images/auction_low.png',
                       width: 15,
@@ -47,9 +47,9 @@ class _AuctionLowState extends State<AuctionLow> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         ProductInfo(
-                          productName: '''Lorem ipsum dolor sit amet,''',
-                          specifications: '''Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed''',
-                          description: '''Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed''',
+                          productName: 'Lorem ipsum dolor sit amet,',
+                          specifications: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed',
+                          description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed',
                         ),
                         Expanded(
                           child: Column(
@@ -67,7 +67,7 @@ class _AuctionLowState extends State<AuctionLow> {
                                   ),
                                   SizedBox(height: 10.17),
                                   Text(
-                                    '''Share''',
+                                    'Share',
                                     overflow: TextOverflow.visible,
                                     textAlign: TextAlign.left,
                                     style: TextStyle(
@@ -103,7 +103,7 @@ This is Game Mode description......'''),
                                     ),
                                     SizedBox(height: 5.33),
                                     Text(
-                                      '''Game Info''',
+                                      'Game Info',
                                       overflow: TextOverflow.visible,
                                       textAlign: TextAlign.left,
                                       style: TextStyle(
@@ -190,7 +190,7 @@ This is Game Mode description......'''),
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    '''Current Bid''',
+                                    'Current Bid',
                                     overflow: TextOverflow.visible,
                                     textAlign: TextAlign.left,
                                     style: TextStyle(
@@ -213,7 +213,7 @@ This is Game Mode description......'''),
                                       Stack(
                                         children: [
                                           Text(
-                                            '''500''',
+                                            '500',
                                             overflow: TextOverflow.visible,
                                             textAlign: TextAlign.left,
                                             style: TextStyle(
@@ -240,7 +240,7 @@ This is Game Mode description......'''),
                                       SizedBox(width: 3.89),
                                       widget.isActivated
                                           ? Text(
-                                              '''480''',
+                                              '480',
                                               overflow: TextOverflow.visible,
                                               textAlign: TextAlign.left,
                                               style: TextStyle(
@@ -262,7 +262,7 @@ This is Game Mode description......'''),
                                   ),
                                   SizedBox(height: 13),
                                   Text(
-                                    '''Remaining: 1000''',
+                                    'Remaining: 1000',
                                     overflow: TextOverflow.visible,
                                     textAlign: TextAlign.left,
                                     style: TextStyle(
@@ -275,7 +275,7 @@ This is Game Mode description......'''),
                                   ),
                                   SizedBox(height: 2),
                                   Text(
-                                    '''Shipping Fees: 50LT''',
+                                    'Shipping Fees: 50LT',
                                     overflow: TextOverflow.visible,
                                     textAlign: TextAlign.left,
                                     style: TextStyle(
@@ -292,7 +292,7 @@ This is Game Mode description......'''),
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    '''Drop Price''',
+                                    'Drop Price',
                                     overflow: TextOverflow.visible,
                                     textAlign: TextAlign.left,
                                     style: TextStyle(
@@ -313,7 +313,7 @@ This is Game Mode description......'''),
                                       ),
                                       SizedBox(width: 5),
                                       Text(
-                                        '''-20''',
+                                        '-20',
                                         overflow: TextOverflow.visible,
                                         textAlign: TextAlign.left,
                                         style: TextStyle(
@@ -332,7 +332,7 @@ This is Game Mode description......'''),
                                 crossAxisAlignment: CrossAxisAlignment.end,
                                 children: [
                                   Text(
-                                    '''Ends In''',
+                                    'Ends In',
                                     overflow: TextOverflow.visible,
                                     textAlign: TextAlign.left,
                                     style: TextStyle(
@@ -345,7 +345,7 @@ This is Game Mode description......'''),
                                   ),
                                   SizedBox(height: 2.76),
                                   Text(
-                                    '''20:39:00''',
+                                    '20:39:00',
                                     overflow: TextOverflow.visible,
                                     textAlign: TextAlign.left,
                                     style: TextStyle(
@@ -358,12 +358,12 @@ This is Game Mode description......'''),
                                   ),
                                   SizedBox(height: 25.86),
                                   LCElevatedButton(
-                                    text: '''BUY NOW''',
+                                    text: 'BUY NOW',
                                     background: 'assets/images/auction_low_btn.png',
                                   ),
                                   SizedBox(height: 9.68),
                                   Text(
-                                    '''300 people eyeing this''',
+                                    '300 people eyeing this',
                                     overflow: TextOverflow.visible,
                                     textAlign: TextAlign.left,
                                     style: TextStyle(

@@ -18,16 +18,13 @@ class _BidFastState extends State<BidFast> with TickerProviderStateMixin {
   ScrollController _scrollController;
   int quantity = 1;
   double currentPrice = 10000;
-  // String _type = BidFastType.normal;
   AnimationController _controller;
-  // AnimationController _controller1;
 
   bool isShared = false;
   bool isActivated = false;
   bool isCompleted = false;
 
   bool isNotifyMeEnabled = false;
-  // bool _isInit = true;
   @override
   void initState() {
     int _start = 30;
@@ -58,7 +55,10 @@ class _BidFastState extends State<BidFast> with TickerProviderStateMixin {
   }
 
   void _share() {
-    if (currentPrice - 256.66 < 3000) {
+    Share.share('Product Name');
+    if (isActivated)
+      currentPrice = currentPrice;
+    else if (!isActivated && currentPrice - 256.66 < 3000) {
       isActivated = true;
       currentPrice = 3000;
       _complete();
@@ -83,7 +83,7 @@ class _BidFastState extends State<BidFast> with TickerProviderStateMixin {
               child: Column(
                 children: [
                   AuctionMarketing(
-                    balance: '''500,000''',
+                    balance: '500,000',
                     icon: Image.asset(
                       'assets/images/bid_fast.png',
                       width: 19,
@@ -100,9 +100,9 @@ class _BidFastState extends State<BidFast> with TickerProviderStateMixin {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         ProductInfo(
-                          productName: '''Lorem ipsum dolor sit amet,''',
-                          specifications: '''Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed''',
-                          description: '''Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed''',
+                          productName: 'Lorem ipsum dolor sit amet,',
+                          specifications: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed',
+                          description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed',
                         ),
                         Expanded(
                           child: Column(
@@ -120,7 +120,7 @@ class _BidFastState extends State<BidFast> with TickerProviderStateMixin {
                                   ),
                                   SizedBox(height: 10.17),
                                   Text(
-                                    '''Share''',
+                                    'Share',
                                     overflow: TextOverflow.visible,
                                     textAlign: TextAlign.left,
                                     style: TextStyle(
@@ -164,7 +164,7 @@ class _BidFastState extends State<BidFast> with TickerProviderStateMixin {
                                     ),
                                     SizedBox(height: 10),
                                     Text(
-                                      '''Notify Me''',
+                                      'Notify Me',
                                       overflow: TextOverflow.visible,
                                       textAlign: TextAlign.left,
                                       style: TextStyle(
@@ -251,11 +251,11 @@ class _BidFastState extends State<BidFast> with TickerProviderStateMixin {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    isShared && !isActivated && !isCompleted
-                                        ? '''Current Price'''
-                                        : isActivated || isCompleted
-                                            ? '''Activated Price'''
-                                            : '''RRP''',
+                                    isActivated || isCompleted
+                                        ? 'Activated Price'
+                                        : isShared
+                                            ? 'Current Price'
+                                            : 'RRP',
                                     overflow: TextOverflow.visible,
                                     textAlign: TextAlign.left,
                                     style: TextStyle(
@@ -324,7 +324,7 @@ class _BidFastState extends State<BidFast> with TickerProviderStateMixin {
                                       : SizedBox(),
                                   SizedBox(height: 10),
                                   Text(
-                                    '''Activation Price''',
+                                    'Activation Price',
                                     overflow: TextOverflow.visible,
                                     textAlign: TextAlign.left,
                                     style: TextStyle(
@@ -345,7 +345,7 @@ class _BidFastState extends State<BidFast> with TickerProviderStateMixin {
                                       ),
                                       SizedBox(width: 5),
                                       Text(
-                                        '''3,000''',
+                                        '3,000',
                                         overflow: TextOverflow.visible,
                                         textAlign: TextAlign.left,
                                         style: TextStyle(
@@ -364,7 +364,7 @@ class _BidFastState extends State<BidFast> with TickerProviderStateMixin {
                                 crossAxisAlignment: CrossAxisAlignment.end,
                                 children: [
                                   Text(
-                                    isActivated || isCompleted ? '''Game Starts In''' : '''Countdown Time''',
+                                    isActivated || isCompleted ? 'Game Starts In' : 'Countdown Time',
                                     overflow: TextOverflow.visible,
                                     textAlign: TextAlign.left,
                                     style: TextStyle(
@@ -379,15 +379,15 @@ class _BidFastState extends State<BidFast> with TickerProviderStateMixin {
                                   countdown != null ? countdown : SizedBox(),
                                   SizedBox(height: 25.86),
                                   InkWell(
-                                    onTap: () => _share(),
+                                    onTap: () => isCompleted ? null : _share(),
                                     child: LCElevatedButton(
-                                      text: isCompleted ? '''PLAY NOW''' : '''SHARE NOW''',
+                                      text: isCompleted ? 'PLAY NOW' : 'SHARE NOW',
                                       background: 'assets/images/bid_fast_btn.png',
                                     ),
                                   ),
                                   SizedBox(height: 9.68),
                                   Text(
-                                    '''300 people eyeing this''',
+                                    '300 people eyeing this',
                                     overflow: TextOverflow.visible,
                                     textAlign: TextAlign.left,
                                     style: TextStyle(

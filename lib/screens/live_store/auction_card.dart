@@ -73,7 +73,7 @@ class _AuctionCardState extends State<AuctionCard> {
                             ),
                             SizedBox(width: 8),
                             Text(
-                              '''00:71:25''',
+                              '00:71:25',
                               overflow: TextOverflow.visible,
                               textAlign: TextAlign.left,
                               style: TextStyle(
@@ -121,7 +121,7 @@ class _AuctionCardState extends State<AuctionCard> {
               ),
               SizedBox(width: 5),
               Text(
-                '''500''',
+                '500',
                 overflow: TextOverflow.visible,
                 textAlign: TextAlign.left,
                 style: TextStyle(

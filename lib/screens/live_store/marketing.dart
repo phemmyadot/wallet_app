@@ -130,7 +130,7 @@ class _AuctionMarketingState extends State<AuctionMarketing> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            '''Wallet Balance''',
+                            'Wallet Balance',
                             overflow: TextOverflow.visible,
                             textAlign: TextAlign.left,
                             style: TextStyle(

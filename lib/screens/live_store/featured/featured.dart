@@ -14,7 +14,7 @@ class Featured extends StatelessWidget {
           children: [
             SizedBox(width: 11),
             Text(
-              '''Featured''',
+              'Featured',
               overflow: TextOverflow.visible,
               textAlign: TextAlign.left,
               style: TextStyle(
@@ -58,11 +58,11 @@ class Featured extends StatelessWidget {
                                   ),
                                 ),
                           child: FeatureCard(
-                            countdown: '''00:71:25''',
-                            participants: '''30/100''',
+                            countdown: '00:71:25',
+                            participants: '30/100',
                             title: i == 0
-                                ? '''This is the title of the Auction High Plus'''
-                                : '''This is the title of the live stream that is live.''',
+                                ? 'This is the title of the Auction High Plus'
+                                : 'This is the title of the live stream that is live.',
                             image: Image.asset(
                               "assets/images/featured.png",
                               color: null,

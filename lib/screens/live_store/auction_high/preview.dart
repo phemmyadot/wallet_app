@@ -30,7 +30,7 @@ class _AuctionHighPreviewState extends State<AuctionHighPreview> {
             ),
             SizedBox(width: 10.44),
             Text(
-              '''Auction High''',
+              'Auction High',
               overflow: TextOverflow.visible,
               textAlign: TextAlign.left,
               style: TextStyle(
@@ -65,8 +65,7 @@ class _AuctionHighPreviewState extends State<AuctionHighPreview> {
                           child: AuctionCard(
                             onTap: () => Navigator.of(context).push(
                               MaterialPageRoute(
-                                builder: (BuildContext context) =>
-                                    AuctionHigh(),
+                                builder: (BuildContext context) => AuctionHigh(),
                               ),
                             ),
                             icon: Image.asset(

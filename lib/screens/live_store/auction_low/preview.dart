@@ -29,7 +29,7 @@ class _AuctionLowPreviewState extends State<AuctionLowPreview> {
             ),
             SizedBox(width: 10.44),
             Text(
-              '''Auction Low''',
+              'Auction Low',
               overflow: TextOverflow.visible,
               textAlign: TextAlign.left,
               style: TextStyle(

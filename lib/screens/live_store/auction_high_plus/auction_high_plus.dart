@@ -13,13 +13,6 @@ class AuctionHighPlus extends StatefulWidget {
   _AuctionHighPlusState createState() => _AuctionHighPlusState();
 }
 
-// class AuctionHighPlusType {
-//   static const loading = 'loading';
-//   static const active = 'active';
-//   static const start_game = 'start game';
-//   static const joined = 'joined';
-// }
-
 class _AuctionHighPlusState extends State<AuctionHighPlus> with TickerProviderStateMixin {
   ScrollController _scrollController;
   int quantity = 200;
@@ -58,16 +51,8 @@ class _AuctionHighPlusState extends State<AuctionHighPlus> with TickerProviderSt
   }
 
   void _join() {
-    // if (currentPrice - 256.66 < 3000) {
-    // isActivated = true;
-    // currentPrice = 3000;
-    _complete();
-    // } else {
-    //   (currentPrice -= 256.66).floor();
-    // }
-    isJoined = true;
-
-    setState(() {});
+    setState(() => isJoined = true);
+    Future.delayed(Duration(seconds: 10)).then((value) => _complete());
   }
 
   @override
@@ -82,29 +67,31 @@ class _AuctionHighPlusState extends State<AuctionHighPlus> with TickerProviderSt
               child: Column(
                 children: [
                   AuctionMarketing(
-                    balance: '''500,000''',
+                    balance: '500,000',
                     icon: Image.asset(
-                      'assets/images/auction_high.png',
+                      'assets/images/auction_high_plus.png',
                       width: 15,
                       height: 30.18,
                     ),
-                    load: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Loading Participants',
-                          style: TextStyle(
-                            height: 1.125,
-                            fontSize: 16.0,
-                            fontFamily: 'Montserrat',
-                            fontWeight: FontWeight.w700,
-                            color: Color(0xffd7dde8),
+                    load: isCompleted
+                        ? SizedBox()
+                        : Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                isActivated ? 'Event begins in' : 'Loading Participants',
+                                style: TextStyle(
+                                  height: 1.125,
+                                  fontSize: 16.0,
+                                  fontFamily: 'Montserrat',
+                                  fontWeight: FontWeight.w700,
+                                  color: Color(0xffd7dde8),
+                                ),
+                              ),
+                              SizedBox(height: 5),
+                              countdown,
+                            ],
                           ),
-                        ),
-                        SizedBox(height: 5),
-                        countdown,
-                      ],
-                    ),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(
@@ -116,9 +103,9 @@ class _AuctionHighPlusState extends State<AuctionHighPlus> with TickerProviderSt
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         ProductInfo(
-                          productName: '''Lorem ipsum dolor sit amet,''',
-                          specifications: '''Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed''',
-                          description: '''Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed''',
+                          productName: 'Lorem ipsum dolor sit amet,',
+                          specifications: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed',
+                          description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed',
                         ),
                         Expanded(
                           child: Column(
@@ -136,7 +123,7 @@ class _AuctionHighPlusState extends State<AuctionHighPlus> with TickerProviderSt
                                   ),
                                   SizedBox(height: 10.17),
                                   Text(
-                                    '''Share''',
+                                    'Share',
                                     overflow: TextOverflow.visible,
                                     textAlign: TextAlign.left,
                                     style: TextStyle(
@@ -172,7 +159,7 @@ This is Game Mode description......'''),
                                     ),
                                     SizedBox(height: 5.33),
                                     Text(
-                                      '''Game Info''',
+                                      'Game Info',
                                       overflow: TextOverflow.visible,
                                       textAlign: TextAlign.left,
                                       style: TextStyle(
@@ -259,7 +246,7 @@ This is Game Mode description......'''),
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    '''Starting Price''',
+                                    'Starting Price',
                                     overflow: TextOverflow.visible,
                                     textAlign: TextAlign.left,
                                     style: TextStyle(
@@ -280,7 +267,7 @@ This is Game Mode description......'''),
                                       ),
                                       SizedBox(width: 5),
                                       Text(
-                                        '''500''',
+                                        '500',
                                         overflow: TextOverflow.visible,
                                         textAlign: TextAlign.left,
                                         style: TextStyle(
@@ -298,7 +285,7 @@ This is Game Mode description......'''),
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        '''Remaining: 1000''',
+                                        'Remaining: 1000',
                                         overflow: TextOverflow.visible,
                                         textAlign: TextAlign.left,
                                         style: TextStyle(
@@ -311,7 +298,7 @@ This is Game Mode description......'''),
                                       ),
                                       SizedBox(height: 2),
                                       Text(
-                                        '''Shipping Fees: 50LT''',
+                                        'Shipping Fees: 50LT',
                                         overflow: TextOverflow.visible,
                                         textAlign: TextAlign.left,
                                         style: TextStyle(
@@ -330,7 +317,7 @@ This is Game Mode description......'''),
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    '''Cost Per Bid''',
+                                    'Cost Per Bid',
                                     overflow: TextOverflow.visible,
                                     textAlign: TextAlign.left,
                                     style: TextStyle(
@@ -351,7 +338,7 @@ This is Game Mode description......'''),
                                       ),
                                       SizedBox(width: 5),
                                       Text(
-                                        '''20''',
+                                        '20',
                                         overflow: TextOverflow.visible,
                                         textAlign: TextAlign.left,
                                         style: TextStyle(
@@ -370,7 +357,7 @@ This is Game Mode description......'''),
                                 crossAxisAlignment: CrossAxisAlignment.end,
                                 children: [
                                   Text(
-                                    '''''',
+                                    '',
                                     overflow: TextOverflow.visible,
                                     textAlign: TextAlign.left,
                                     style: TextStyle(
@@ -383,7 +370,7 @@ This is Game Mode description......'''),
                                   ),
                                   SizedBox(height: 2.76),
                                   Text(
-                                    '''''',
+                                    '',
                                     overflow: TextOverflow.visible,
                                     textAlign: TextAlign.left,
                                     style: TextStyle(
@@ -395,13 +382,22 @@ This is Game Mode description......'''),
                                     ),
                                   ),
                                   SizedBox(height: 25.86),
-                                  LCElevatedButton(
-                                    background: 'assets/images/auction_high_btn.png',
-                                    text: '''JOIN NOW''',
+                                  InkWell(
+                                    onTap: () => isActivated || isJoined || isCompleted ? null : _join(),
+                                    child: LCElevatedButton(
+                                      background: isActivated || (!isJoined && isCompleted)
+                                          ? 'assets/images/auction_high_grey_btn.png'
+                                          : 'assets/images/auction_high_btn.png',
+                                      text: isActivated || isCompleted
+                                          ? 'BID NOW'
+                                          : isJoined
+                                              ? 'JOINED'
+                                              : 'JOIN NOW',
+                                    ),
                                   ),
                                   SizedBox(height: 9.68),
                                   Text(
-                                    '''300 people eyeing this''',
+                                    '300 people eyeing this',
                                     overflow: TextOverflow.visible,
                                     textAlign: TextAlign.left,
                                     style: TextStyle(

@@ -30,7 +30,7 @@ class _EcommerceState extends State<Ecommerce> {
               child: Column(
                 children: [
                   AuctionMarketing(
-                    balance: '''500,000''',
+                    balance: '500,000',
                     icon: Image.asset(
                       'assets/images/e_commerce.png',
                       width: 30,
@@ -47,9 +47,9 @@ class _EcommerceState extends State<Ecommerce> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         ProductInfo(
-                          productName: '''Lorem ipsum dolor sit amet,''',
-                          specifications: '''Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed''',
-                          description: '''Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed''',
+                          productName: 'Lorem ipsum dolor sit amet,',
+                          specifications: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed',
+                          description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed',
                         ),
                         Expanded(
                           child: Column(
@@ -67,7 +67,7 @@ class _EcommerceState extends State<Ecommerce> {
                                   ),
                                   SizedBox(height: 10.17),
                                   Text(
-                                    '''Share''',
+                                    'Share',
                                     overflow: TextOverflow.visible,
                                     textAlign: TextAlign.left,
                                     style: TextStyle(
@@ -102,7 +102,7 @@ class _EcommerceState extends State<Ecommerce> {
                                         ),
                                   SizedBox(height: 5.33),
                                   Text(
-                                    '''Wishlist''',
+                                    'Wishlist',
                                     overflow: TextOverflow.visible,
                                     textAlign: TextAlign.left,
                                     style: TextStyle(
@@ -185,7 +185,7 @@ class _EcommerceState extends State<Ecommerce> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    '''Current Bid''',
+                                    'Current Bid',
                                     overflow: TextOverflow.visible,
                                     textAlign: TextAlign.left,
                                     style: TextStyle(
@@ -206,7 +206,7 @@ class _EcommerceState extends State<Ecommerce> {
                                       ),
                                       SizedBox(width: 5),
                                       Text(
-                                        '''500''',
+                                        '500',
                                         overflow: TextOverflow.visible,
                                         textAlign: TextAlign.left,
                                         style: TextStyle(
@@ -231,7 +231,7 @@ class _EcommerceState extends State<Ecommerce> {
                                 crossAxisAlignment: CrossAxisAlignment.end,
                                 children: [
                                   Text(
-                                    '''Ends In''',
+                                    'Ends In',
                                     overflow: TextOverflow.visible,
                                     textAlign: TextAlign.left,
                                     style: TextStyle(
@@ -244,7 +244,7 @@ class _EcommerceState extends State<Ecommerce> {
                                   ),
                                   SizedBox(height: 2.76),
                                   Text(
-                                    '''20:39:00''',
+                                    '20:39:00',
                                     overflow: TextOverflow.visible,
                                     textAlign: TextAlign.left,
                                     style: TextStyle(
@@ -257,12 +257,12 @@ class _EcommerceState extends State<Ecommerce> {
                                   ),
                                   SizedBox(height: 25.86),
                                   LCElevatedButton(
-                                    text: '''BUY NOW''',
+                                    text: 'BUY NOW',
                                     background: 'assets/images/e_commerce_btn.png',
                                   ),
                                   SizedBox(height: 9.68),
                                   Text(
-                                    '''300 people eyeing this''',
+                                    '300 people eyeing this',
                                     overflow: TextOverflow.visible,
                                     textAlign: TextAlign.left,
                                     style: TextStyle(
