@@ -385,9 +385,11 @@ This is Game Mode description......'''),
                                   InkWell(
                                     onTap: () => isActivated || isJoined || isCompleted ? null : _join(),
                                     child: LCElevatedButton(
-                                      background: isActivated || (!isJoined && isCompleted)
-                                          ? 'assets/images/auction_high_grey_btn.png'
-                                          : 'assets/images/auction_high_btn.png',
+                                      background: isJoined && isCompleted
+                                          ? 'assets/images/auction_high_btn.png'
+                                          : isActivated || (!isJoined && isCompleted)
+                                              ? 'assets/images/auction_high_grey_btn.png'
+                                              : 'assets/images/auction_high_btn.png',
                                       text: isActivated || isCompleted
                                           ? 'BID NOW'
                                           : isJoined
