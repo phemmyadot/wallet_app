@@ -9,7 +9,7 @@ class CountDown extends AnimatedWidget {
     Duration clockTimer = Duration(seconds: animation.value);
     String timerText =
         '${(clockTimer.inHours.remainder(60)).toString().padLeft(2, '0')}:${clockTimer.inMinutes.remainder(60).toString().padLeft(2, '0')}:${(clockTimer.inSeconds.remainder(60)).toString().padLeft(2, '0')}';
-
+    print(timerText);
     return Text(
       "$timerText",
       style: TextStyle(
@@ -21,4 +21,15 @@ class CountDown extends AnimatedWidget {
       ),
     );
   }
+}
+
+CountDown countdown;
+
+void initiateTimer(AnimationController controller, int start) {
+  countdown = CountDown(
+    animation: StepTween(
+      begin: start,
+      end: 0,
+    ).animate(controller),
+  );
 }

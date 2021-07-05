@@ -7,7 +7,8 @@ import 'package:livecom/widgets/number_picker.dart';
 import 'package:livecom/widgets/product_info.dart';
 
 class AuctionLow extends StatefulWidget {
-  const AuctionLow({Key key}) : super(key: key);
+  final bool isActivated;
+  const AuctionLow({Key key, @required this.isActivated}) : super(key: key);
 
   @override
   _AuctionLowState createState() => _AuctionLowState();
@@ -209,31 +210,48 @@ This is Game Mode description......'''),
                                         height: 15,
                                       ),
                                       SizedBox(width: 5),
-                                      Text(
-                                        '''500''',
-                                        overflow: TextOverflow.visible,
-                                        textAlign: TextAlign.left,
-                                        style: TextStyle(
-                                          height: 1.125,
-                                          fontSize: 16.0,
-                                          fontFamily: 'Montserrat',
-                                          fontWeight: FontWeight.w600,
-                                          color: Color(0xff7889A9),
-                                        ),
+                                      Stack(
+                                        children: [
+                                          Text(
+                                            '''500''',
+                                            overflow: TextOverflow.visible,
+                                            textAlign: TextAlign.left,
+                                            style: TextStyle(
+                                              height: 1.125,
+                                              fontSize: 16.0,
+                                              fontFamily: 'Montserrat',
+                                              fontWeight: FontWeight.w600,
+                                              color: widget.isActivated ? Color(0xff7889A9) : Color(0xffd7dde8),
+                                            ),
+                                          ),
+                                          widget.isActivated
+                                              ? Positioned(
+                                                  left: 0,
+                                                  right: 0,
+                                                  top: 8,
+                                                  height: 1,
+                                                  child: Container(
+                                                    height: 1,
+                                                    color: Color(0xffd7dde8),
+                                                  ))
+                                              : SizedBox(),
+                                        ],
                                       ),
                                       SizedBox(width: 3.89),
-                                      Text(
-                                        '''500''',
-                                        overflow: TextOverflow.visible,
-                                        textAlign: TextAlign.left,
-                                        style: TextStyle(
-                                          height: 1.125,
-                                          fontSize: 16.0,
-                                          fontFamily: 'Montserrat',
-                                          fontWeight: FontWeight.w600,
-                                          color: Color(0xffd7dde8),
-                                        ),
-                                      ),
+                                      widget.isActivated
+                                          ? Text(
+                                              '''480''',
+                                              overflow: TextOverflow.visible,
+                                              textAlign: TextAlign.left,
+                                              style: TextStyle(
+                                                height: 1.125,
+                                                fontSize: 16.0,
+                                                fontFamily: 'Montserrat',
+                                                fontWeight: FontWeight.w600,
+                                                color: Color(0xffd7dde8),
+                                              ),
+                                            )
+                                          : SizedBox(),
                                     ],
                                   ),
                                   SizedBox(height: 30.81),
@@ -341,8 +359,7 @@ This is Game Mode description......'''),
                                   SizedBox(height: 25.86),
                                   LCElevatedButton(
                                     text: '''BUY NOW''',
-                                    endColor: Color(0xff005E87),
-                                    startColor: Color(0xff15B9FF),
+                                    background: 'assets/images/auction_low_btn.png',
                                   ),
                                   SizedBox(height: 9.68),
                                   Text(

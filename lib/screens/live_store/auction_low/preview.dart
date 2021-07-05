@@ -63,7 +63,9 @@ class _AuctionLowPreviewState extends State<AuctionLowPreview> {
                           child: AuctionCard(
                             onTap: () => Navigator.of(context).push(
                               MaterialPageRoute(
-                                builder: (BuildContext context) => AuctionLow(),
+                                builder: (BuildContext context) => AuctionLow(
+                                  isActivated: i == 1,
+                                ),
                               ),
                             ),
                             icon: Image.asset(

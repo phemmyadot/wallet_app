@@ -48,10 +48,8 @@ class _EcommerceState extends State<Ecommerce> {
                       children: [
                         ProductInfo(
                           productName: '''Lorem ipsum dolor sit amet,''',
-                          specifications:
-                              '''Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed''',
-                          description:
-                              '''Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed''',
+                          specifications: '''Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed''',
+                          description: '''Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed''',
                         ),
                         Expanded(
                           child: Column(
@@ -145,10 +143,7 @@ class _EcommerceState extends State<Ecommerce> {
                     gradient: LinearGradient(
                       begin: Alignment.centerLeft,
                       end: Alignment.centerRight,
-                      colors: [
-                        Color(0xff4CD964),
-                        Color(0xff4CD964).withOpacity(0.15)
-                      ],
+                      colors: [Color(0xff4CD964), Color(0xff4CD964).withOpacity(0.15)],
                     ),
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(10),
@@ -226,8 +221,7 @@ class _EcommerceState extends State<Ecommerce> {
                                   ),
                                   SizedBox(height: 30.81),
                                   NumberPicker(
-                                    onSubstract: () => setState(
-                                        () => quantity > 1 ? quantity-- : 1),
+                                    onSubstract: () => setState(() => quantity > 1 ? quantity-- : 1),
                                     onAdd: () => setState(() => quantity++),
                                     quantity: quantity,
                                   ),
@@ -264,8 +258,7 @@ class _EcommerceState extends State<Ecommerce> {
                                   SizedBox(height: 25.86),
                                   LCElevatedButton(
                                     text: '''BUY NOW''',
-                                    startColor: Color(0xff4CD964),
-                                    endColor: Color(0xff006010),
+                                    background: 'assets/images/e_commerce_btn.png',
                                   ),
                                   SizedBox(height: 9.68),
                                   Text(

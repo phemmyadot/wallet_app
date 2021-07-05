@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:livecom/screens/live_store/bid_fast/bid_fast.dart';
+import 'package:livecom/screens/live_store/auction_high_plus/auction_high_plus.dart';
 import 'package:livecom/screens/live_store/featured/feature_card.dart';
 
 class Featured extends StatelessWidget {
@@ -46,11 +47,14 @@ class Featured extends StatelessWidget {
                         ),
                         child: InkWell(
                           onTap: () => i == 0
-                              ? null
+                              ? Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                    builder: (BuildContext context) => AuctionHighPlus(),
+                                  ),
+                                )
                               : Navigator.of(context).push(
                                   MaterialPageRoute(
-                                    builder: (BuildContext context) =>
-                                        BidFast(),
+                                    builder: (BuildContext context) => BidFast(),
                                   ),
                                 ),
                           child: FeatureCard(

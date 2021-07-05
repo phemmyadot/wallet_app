@@ -1,33 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:livecom/screens/live_store/marketing.dart';
 import 'package:livecom/utils/app_colors.dart';
-import 'package:livecom/utils/string_utils.dart';
+import 'package:livecom/utils/game_info.dart';
 import 'package:livecom/widgets/count_down.dart';
 import 'package:livecom/widgets/elevated_button.dart';
 import 'package:livecom/widgets/product_info.dart';
-import 'package:share_plus/share_plus.dart';
 
-class BidFast extends StatefulWidget {
-  const BidFast({Key key}) : super(key: key);
+class AuctionHighPlus extends StatefulWidget {
+  const AuctionHighPlus({Key key}) : super(key: key);
 
   @override
-  _BidFastState createState() => _BidFastState();
+  _AuctionHighPlusState createState() => _AuctionHighPlusState();
 }
 
-class _BidFastState extends State<BidFast> with TickerProviderStateMixin {
+// class AuctionHighPlusType {
+//   static const loading = 'loading';
+//   static const active = 'active';
+//   static const start_game = 'start game';
+//   static const joined = 'joined';
+// }
+
+class _AuctionHighPlusState extends State<AuctionHighPlus> with TickerProviderStateMixin {
   ScrollController _scrollController;
-  int quantity = 1;
-  double currentPrice = 10000;
-  // String _type = BidFastType.normal;
-  AnimationController _controller;
-  // AnimationController _controller1;
-
-  bool isShared = false;
+  int quantity = 200;
+  int minToken = 200;
   bool isActivated = false;
+  bool isJoined = false;
   bool isCompleted = false;
-
-  bool isNotifyMeEnabled = false;
-  // bool _isInit = true;
+  AnimationController _controller;
   @override
   void initState() {
     int _start = 30;
@@ -57,20 +57,19 @@ class _BidFastState extends State<BidFast> with TickerProviderStateMixin {
     setState(() {});
   }
 
-  void _share() {
-    if (currentPrice - 256.66 < 3000) {
-      isActivated = true;
-      currentPrice = 3000;
-      _complete();
-    } else {
-      (currentPrice -= 256.66).floor();
-    }
-    isShared = true;
+  void _join() {
+    // if (currentPrice - 256.66 < 3000) {
+    // isActivated = true;
+    // currentPrice = 3000;
+    _complete();
+    // } else {
+    //   (currentPrice -= 256.66).floor();
+    // }
+    isJoined = true;
 
     setState(() {});
   }
 
-  void _notifyMe() => setState(() => isNotifyMeEnabled = !isNotifyMeEnabled);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -85,9 +84,26 @@ class _BidFastState extends State<BidFast> with TickerProviderStateMixin {
                   AuctionMarketing(
                     balance: '''500,000''',
                     icon: Image.asset(
-                      'assets/images/bid_fast.png',
-                      width: 19,
+                      'assets/images/auction_high.png',
+                      width: 15,
                       height: 30.18,
+                    ),
+                    load: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Loading Participants',
+                          style: TextStyle(
+                            height: 1.125,
+                            fontSize: 16.0,
+                            fontFamily: 'Montserrat',
+                            fontWeight: FontWeight.w700,
+                            color: Color(0xffd7dde8),
+                          ),
+                        ),
+                        SizedBox(height: 5),
+                        countdown,
+                      ],
                     ),
                   ),
                   Padding(
@@ -135,36 +151,28 @@ class _BidFastState extends State<BidFast> with TickerProviderStateMixin {
                               ),
                               SizedBox(height: 33.83),
                               GestureDetector(
-                                onTap: () => _notifyMe(),
+                                onTap: () => GameInfo.getGameInfo(context, '''This is Game Mode description......
+This is Game Mode description......
+This is Game Mode description......
+This is Game Mode description......
+This is Game Mode description......
+This is Game Mode description......
+This is Game Mode description......
+This is Game Mode description......
+This is Game Mode description......'''),
                                 child: Column(
                                   children: [
-                                    Container(
-                                      decoration: BoxDecoration(boxShadow: [
-                                        BoxShadow(
-                                          color: Color(0xff000000).withOpacity(0.4),
-                                          offset: Offset(3.0, 3.0),
-                                          blurRadius: 10.0,
-                                        ),
-                                        BoxShadow(
-                                          color: Color(0xff505D75).withOpacity(0.4),
-                                          offset: Offset(-2.0, -2.0),
-                                          blurRadius: 5.0,
-                                        )
-                                      ], borderRadius: BorderRadius.circular(21.98)),
-                                      child: Image.asset(
-                                        isNotifyMeEnabled
-                                            ? "assets/images/notify_me.png"
-                                            : "assets/images/notify_me_uncheck.png",
-                                        color: null,
-                                        fit: BoxFit.fill,
-                                        width: 21.98,
-                                        height: 21.98,
-                                        colorBlendMode: BlendMode.dstATop,
-                                      ),
+                                    Image.asset(
+                                      "assets/images/game_info.png",
+                                      color: null,
+                                      fit: BoxFit.fill,
+                                      width: 13.28,
+                                      height: 21.98,
+                                      colorBlendMode: BlendMode.dstATop,
                                     ),
-                                    SizedBox(height: 10),
+                                    SizedBox(height: 5.33),
                                     Text(
-                                      '''Notify Me''',
+                                      '''Game Info''',
                                       overflow: TextOverflow.visible,
                                       textAlign: TextAlign.left,
                                       style: TextStyle(
@@ -207,8 +215,8 @@ class _BidFastState extends State<BidFast> with TickerProviderStateMixin {
                       begin: Alignment.centerLeft,
                       end: Alignment.centerRight,
                       colors: [
-                        Color(0xffFCCF37),
-                        Color(0xffFCCF37).withOpacity(0.15),
+                        Color(0xffFF4141),
+                        Color(0xffFF4141).withOpacity(0.15),
                       ],
                     ),
                     borderRadius: BorderRadius.only(
@@ -251,11 +259,7 @@ class _BidFastState extends State<BidFast> with TickerProviderStateMixin {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    isShared && !isActivated && !isCompleted
-                                        ? '''Current Price'''
-                                        : isActivated || isCompleted
-                                            ? '''Activated Price'''
-                                            : '''RRP''',
+                                    '''Starting Price''',
                                     overflow: TextOverflow.visible,
                                     textAlign: TextAlign.left,
                                     style: TextStyle(
@@ -276,7 +280,7 @@ class _BidFastState extends State<BidFast> with TickerProviderStateMixin {
                                       ),
                                       SizedBox(width: 5),
                                       Text(
-                                        StringUtils.addComma(currentPrice),
+                                        '''500''',
                                         overflow: TextOverflow.visible,
                                         textAlign: TextAlign.left,
                                         style: TextStyle(
@@ -289,42 +293,44 @@ class _BidFastState extends State<BidFast> with TickerProviderStateMixin {
                                       ),
                                     ],
                                   ),
-                                  isShared
-                                      ? Column(
-                                          children: [
-                                            SizedBox(height: 5),
-                                            Stack(
-                                              children: [
-                                                Text('RRP: 10,000LT',
-                                                    overflow: TextOverflow.visible,
-                                                    textAlign: TextAlign.left,
-                                                    style: TextStyle(
-                                                      height: 1,
-                                                      fontSize: 12.0,
-                                                      fontFamily: 'Montserrat',
-                                                      fontWeight: FontWeight.w400,
-                                                      color: Color(0xffd7dde8),
-                                                    )),
-                                                Positioned(
-                                                  left: 0,
-                                                  right: 0,
-                                                  top: 0,
-                                                  bottom: 0,
-                                                  child: Center(
-                                                    child: Container(
-                                                      color: Color(0xffd7dde8),
-                                                      height: 1,
-                                                    ),
-                                                  ),
-                                                )
-                                              ],
-                                            ),
-                                          ],
-                                        )
-                                      : SizedBox(),
-                                  SizedBox(height: 10),
+                                  SizedBox(height: 55.76),
+                                  Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        '''Remaining: 1000''',
+                                        overflow: TextOverflow.visible,
+                                        textAlign: TextAlign.left,
+                                        style: TextStyle(
+                                          height: 1.125,
+                                          fontSize: 12.0,
+                                          fontFamily: 'Montserrat',
+                                          fontWeight: FontWeight.w400,
+                                          color: Color(0xff7889a9),
+                                        ),
+                                      ),
+                                      SizedBox(height: 2),
+                                      Text(
+                                        '''Shipping Fees: 50LT''',
+                                        overflow: TextOverflow.visible,
+                                        textAlign: TextAlign.left,
+                                        style: TextStyle(
+                                          height: 1.125,
+                                          fontSize: 12.0,
+                                          fontFamily: 'Montserrat',
+                                          fontWeight: FontWeight.w400,
+                                          color: Color(0xff7889a9),
+                                        ),
+                                      ),
+                                    ],
+                                  )
+                                ],
+                              ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
                                   Text(
-                                    '''Activation Price''',
+                                    '''Cost Per Bid''',
                                     overflow: TextOverflow.visible,
                                     textAlign: TextAlign.left,
                                     style: TextStyle(
@@ -345,7 +351,7 @@ class _BidFastState extends State<BidFast> with TickerProviderStateMixin {
                                       ),
                                       SizedBox(width: 5),
                                       Text(
-                                        '''3,000''',
+                                        '''20''',
                                         overflow: TextOverflow.visible,
                                         textAlign: TextAlign.left,
                                         style: TextStyle(
@@ -364,7 +370,7 @@ class _BidFastState extends State<BidFast> with TickerProviderStateMixin {
                                 crossAxisAlignment: CrossAxisAlignment.end,
                                 children: [
                                   Text(
-                                    isActivated || isCompleted ? '''Game Starts In''' : '''Countdown Time''',
+                                    '''''',
                                     overflow: TextOverflow.visible,
                                     textAlign: TextAlign.left,
                                     style: TextStyle(
@@ -376,14 +382,22 @@ class _BidFastState extends State<BidFast> with TickerProviderStateMixin {
                                     ),
                                   ),
                                   SizedBox(height: 2.76),
-                                  countdown != null ? countdown : SizedBox(),
-                                  SizedBox(height: 25.86),
-                                  InkWell(
-                                    onTap: () => _share(),
-                                    child: LCElevatedButton(
-                                      text: isCompleted ? '''PLAY NOW''' : '''SHARE NOW''',
-                                      background: 'assets/images/bid_fast_btn.png',
+                                  Text(
+                                    '''''',
+                                    overflow: TextOverflow.visible,
+                                    textAlign: TextAlign.left,
+                                    style: TextStyle(
+                                      height: 1.125,
+                                      fontSize: 16.0,
+                                      fontFamily: 'Montserrat',
+                                      fontWeight: FontWeight.w600,
+                                      color: Color(0xffd7dde8),
                                     ),
+                                  ),
+                                  SizedBox(height: 25.86),
+                                  LCElevatedButton(
+                                    background: 'assets/images/auction_high_btn.png',
+                                    text: '''JOIN NOW''',
                                   ),
                                   SizedBox(height: 9.68),
                                   Text(

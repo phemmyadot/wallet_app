@@ -6,7 +6,8 @@ import 'package:livecom/utils/svg.dart';
 class AuctionMarketing extends StatefulWidget {
   final String balance;
   final Image icon;
-  const AuctionMarketing({Key key, @required this.balance, @required this.icon})
+  final Widget load;
+  const AuctionMarketing({Key key, @required this.balance, @required this.icon, this.load = const SizedBox()})
       : super(key: key);
 
   @override
@@ -71,52 +72,52 @@ class _AuctionMarketingState extends State<AuctionMarketing> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Container(
-                      width: 40,
-                      height: 40,
-                      decoration: BoxDecoration(
-                        boxShadow: [
-                          BoxShadow(
-                            color: Color.fromARGB(102, 0, 0, 0),
-                            offset: Offset(5.0, 5.0),
-                            blurRadius: 20.0,
+                    Row(
+                      children: [
+                        Container(
+                          width: 40,
+                          height: 40,
+                          decoration: BoxDecoration(
+                            boxShadow: [
+                              BoxShadow(
+                                color: Color.fromARGB(102, 0, 0, 0),
+                                offset: Offset(5.0, 5.0),
+                                blurRadius: 20.0,
+                              ),
+                              BoxShadow(
+                                color: Color.fromARGB(76, 80, 93, 116),
+                                offset: Offset(-7.0, -7.0),
+                                blurRadius: 20.0,
+                              )
+                            ],
                           ),
-                          BoxShadow(
-                            color: Color.fromARGB(76, 80, 93, 116),
-                            offset: Offset(-7.0, -7.0),
-                            blurRadius: 20.0,
-                          )
-                        ],
-                      ),
-                      child: InkWell(
-                        onTap: () => Navigator.pop(context),
-                        child: Stack(
-                          children: [
-                            SvgWidget(painters: [
-                              SvgPathPainter.fill()
-                                ..addPath(
-                                    'M0 20C0 8.9543 8.9543 0 20 0C31.0457 0 40 8.9543 40 20C40 31.0457 31.0457 40 20 40C8.9543 40 0 31.0457 0 20Z')
-                                ..setLinearGradient(
-                                  startX: -16.31578763184293,
-                                  startY: -8.421051121608452,
-                                  endX: 33.68420681303728,
-                                  endY: 43.68420636996503,
-                                  colors: [
-                                    Color.fromARGB(255, 80, 93, 116),
-                                    Color.fromARGB(255, 24, 29, 40)
-                                  ],
-                                  colorStops: [0.0, 1.0],
-                                ),
-                            ]),
-                            Center(
-                                child: Container(
-                                    height: 12.53,
-                                    width: 9.02,
-                                    child:
-                                        Image.asset('assets/images/back.png')))
-                          ],
+                          child: InkWell(
+                            onTap: () => Navigator.pop(context),
+                            child: Stack(
+                              children: [
+                                SvgWidget(painters: [
+                                  SvgPathPainter.fill()
+                                    ..addPath(
+                                        'M0 20C0 8.9543 8.9543 0 20 0C31.0457 0 40 8.9543 40 20C40 31.0457 31.0457 40 20 40C8.9543 40 0 31.0457 0 20Z')
+                                    ..setLinearGradient(
+                                      startX: -16.31578763184293,
+                                      startY: -8.421051121608452,
+                                      endX: 33.68420681303728,
+                                      endY: 43.68420636996503,
+                                      colors: [Color.fromARGB(255, 80, 93, 116), Color.fromARGB(255, 24, 29, 40)],
+                                      colorStops: [0.0, 1.0],
+                                    ),
+                                ]),
+                                Center(
+                                    child: Container(
+                                        height: 12.53, width: 9.02, child: Image.asset('assets/images/back.png')))
+                              ],
+                            ),
+                          ),
                         ),
-                      ),
+                        SizedBox(width: 17),
+                        widget.load,
+                      ],
                     ),
                     Container(
                       height: 46.0,
@@ -220,23 +221,14 @@ class _AuctionMarketingState extends State<AuctionMarketing> {
             children: [
               InkWell(
                 onTap: () => null,
-                child: Container(
-                    width: 18,
-                    height: 5,
-                    child: Image.asset('assets/images/banner_inactive.png')),
+                child: Container(width: 18, height: 5, child: Image.asset('assets/images/banner_inactive.png')),
               ),
               SizedBox(width: 5),
-              Container(
-                  width: 27,
-                  height: 5,
-                  child: Image.asset('assets/images/banner_active.png')),
+              Container(width: 27, height: 5, child: Image.asset('assets/images/banner_active.png')),
               SizedBox(width: 5),
               InkWell(
                 onTap: () => null,
-                child: Container(
-                    width: 18,
-                    height: 5,
-                    child: Image.asset('assets/images/banner_inactive.png')),
+                child: Container(width: 18, height: 5, child: Image.asset('assets/images/banner_inactive.png')),
               ),
             ],
           ),
