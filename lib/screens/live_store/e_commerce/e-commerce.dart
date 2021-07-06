@@ -123,8 +123,8 @@ class _EcommerceState extends State<Ecommerce> {
                     balance: '500,000',
                     icon: Image.asset(
                       'assets/images/e_commerce.png',
-                      width: 19,
-                      height: 30.18,
+                      width: 30,
+                      height: 30,
                     ),
                   ),
                 )

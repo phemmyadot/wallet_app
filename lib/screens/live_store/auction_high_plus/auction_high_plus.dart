@@ -167,8 +167,8 @@ This is Game Mode description......'''),
                     balance: '500,000',
                     icon: Image.asset(
                       'assets/images/auction_high_plus.png',
-                      width: 19,
-                      height: 30.18,
+                      width: 34,
+                      height: 36.6,
                     ),
                     load: isCompleted
                         ? SizedBox()

@@ -208,7 +208,7 @@ class _BidFastState extends State<BidFast> with TickerProviderStateMixin {
                     icon: Image.asset(
                       'assets/images/bid_fast.png',
                       width: 19,
-                      height: 30.18,
+                      height: 30,
                     ),
                   ),
                 )

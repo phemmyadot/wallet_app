@@ -130,7 +130,7 @@ This is Game Mode description......'''),
                     balance: '500,000',
                     icon: Image.asset(
                       'assets/images/auction_high.png',
-                      width: 19,
+                      width: 25,
                       height: 30.18,
                     ),
                   ),
