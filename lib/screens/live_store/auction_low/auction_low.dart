@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:livecom/screens/live_store/marketing.dart';
 import 'package:livecom/utils/app_colors.dart';
 import 'package:livecom/utils/game_info.dart';
+import 'package:livecom/widgets/app_bar.dart';
 import 'package:livecom/widgets/elevated_button.dart';
 import 'package:livecom/widgets/number_picker.dart';
 import 'package:livecom/widgets/product_info.dart';
@@ -15,7 +16,7 @@ class AuctionLow extends StatefulWidget {
 }
 
 class _AuctionLowState extends State<AuctionLow> {
-  ScrollController _scrollController;
+  ScrollController _scrollController = ScrollController(initialScrollOffset: 0.0);
   int quantity = 1;
 
   @override
@@ -25,64 +26,67 @@ class _AuctionLowState extends State<AuctionLow> {
       body: Column(
         children: [
           Expanded(
-            child: SingleChildScrollView(
-              controller: _scrollController,
-              child: Column(
-                children: [
-                  AuctionMarketing(
-                    balance: '500,000',
-                    icon: Image.asset(
-                      'assets/images/auction_low.png',
-                      width: 15,
-                      height: 30.18,
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(
-                      left: 20.0,
-                      top: 10.0,
-                      bottom: 70,
-                    ),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        ProductInfo(
-                          productName: 'Lorem ipsum dolor sit amet,',
-                          specifications: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed',
-                          description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed',
+            child: Stack(
+              children: [
+                SingleChildScrollView(
+                  controller: _scrollController,
+                  child: Column(
+                    children: [
+                      AuctionMarketing(
+                          // balance: '500,000',
+                          // icon: Image.asset(
+                          //   'assets/images/auction_low.png',
+                          //   width: 15,
+                          //   height: 30.18,
+                          // ),
+                          // scrollController: _scrollController
+                          ),
+                      Padding(
+                        padding: const EdgeInsets.only(
+                          left: 20.0,
+                          top: 10.0,
+                          bottom: 70,
                         ),
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Column(
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            ProductInfo(
+                              productName: 'Lorem ipsum dolor sit amet,',
+                              specifications: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed',
+                              description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed',
+                            ),
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
-                                  Image.asset(
-                                    "assets/images/share.png",
-                                    color: null,
-                                    fit: BoxFit.fill,
-                                    width: 24.0,
-                                    height: 26.0,
-                                    colorBlendMode: BlendMode.dstATop,
+                                  Column(
+                                    children: [
+                                      Image.asset(
+                                        "assets/images/share.png",
+                                        color: null,
+                                        fit: BoxFit.fill,
+                                        width: 24.0,
+                                        height: 26.0,
+                                        colorBlendMode: BlendMode.dstATop,
+                                      ),
+                                      SizedBox(height: 10.17),
+                                      Text(
+                                        'Share',
+                                        overflow: TextOverflow.visible,
+                                        textAlign: TextAlign.left,
+                                        style: TextStyle(
+                                          height: 1.125,
+                                          fontSize: 12.0,
+                                          fontFamily: 'Montserrat',
+                                          fontWeight: FontWeight.w600,
+                                          color: Color(0xffd7dde8),
+                                        ),
+                                      ),
+                                    ],
                                   ),
-                                  SizedBox(height: 10.17),
-                                  Text(
-                                    'Share',
-                                    overflow: TextOverflow.visible,
-                                    textAlign: TextAlign.left,
-                                    style: TextStyle(
-                                      height: 1.125,
-                                      fontSize: 12.0,
-                                      fontFamily: 'Montserrat',
-                                      fontWeight: FontWeight.w600,
-                                      color: Color(0xffd7dde8),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              SizedBox(height: 33.83),
-                              InkWell(
-                                onTap: () => GameInfo.getGameInfo(context, '''This is Game Mode description......
+                                  SizedBox(height: 33.83),
+                                  InkWell(
+                                    onTap: () => GameInfo.getGameInfo(context, '''This is Game Mode description......
 This is Game Mode description......
 This is Game Mode description......
 This is Game Mode description......
@@ -91,40 +95,55 @@ This is Game Mode description......
 This is Game Mode description......
 This is Game Mode description......
 This is Game Mode description......'''),
-                                child: Column(
-                                  children: [
-                                    Image.asset(
-                                      "assets/images/game_info.png",
-                                      color: null,
-                                      fit: BoxFit.fill,
-                                      width: 13.28,
-                                      height: 21.98,
-                                      colorBlendMode: BlendMode.dstATop,
+                                    child: Column(
+                                      children: [
+                                        Image.asset(
+                                          "assets/images/game_info.png",
+                                          color: null,
+                                          fit: BoxFit.fill,
+                                          width: 13.28,
+                                          height: 21.98,
+                                          colorBlendMode: BlendMode.dstATop,
+                                        ),
+                                        SizedBox(height: 5.33),
+                                        Text(
+                                          'Game Info',
+                                          overflow: TextOverflow.visible,
+                                          textAlign: TextAlign.left,
+                                          style: TextStyle(
+                                            height: 1.125,
+                                            fontSize: 12.0,
+                                            fontFamily: 'Montserrat',
+                                            fontWeight: FontWeight.w600,
+                                            color: Color(0xffd7dde8),
+                                          ),
+                                        ),
+                                      ],
                                     ),
-                                    SizedBox(height: 5.33),
-                                    Text(
-                                      'Game Info',
-                                      overflow: TextOverflow.visible,
-                                      textAlign: TextAlign.left,
-                                      style: TextStyle(
-                                        height: 1.125,
-                                        fontSize: 12.0,
-                                        fontFamily: 'Montserrat',
-                                        fontWeight: FontWeight.w600,
-                                        color: Color(0xffd7dde8),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              )
-                            ],
-                          ),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ],
                         ),
-                      ],
+                      ),
+                    ],
+                  ),
+                ),
+                Positioned(
+                  left: 24.0,
+                  top: 56.0,
+                  right: 23.64,
+                  child: LAppBar(
+                    balance: '500,000',
+                    icon: Image.asset(
+                      'assets/images/auction_low.png',
+                      width: 19,
+                      height: 30.18,
                     ),
                   ),
-                ],
-              ),
+                )
+              ],
             ),
           ),
           Container(

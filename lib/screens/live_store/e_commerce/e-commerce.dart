@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:livecom/screens/live_store/marketing.dart';
 import 'package:livecom/utils/app_colors.dart';
+import 'package:livecom/widgets/app_bar.dart';
 import 'package:livecom/widgets/elevated_button.dart';
 import 'package:livecom/widgets/number_picker.dart';
 import 'package:livecom/widgets/product_info.dart';
 
 class Ecommerce extends StatefulWidget {
-  final bool isInWishList;
-
-  const Ecommerce({Key key, this.isInWishList = false}) : super(key: key);
+  const Ecommerce({Key key}) : super(key: key);
 
   @override
   _EcommerceState createState() => _EcommerceState();
 }
 
 class _EcommerceState extends State<Ecommerce> {
-  ScrollController _scrollController;
+  ScrollController _scrollController = ScrollController(initialScrollOffset: 0.0);
   int quantity = 1;
+  bool _isInWishList = false;
 
   @override
   Widget build(BuildContext context) {
@@ -25,104 +25,110 @@ class _EcommerceState extends State<Ecommerce> {
       body: Column(
         children: [
           Expanded(
-            child: SingleChildScrollView(
-              controller: _scrollController,
-              child: Column(
-                children: [
-                  AuctionMarketing(
-                    balance: '500,000',
-                    icon: Image.asset(
-                      'assets/images/e_commerce.png',
-                      width: 30,
-                      height: 30,
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(
-                      left: 20.0,
-                      top: 10.0,
-                      bottom: 70,
-                    ),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        ProductInfo(
-                          productName: 'Lorem ipsum dolor sit amet,',
-                          specifications: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed',
-                          description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed',
+            child: Stack(
+              children: [
+                SingleChildScrollView(
+                  controller: _scrollController,
+                  child: Column(
+                    children: [
+                      AuctionMarketing(),
+                      Padding(
+                        padding: const EdgeInsets.only(
+                          left: 20.0,
+                          top: 10.0,
+                          bottom: 70,
                         ),
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Column(
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            ProductInfo(
+                              productName: 'Lorem ipsum dolor sit amet,',
+                              specifications: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed',
+                              description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed',
+                            ),
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
-                                  Image.asset(
-                                    "assets/images/share.png",
-                                    color: null,
-                                    fit: BoxFit.fill,
-                                    width: 24.0,
-                                    height: 26.0,
-                                    colorBlendMode: BlendMode.dstATop,
+                                  Column(
+                                    children: [
+                                      Image.asset(
+                                        "assets/images/share.png",
+                                        color: null,
+                                        fit: BoxFit.fill,
+                                        width: 24.0,
+                                        height: 26.0,
+                                        colorBlendMode: BlendMode.dstATop,
+                                      ),
+                                      SizedBox(height: 10.17),
+                                      Text(
+                                        'Share',
+                                        overflow: TextOverflow.visible,
+                                        textAlign: TextAlign.left,
+                                        style: TextStyle(
+                                          height: 1.125,
+                                          fontSize: 12.0,
+                                          fontFamily: 'Montserrat',
+                                          fontWeight: FontWeight.w600,
+                                          color: Color(0xffd7dde8),
+                                        ),
+                                      ),
+                                    ],
                                   ),
-                                  SizedBox(height: 10.17),
-                                  Text(
-                                    'Share',
-                                    overflow: TextOverflow.visible,
-                                    textAlign: TextAlign.left,
-                                    style: TextStyle(
-                                      height: 1.125,
-                                      fontSize: 12.0,
-                                      fontFamily: 'Montserrat',
-                                      fontWeight: FontWeight.w600,
-                                      color: Color(0xffd7dde8),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              SizedBox(height: 33.83),
-                              Column(
-                                children: [
-                                  widget.isInWishList
-                                      ? Image.asset(
-                                          "assets/images/wishlist_active.png",
-                                          color: null,
-                                          fit: BoxFit.fill,
-                                          width: 22.0,
-                                          height: 19.83,
-                                          colorBlendMode: BlendMode.dstATop,
-                                        )
-                                      : Image.asset(
-                                          "assets/images/like.png",
+                                  SizedBox(height: 33.83),
+                                  Column(
+                                    children: [
+                                      GestureDetector(
+                                        onTap: () => setState(() => _isInWishList = !_isInWishList),
+                                        child: Image.asset(
+                                          _isInWishList
+                                              ? "assets/images/wishlist_active.png"
+                                              : "assets/images/like.png",
                                           color: null,
                                           fit: BoxFit.fill,
                                           width: 22.0,
                                           height: 19.83,
                                           colorBlendMode: BlendMode.dstATop,
                                         ),
-                                  SizedBox(height: 5.33),
-                                  Text(
-                                    'Wishlist',
-                                    overflow: TextOverflow.visible,
-                                    textAlign: TextAlign.left,
-                                    style: TextStyle(
-                                      height: 1.125,
-                                      fontSize: 12.0,
-                                      fontFamily: 'Montserrat',
-                                      fontWeight: FontWeight.w600,
-                                      color: Color(0xffd7dde8),
-                                    ),
-                                  ),
+                                      ),
+                                      SizedBox(height: 5.33),
+                                      Text(
+                                        'Wishlist',
+                                        overflow: TextOverflow.visible,
+                                        textAlign: TextAlign.left,
+                                        style: TextStyle(
+                                          height: 1.125,
+                                          fontSize: 12.0,
+                                          fontFamily: 'Montserrat',
+                                          fontWeight: FontWeight.w600,
+                                          color: Color(0xffd7dde8),
+                                        ),
+                                      ),
+                                    ],
+                                  )
                                 ],
-                              )
-                            ],
-                          ),
+                              ),
+                            ),
+                          ],
                         ),
-                      ],
+                      ),
+                    ],
+                  ),
+                ),
+                Positioned(
+                  left: 24.0,
+                  top: 56.0,
+                  right: 23.64,
+                  child: LAppBar(
+                    balance: '500,000',
+                    icon: Image.asset(
+                      'assets/images/e_commerce.png',
+                      width: 19,
+                      height: 30.18,
                     ),
                   ),
-                ],
-              ),
+                )
+              ],
             ),
           ),
           Container(

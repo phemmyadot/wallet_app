@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:livecom/screens/live_store/marketing.dart';
 import 'package:livecom/utils/app_colors.dart';
 import 'package:livecom/utils/game_info.dart';
+import 'package:livecom/widgets/app_bar.dart';
 import 'package:livecom/widgets/count_down.dart';
 import 'package:livecom/widgets/elevated_button.dart';
 import 'package:livecom/widgets/product_info.dart';
@@ -14,7 +15,7 @@ class AuctionHighPlus extends StatefulWidget {
 }
 
 class _AuctionHighPlusState extends State<AuctionHighPlus> with TickerProviderStateMixin {
-  ScrollController _scrollController;
+  ScrollController _scrollController = ScrollController(initialScrollOffset: 0.0);
   int quantity = 200;
   int minToken = 200;
   bool isActivated = false;
@@ -62,15 +63,111 @@ class _AuctionHighPlusState extends State<AuctionHighPlus> with TickerProviderSt
       body: Column(
         children: [
           Expanded(
-            child: SingleChildScrollView(
-              controller: _scrollController,
-              child: Column(
-                children: [
-                  AuctionMarketing(
+            child: Stack(
+              children: [
+                SingleChildScrollView(
+                  controller: _scrollController,
+                  child: Column(
+                    children: [
+                      AuctionMarketing(),
+                      Padding(
+                        padding: const EdgeInsets.only(
+                          left: 20.0,
+                          top: 10.0,
+                          bottom: 70,
+                        ),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            ProductInfo(
+                              productName: 'Lorem ipsum dolor sit amet,',
+                              specifications: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed',
+                              description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed',
+                            ),
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Column(
+                                    children: [
+                                      Image.asset(
+                                        "assets/images/share.png",
+                                        color: null,
+                                        fit: BoxFit.fill,
+                                        width: 24.0,
+                                        height: 26.0,
+                                        colorBlendMode: BlendMode.dstATop,
+                                      ),
+                                      SizedBox(height: 10.17),
+                                      Text(
+                                        'Share',
+                                        overflow: TextOverflow.visible,
+                                        textAlign: TextAlign.left,
+                                        style: TextStyle(
+                                          height: 1.125,
+                                          fontSize: 12.0,
+                                          fontFamily: 'Montserrat',
+                                          fontWeight: FontWeight.w600,
+                                          color: Color(0xffd7dde8),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(height: 33.83),
+                                  GestureDetector(
+                                    onTap: () => GameInfo.getGameInfo(context, '''This is Game Mode description......
+This is Game Mode description......
+This is Game Mode description......
+This is Game Mode description......
+This is Game Mode description......
+This is Game Mode description......
+This is Game Mode description......
+This is Game Mode description......
+This is Game Mode description......'''),
+                                    child: Column(
+                                      children: [
+                                        Image.asset(
+                                          "assets/images/game_info.png",
+                                          color: null,
+                                          fit: BoxFit.fill,
+                                          width: 13.28,
+                                          height: 21.98,
+                                          colorBlendMode: BlendMode.dstATop,
+                                        ),
+                                        SizedBox(height: 5.33),
+                                        Text(
+                                          'Game Info',
+                                          overflow: TextOverflow.visible,
+                                          textAlign: TextAlign.left,
+                                          style: TextStyle(
+                                            height: 1.125,
+                                            fontSize: 12.0,
+                                            fontFamily: 'Montserrat',
+                                            fontWeight: FontWeight.w600,
+                                            color: Color(0xffd7dde8),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Positioned(
+                  left: 24.0,
+                  top: 56.0,
+                  right: 23.64,
+                  child: LAppBar(
                     balance: '500,000',
                     icon: Image.asset(
                       'assets/images/auction_high_plus.png',
-                      width: 15,
+                      width: 19,
                       height: 30.18,
                     ),
                     load: isCompleted
@@ -93,94 +190,8 @@ class _AuctionHighPlusState extends State<AuctionHighPlus> with TickerProviderSt
                             ],
                           ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(
-                      left: 20.0,
-                      top: 10.0,
-                      bottom: 70,
-                    ),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        ProductInfo(
-                          productName: 'Lorem ipsum dolor sit amet,',
-                          specifications: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed',
-                          description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed',
-                        ),
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Column(
-                                children: [
-                                  Image.asset(
-                                    "assets/images/share.png",
-                                    color: null,
-                                    fit: BoxFit.fill,
-                                    width: 24.0,
-                                    height: 26.0,
-                                    colorBlendMode: BlendMode.dstATop,
-                                  ),
-                                  SizedBox(height: 10.17),
-                                  Text(
-                                    'Share',
-                                    overflow: TextOverflow.visible,
-                                    textAlign: TextAlign.left,
-                                    style: TextStyle(
-                                      height: 1.125,
-                                      fontSize: 12.0,
-                                      fontFamily: 'Montserrat',
-                                      fontWeight: FontWeight.w600,
-                                      color: Color(0xffd7dde8),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              SizedBox(height: 33.83),
-                              GestureDetector(
-                                onTap: () => GameInfo.getGameInfo(context, '''This is Game Mode description......
-This is Game Mode description......
-This is Game Mode description......
-This is Game Mode description......
-This is Game Mode description......
-This is Game Mode description......
-This is Game Mode description......
-This is Game Mode description......
-This is Game Mode description......'''),
-                                child: Column(
-                                  children: [
-                                    Image.asset(
-                                      "assets/images/game_info.png",
-                                      color: null,
-                                      fit: BoxFit.fill,
-                                      width: 13.28,
-                                      height: 21.98,
-                                      colorBlendMode: BlendMode.dstATop,
-                                    ),
-                                    SizedBox(height: 5.33),
-                                    Text(
-                                      'Game Info',
-                                      overflow: TextOverflow.visible,
-                                      textAlign: TextAlign.left,
-                                      style: TextStyle(
-                                        height: 1.125,
-                                        fontSize: 12.0,
-                                        fontFamily: 'Montserrat',
-                                        fontWeight: FontWeight.w600,
-                                        color: Color(0xffd7dde8),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
+                )
+              ],
             ),
           ),
           Container(

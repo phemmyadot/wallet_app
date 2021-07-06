@@ -63,7 +63,7 @@ class _ECommercePreviewState extends State<ECommercePreview> {
                           child: AuctionCard(
                             onTap: () => Navigator.of(context).push(
                               MaterialPageRoute(
-                                builder: (BuildContext context) => Ecommerce(isInWishList: i == 1),
+                                builder: (BuildContext context) => Ecommerce(),
                               ),
                             ),
                             icon: Image.asset(
