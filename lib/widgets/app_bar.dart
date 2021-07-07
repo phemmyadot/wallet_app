@@ -5,7 +5,9 @@ class LAppBar extends StatelessWidget {
   final String balance;
   final Image icon;
   final Widget load;
-  const LAppBar({Key key, this.balance, this.icon, this.load = const SizedBox()}) : super(key: key);
+  const LAppBar(
+      {Key key, this.balance, this.icon, this.load = const SizedBox()})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -46,12 +48,18 @@ class LAppBar extends StatelessWidget {
                               startY: -8.421051121608452,
                               endX: 33.68420681303728,
                               endY: 43.68420636996503,
-                              colors: [Color.fromARGB(255, 80, 93, 116), Color.fromARGB(255, 24, 29, 40)],
+                              colors: [
+                                Color.fromARGB(255, 80, 93, 116),
+                                Color.fromARGB(255, 24, 29, 40)
+                              ],
                               colorStops: [0.0, 1.0],
                             ),
                         ]),
                         Center(
-                            child: Container(height: 12.53, width: 9.02, child: Image.asset('assets/images/back.png')))
+                            child: Container(
+                                height: 12.53,
+                                width: 9.02,
+                                child: Image.asset('assets/images/back.png')))
                       ],
                     ),
                   ),

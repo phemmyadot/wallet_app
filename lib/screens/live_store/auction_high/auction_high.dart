@@ -15,7 +15,8 @@ class AuctionHigh extends StatefulWidget {
 }
 
 class _AuctionHighState extends State<AuctionHigh> {
-  ScrollController _scrollController = ScrollController(initialScrollOffset: 0.0);
+  ScrollController _scrollController =
+      ScrollController(initialScrollOffset: 0.0);
   int quantity = 200;
   int minToken = 200;
 
@@ -44,8 +45,10 @@ class _AuctionHighState extends State<AuctionHigh> {
                           children: [
                             ProductInfo(
                               productName: 'Lorem ipsum dolor sit amet,',
-                              specifications: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed',
-                              description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed',
+                              specifications:
+                                  'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed',
+                              description:
+                                  'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed',
                             ),
                             Expanded(
                               child: Column(
@@ -78,7 +81,8 @@ class _AuctionHighState extends State<AuctionHigh> {
                                   ),
                                   SizedBox(height: 33.83),
                                   GestureDetector(
-                                    onTap: () => GameInfo.getGameInfo(context, '''This is Game Mode description......
+                                    onTap: () => GameInfo.getGameInfo(context,
+                                        '''This is Game Mode description......
 This is Game Mode description......
 This is Game Mode description......
 This is Game Mode description......
@@ -260,7 +264,10 @@ This is Game Mode description......'''),
                                   ),
                                   SizedBox(height: 14),
                                   NumberPicker(
-                                    onSubstract: () => setState(() => quantity > minToken ? quantity-- : minToken),
+                                    onSubstract: () => setState(() =>
+                                        quantity > minToken
+                                            ? quantity--
+                                            : minToken),
                                     onAdd: () => setState(() => quantity++),
                                     quantity: quantity,
                                   ),
@@ -336,7 +343,8 @@ This is Game Mode description......'''),
                                   ),
                                   SizedBox(height: 25.86),
                                   LCElevatedButton(
-                                    background: 'assets/images/auction_high_btn.png',
+                                    background:
+                                        'assets/images/auction_high_btn.png',
                                     text: 'BID NOW',
                                   ),
                                   SizedBox(height: 9.68),

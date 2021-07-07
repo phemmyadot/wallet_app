@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:livecom/screens/home/home.dart';
 import 'package:livecom/screens/live_store/main/live_store.dart';
 import 'package:livecom/utils/app_colors.dart';
@@ -27,6 +30,12 @@ class _EntryScreenState extends State<EntryScreen>
 
   @override
   Widget build(BuildContext context) {
+    // return AnnotatedRegion<SystemUiOverlayStyle>(
+    //   value: SystemUiOverlayStyle(
+    //     systemNavigationBarColor: top > 25 ? AppColors.primary : null,
+    //     statusBarBrightness: Brightness.light,
+    //   ),
+    //   child:
     return Scaffold(
       backgroundColor: Colors.transparent,
       key: _scaffoldKey,
@@ -96,6 +105,7 @@ class _EntryScreenState extends State<EntryScreen>
           ],
         ),
       ),
+      // ),
     );
   }
 

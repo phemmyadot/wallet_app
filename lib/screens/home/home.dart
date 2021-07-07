@@ -57,18 +57,11 @@ class _HomeState extends State<Home> {
                         startY: -8.421051121608452,
                         endX: 33.68420681303728,
                         endY: 43.68420636996503,
-                        colors: [
-                          Color.fromARGB(255, 80, 93, 116),
-                          Color.fromARGB(255, 24, 29, 40)
-                        ],
+                        colors: [Color.fromARGB(255, 80, 93, 116), Color.fromARGB(255, 24, 29, 40)],
                         colorStops: [0.0, 1.0],
                       ),
                   ]),
-                  Center(
-                      child: Container(
-                          height: 12.53,
-                          width: 9.02,
-                          child: Image.asset('assets/images/back.png')))
+                  Center(child: Container(height: 12.53, width: 9.02, child: Image.asset('assets/images/back.png')))
                 ],
               ),
             ),
@@ -117,17 +110,13 @@ class _HomeState extends State<Home> {
                                     child: Column(
                                       children: [
                                         Container(
-                                          margin: EdgeInsets.symmetric(
-                                              horizontal: 42, vertical: 100),
-                                          padding: EdgeInsets.symmetric(
-                                              vertical: 12.83, horizontal: 16),
+                                          margin: EdgeInsets.symmetric(horizontal: 42, vertical: 100),
+                                          padding: EdgeInsets.symmetric(vertical: 12.83, horizontal: 16),
                                           color: Colors.black.withOpacity(0.8),
                                           child: Text(
                                             'LOCKED \nThe amount of LiveToken being reserved in any Game Mode \n\nUNLOCKED \nThe amount of LiveToken that is free to be used. \n\nFREE \nComplimentary LiveToken distributed by Sellers or Platform. Free LiveTokens cannot be withdrawn or transfered.',
                                             style: TextStyle(
-                                                color: Color(0xffD7DDE8),
-                                                fontWeight: FontWeight.w600,
-                                                fontSize: 12),
+                                                color: Color(0xffD7DDE8), fontWeight: FontWeight.w600, fontSize: 12),
                                           ),
                                         ),
                                       ],

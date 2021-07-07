@@ -16,7 +16,8 @@ class AuctionLow extends StatefulWidget {
 }
 
 class _AuctionLowState extends State<AuctionLow> {
-  ScrollController _scrollController = ScrollController(initialScrollOffset: 0.0);
+  ScrollController _scrollController =
+      ScrollController(initialScrollOffset: 0.0);
   int quantity = 1;
 
   @override
@@ -32,15 +33,7 @@ class _AuctionLowState extends State<AuctionLow> {
                   controller: _scrollController,
                   child: Column(
                     children: [
-                      AuctionMarketing(
-                          // balance: '500,000',
-                          // icon: Image.asset(
-                          //   'assets/images/auction_low.png',
-                          //   width: 15,
-                          //   height: 30.18,
-                          // ),
-                          // scrollController: _scrollController
-                          ),
+                      AuctionMarketing(),
                       Padding(
                         padding: const EdgeInsets.only(
                           left: 20.0,
@@ -52,8 +45,10 @@ class _AuctionLowState extends State<AuctionLow> {
                           children: [
                             ProductInfo(
                               productName: 'Lorem ipsum dolor sit amet,',
-                              specifications: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed',
-                              description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed',
+                              specifications:
+                                  'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed',
+                              description:
+                                  'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed',
                             ),
                             Expanded(
                               child: Column(
@@ -86,7 +81,8 @@ class _AuctionLowState extends State<AuctionLow> {
                                   ),
                                   SizedBox(height: 33.83),
                                   InkWell(
-                                    onTap: () => GameInfo.getGameInfo(context, '''This is Game Mode description......
+                                    onTap: () => GameInfo.getGameInfo(context,
+                                        '''This is Game Mode description......
 This is Game Mode description......
 This is Game Mode description......
 This is Game Mode description......
@@ -240,7 +236,9 @@ This is Game Mode description......'''),
                                               fontSize: 16.0,
                                               fontFamily: 'Montserrat',
                                               fontWeight: FontWeight.w600,
-                                              color: widget.isActivated ? Color(0xff7889A9) : Color(0xffd7dde8),
+                                              color: widget.isActivated
+                                                  ? Color(0xff7889A9)
+                                                  : Color(0xffd7dde8),
                                             ),
                                           ),
                                           widget.isActivated
@@ -275,7 +273,8 @@ This is Game Mode description......'''),
                                   ),
                                   SizedBox(height: 30.81),
                                   NumberPicker(
-                                    onSubstract: () => setState(() => quantity > 1 ? quantity-- : 1),
+                                    onSubstract: () => setState(
+                                        () => quantity > 1 ? quantity-- : 1),
                                     onAdd: () => setState(() => quantity++),
                                     quantity: quantity,
                                   ),
@@ -378,7 +377,8 @@ This is Game Mode description......'''),
                                   SizedBox(height: 25.86),
                                   LCElevatedButton(
                                     text: 'BUY NOW',
-                                    background: 'assets/images/auction_low_btn.png',
+                                    background:
+                                        'assets/images/auction_low_btn.png',
                                   ),
                                   SizedBox(height: 9.68),
                                   Text(
