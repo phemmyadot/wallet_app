@@ -94,7 +94,7 @@ class _EntryScreenState extends State<EntryScreen>
                                 ),
                               ],
                             ),
-                            SizedBox(height: 20)
+                            SizedBox(height: Platform.isAndroid ? 5 : 20)
                           ],
                         ),
                       ),
