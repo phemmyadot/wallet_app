@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:device_info/device_info.dart';
 import 'package:livecom/screens/home/home.dart';
 import 'package:livecom/screens/live_store/main/live_store.dart';
 import 'package:livecom/utils/app_colors.dart';
@@ -15,9 +18,23 @@ class _EntryScreenState extends State<EntryScreen>
     with TickerProviderStateMixin {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
   TabController _tabController;
+  bool bottomNotch = false;
+  static const List<String> _IOS_MACHINES_WITH_BOTTOM_NOTCH = [
+    'iPhone10,3',
+    'iPhone10,6',
+    'iPhone11,2',
+    'iPhone11,4',
+    'iPhone11,6',
+    'iPhone11,8',
+    'iPhone12,1',
+    'iPhone12,3',
+    'iPhone12,5',
+  ];
+
   @override
   initState() {
     _tabController = new TabController(length: 3, vsync: this);
+    hasiOSNotch();
     super.initState();
   }
 
@@ -25,8 +42,26 @@ class _EntryScreenState extends State<EntryScreen>
     if (animate) _tabController.animateTo(index);
   }
 
+  Future<bool> hasiOSNotch() async {
+    DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
+    if (Platform.isIOS) {
+      IosDeviceInfo iosInfo = await deviceInfo.iosInfo;
+
+      final DeviceInfoPlugin deviceInfoPlugin = DeviceInfoPlugin();
+      final IosDeviceInfo iosDeviceInfo = await deviceInfoPlugin.iosInfo;
+      bottomNotch = _IOS_MACHINES_WITH_BOTTOM_NOTCH
+          .contains(iosDeviceInfo.utsname.machine);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    // return AnnotatedRegion<SystemUiOverlayStyle>(
+    //   value: SystemUiOverlayStyle(
+    //     systemNavigationBarColor: top > 25 ? AppColors.primary : null,
+    //     statusBarBrightness: Brightness.light,
+    //   ),
+    //   child:
     return Scaffold(
       backgroundColor: Colors.transparent,
       key: _scaffoldKey,
@@ -85,7 +120,9 @@ class _EntryScreenState extends State<EntryScreen>
                                 ),
                               ],
                             ),
-                            SizedBox(height: 20)
+                            SizedBox(
+                                height:
+                                    Platform.isAndroid || bottomNotch ? 5 : 20)
                           ],
                         ),
                       ),
@@ -96,6 +133,7 @@ class _EntryScreenState extends State<EntryScreen>
           ],
         ),
       ),
+      // ),
     );
   }
 

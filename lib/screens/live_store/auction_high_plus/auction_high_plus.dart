@@ -1,7 +1,11 @@
+import 'dart:async';
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:livecom/screens/live_store/marketing.dart';
 import 'package:livecom/utils/app_colors.dart';
 import 'package:livecom/utils/game_info.dart';
+import 'package:livecom/widgets/app_bar.dart';
 import 'package:livecom/widgets/count_down.dart';
 import 'package:livecom/widgets/elevated_button.dart';
 import 'package:livecom/widgets/product_info.dart';
@@ -13,18 +17,23 @@ class AuctionHighPlus extends StatefulWidget {
   _AuctionHighPlusState createState() => _AuctionHighPlusState();
 }
 
-class _AuctionHighPlusState extends State<AuctionHighPlus> with TickerProviderStateMixin {
-  ScrollController _scrollController;
+class _AuctionHighPlusState extends State<AuctionHighPlus>
+    with TickerProviderStateMixin {
+  ScrollController _scrollController =
+      ScrollController(initialScrollOffset: 0.0);
   int quantity = 200;
   int minToken = 200;
   bool isActivated = false;
   bool isJoined = false;
   bool isCompleted = false;
   AnimationController _controller;
+  int _endTime = 20;
+  double _progressValue = 0.0;
   @override
   void initState() {
     int _start = 30;
-    _controller = AnimationController(vsync: this, duration: Duration(seconds: _start));
+    _controller =
+        AnimationController(vsync: this, duration: Duration(seconds: _start));
     _controller.forward().then((value) {
       if (!isActivated) _complete();
     });
@@ -33,16 +42,39 @@ class _AuctionHighPlusState extends State<AuctionHighPlus> with TickerProviderSt
     super.initState();
   }
 
+  Timer y;
+
+  void _updateProgress() {
+    const oneSec = const Duration(seconds: 1);
+    y = new Timer.periodic(oneSec, (Timer t) {
+      _endTime = _endTime - 1;
+
+      _progressValue += 0.05;
+      _progressValue = (_progressValue * pow(10, 2)).round() / pow(10, 2);
+
+      print(_progressValue);
+      if (_progressValue == 1.0) {
+        t.cancel();
+        setState(() {});
+        return;
+      }
+      setState(() {});
+    });
+  }
+
   @override
   void dispose() {
+    y.cancel();
     _controller.dispose();
     super.dispose();
   }
 
   _complete() {
     final start = 20;
-    _controller = AnimationController(vsync: this, duration: Duration(seconds: start));
+    _controller =
+        AnimationController(vsync: this, duration: Duration(seconds: start));
     _controller.forward().then((value) {
+      _updateProgress();
       setState(() => isCompleted = true);
     });
     isActivated = true;
@@ -62,16 +94,115 @@ class _AuctionHighPlusState extends State<AuctionHighPlus> with TickerProviderSt
       body: Column(
         children: [
           Expanded(
-            child: SingleChildScrollView(
-              controller: _scrollController,
-              child: Column(
-                children: [
-                  AuctionMarketing(
+            child: Stack(
+              children: [
+                SingleChildScrollView(
+                  controller: _scrollController,
+                  child: Column(
+                    children: [
+                      AuctionMarketing(),
+                      Padding(
+                        padding: const EdgeInsets.only(
+                          left: 20.0,
+                          top: 10.0,
+                          bottom: 70,
+                        ),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            ProductInfo(
+                              productName: 'Lorem ipsum dolor sit amet,',
+                              specifications:
+                                  'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed',
+                              description:
+                                  'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed',
+                            ),
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Column(
+                                    children: [
+                                      Image.asset(
+                                        "assets/images/share.png",
+                                        color: null,
+                                        fit: BoxFit.fill,
+                                        width: 24.0,
+                                        height: 26.0,
+                                        colorBlendMode: BlendMode.dstATop,
+                                      ),
+                                      SizedBox(height: 10.17),
+                                      Text(
+                                        'Share',
+                                        overflow: TextOverflow.visible,
+                                        textAlign: TextAlign.left,
+                                        style: TextStyle(
+                                          height: 1.125,
+                                          fontSize: 12.0,
+                                          fontFamily: 'Montserrat',
+                                          fontWeight: FontWeight.w600,
+                                          color: Color(0xffd7dde8),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(height: 33.83),
+                                  GestureDetector(
+                                    onTap: () => GameInfo.getGameInfo(context,
+                                        '''This is Game Mode description......
+This is Game Mode description......
+This is Game Mode description......
+This is Game Mode description......
+This is Game Mode description......
+This is Game Mode description......
+This is Game Mode description......
+This is Game Mode description......
+This is Game Mode description......'''),
+                                    child: Column(
+                                      children: [
+                                        Image.asset(
+                                          "assets/images/game_info.png",
+                                          color: null,
+                                          fit: BoxFit.fill,
+                                          width: 13.28,
+                                          height: 21.98,
+                                          colorBlendMode: BlendMode.dstATop,
+                                        ),
+                                        SizedBox(height: 5.33),
+                                        Text(
+                                          'Game Info',
+                                          overflow: TextOverflow.visible,
+                                          textAlign: TextAlign.left,
+                                          style: TextStyle(
+                                            height: 1.125,
+                                            fontSize: 12.0,
+                                            fontFamily: 'Montserrat',
+                                            fontWeight: FontWeight.w600,
+                                            color: Color(0xffd7dde8),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Positioned(
+                  left: 20.0,
+                  top: 56.0,
+                  right: 12,
+                  child: LAppBar(
                     balance: '500,000',
                     icon: Image.asset(
                       'assets/images/auction_high_plus.png',
-                      width: 15,
-                      height: 30.18,
+                      width: 34,
+                      height: 36.6,
                     ),
                     load: isCompleted
                         ? SizedBox()
@@ -79,7 +210,9 @@ class _AuctionHighPlusState extends State<AuctionHighPlus> with TickerProviderSt
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                isActivated ? 'Event begins in' : 'Loading Participants',
+                                isActivated
+                                    ? 'Event begins in'
+                                    : 'Loading Participants',
                                 style: TextStyle(
                                   height: 1.125,
                                   fontSize: 16.0,
@@ -93,94 +226,8 @@ class _AuctionHighPlusState extends State<AuctionHighPlus> with TickerProviderSt
                             ],
                           ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(
-                      left: 20.0,
-                      top: 10.0,
-                      bottom: 70,
-                    ),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        ProductInfo(
-                          productName: 'Lorem ipsum dolor sit amet,',
-                          specifications: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed',
-                          description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed',
-                        ),
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Column(
-                                children: [
-                                  Image.asset(
-                                    "assets/images/share.png",
-                                    color: null,
-                                    fit: BoxFit.fill,
-                                    width: 24.0,
-                                    height: 26.0,
-                                    colorBlendMode: BlendMode.dstATop,
-                                  ),
-                                  SizedBox(height: 10.17),
-                                  Text(
-                                    'Share',
-                                    overflow: TextOverflow.visible,
-                                    textAlign: TextAlign.left,
-                                    style: TextStyle(
-                                      height: 1.125,
-                                      fontSize: 12.0,
-                                      fontFamily: 'Montserrat',
-                                      fontWeight: FontWeight.w600,
-                                      color: Color(0xffd7dde8),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              SizedBox(height: 33.83),
-                              GestureDetector(
-                                onTap: () => GameInfo.getGameInfo(context, '''This is Game Mode description......
-This is Game Mode description......
-This is Game Mode description......
-This is Game Mode description......
-This is Game Mode description......
-This is Game Mode description......
-This is Game Mode description......
-This is Game Mode description......
-This is Game Mode description......'''),
-                                child: Column(
-                                  children: [
-                                    Image.asset(
-                                      "assets/images/game_info.png",
-                                      color: null,
-                                      fit: BoxFit.fill,
-                                      width: 13.28,
-                                      height: 21.98,
-                                      colorBlendMode: BlendMode.dstATop,
-                                    ),
-                                    SizedBox(height: 5.33),
-                                    Text(
-                                      'Game Info',
-                                      overflow: TextOverflow.visible,
-                                      textAlign: TextAlign.left,
-                                      style: TextStyle(
-                                        height: 1.125,
-                                        fontSize: 12.0,
-                                        fontFamily: 'Montserrat',
-                                        fontWeight: FontWeight.w600,
-                                        color: Color(0xffd7dde8),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
+                )
+              ],
             ),
           ),
           Container(
@@ -236,6 +283,20 @@ This is Game Mode description......'''),
                     ),
                     child: Column(
                       children: [
+                        isCompleted
+                            ? Column(
+                                children: [
+                                  LinearProgressIndicator(
+                                    backgroundColor: Color(0xFF252C39),
+                                    valueColor:
+                                        new AlwaysStoppedAnimation<Color>(
+                                            Color(0xFFFF4141)),
+                                    value: _progressValue,
+                                  ),
+                                  SizedBox(height: 6),
+                                ],
+                              )
+                            : SizedBox(),
                         Padding(
                           padding: EdgeInsets.symmetric(horizontal: 20.0),
                           child: Row(
@@ -246,7 +307,9 @@ This is Game Mode description......'''),
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    'Starting Price',
+                                    isCompleted
+                                        ? 'Winner Pays'
+                                        : 'Starting Price',
                                     overflow: TextOverflow.visible,
                                     textAlign: TextAlign.left,
                                     style: TextStyle(
@@ -280,12 +343,53 @@ This is Game Mode description......'''),
                                       ),
                                     ],
                                   ),
-                                  SizedBox(height: 55.76),
+                                  SizedBox(height: 1.74),
+                                  isCompleted
+                                      ? Row(
+                                          children: [
+                                            Image.asset(
+                                              'assets/images/seller.png',
+                                              height: 15,
+                                              width: 15,
+                                            ),
+                                            SizedBox(width: 5),
+                                            Text(
+                                              'UserName',
+                                              overflow: TextOverflow.visible,
+                                              textAlign: TextAlign.left,
+                                              style: TextStyle(
+                                                height: 1.125,
+                                                fontSize: 12.0,
+                                                fontFamily: 'Montserrat',
+                                                fontWeight: FontWeight.w400,
+                                                color: Color(0xffd7dde8),
+                                              ),
+                                            ),
+                                          ],
+                                        )
+                                      : SizedBox(),
+                                  SizedBox(height: isCompleted ? 22 : 55.76),
                                   Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
+                                      isCompleted
+                                          ? Text(
+                                              'Raise Amount: 200LT',
+                                              overflow: TextOverflow.visible,
+                                              textAlign: TextAlign.left,
+                                              style: TextStyle(
+                                                height: 1.125,
+                                                fontSize: 12.0,
+                                                fontFamily: 'Montserrat',
+                                                fontWeight: FontWeight.w400,
+                                                color: Color(0xff7889a9),
+                                              ),
+                                            )
+                                          : SizedBox(),
+                                      SizedBox(height: isCompleted ? 2 : 0),
                                       Text(
-                                        'Remaining: 1000',
+                                        'Participant: 300pax',
                                         overflow: TextOverflow.visible,
                                         textAlign: TextAlign.left,
                                         style: TextStyle(
@@ -356,38 +460,48 @@ This is Game Mode description......'''),
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.end,
                                 children: [
-                                  Text(
-                                    '',
-                                    overflow: TextOverflow.visible,
-                                    textAlign: TextAlign.left,
-                                    style: TextStyle(
-                                      height: 1.125,
-                                      fontSize: 12.0,
-                                      fontFamily: 'Montserrat',
-                                      fontWeight: FontWeight.w400,
-                                      color: Color(0xffd7dde8),
-                                    ),
-                                  ),
-                                  SizedBox(height: 2.76),
-                                  Text(
-                                    '',
-                                    overflow: TextOverflow.visible,
-                                    textAlign: TextAlign.left,
-                                    style: TextStyle(
-                                      height: 1.125,
-                                      fontSize: 16.0,
-                                      fontFamily: 'Montserrat',
-                                      fontWeight: FontWeight.w600,
-                                      color: Color(0xffd7dde8),
-                                    ),
-                                  ),
-                                  SizedBox(height: 25.86),
+                                  isCompleted
+                                      ? Column(
+                                          children: [
+                                            Text(
+                                              'Ends In',
+                                              overflow: TextOverflow.visible,
+                                              textAlign: TextAlign.left,
+                                              style: TextStyle(
+                                                height: 1.125,
+                                                fontSize: 12.0,
+                                                fontFamily: 'Montserrat',
+                                                fontWeight: FontWeight.w400,
+                                                color: Color(0xffd7dde8),
+                                              ),
+                                            ),
+                                            SizedBox(height: 2.76),
+                                            Text(
+                                              '00:$_endTime',
+                                              overflow: TextOverflow.visible,
+                                              textAlign: TextAlign.left,
+                                              style: TextStyle(
+                                                height: 1.125,
+                                                fontSize: 16.0,
+                                                fontFamily: 'Montserrat',
+                                                fontWeight: FontWeight.w600,
+                                                color: Color(0xffd7dde8),
+                                              ),
+                                            ),
+                                          ],
+                                        )
+                                      : SizedBox(),
+                                  SizedBox(height: isCompleted ? 25.86 : 60),
                                   InkWell(
-                                    onTap: () => isActivated || isJoined || isCompleted ? null : _join(),
+                                    onTap: () =>
+                                        isActivated || isJoined || isCompleted
+                                            ? null
+                                            : _join(),
                                     child: LCElevatedButton(
                                       background: isJoined && isCompleted
                                           ? 'assets/images/auction_high_btn.png'
-                                          : isActivated || (!isJoined && isCompleted)
+                                          : isActivated ||
+                                                  (!isJoined && isCompleted)
                                               ? 'assets/images/auction_high_grey_btn.png'
                                               : 'assets/images/auction_high_btn.png',
                                       text: isActivated || isCompleted

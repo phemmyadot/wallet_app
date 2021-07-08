@@ -23,8 +23,8 @@ class _ECommercePreviewState extends State<ECommercePreview> {
               "assets/images/e_commerce.png",
               color: null,
               fit: BoxFit.fill,
-              width: 15.0,
-              height: 15,
+              width: 18.0,
+              height: 18.0,
               colorBlendMode: BlendMode.dstATop,
             ),
             SizedBox(width: 10.44),
@@ -63,15 +63,15 @@ class _ECommercePreviewState extends State<ECommercePreview> {
                           child: AuctionCard(
                             onTap: () => Navigator.of(context).push(
                               MaterialPageRoute(
-                                builder: (BuildContext context) => Ecommerce(isInWishList: i == 1),
+                                builder: (BuildContext context) => Ecommerce(),
                               ),
                             ),
                             icon: Image.asset(
                               "assets/images/e_commerce.png",
                               color: null,
                               fit: BoxFit.cover,
-                              width: 12.42,
-                              height: 12.42,
+                              width: 15,
+                              height: 15,
                               colorBlendMode: BlendMode.dstATop,
                             ),
                             title: 'Make up Masterclass ',

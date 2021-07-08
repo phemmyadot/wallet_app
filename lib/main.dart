@@ -6,11 +6,8 @@ import 'package:livecom/app.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  SystemChrome.setEnabledSystemUIOverlays(
-      [SystemUiOverlay.top, SystemUiOverlay.bottom]);
-  SystemChrome.setPreferredOrientations([
-    DeviceOrientation.portraitUp,
-  ]);
+  SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.top, SystemUiOverlay.bottom]);
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   await runZonedGuarded(() async {
     runApp(MyApp());
   }, (Object error, StackTrace stackTrace) async {
